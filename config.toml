@@ -1,0 +1,251 @@
+# Page settings
+
+baseURL = "https://kevin-cv.netlify.app/"
+languageCode = "en"
+title = "Kevin's Resume"
+theme = "hugo-devresume-theme"
+googleAnalytics = "UA-XXXXXXX-Y"
+
+
+[params]
+    author = "Kevin Chang"
+    description = "DevResume - Bootstrap 4 Resume/CV Template For Software Developers"
+
+
+    primaryColor = "#54B689"
+    textPrimaryColor = "#292929"
+
+
+    [params.profile]
+        enable = true
+        name = "Kevin Chang"
+        tagline = "Data Modelling Analyst"
+        avatar = "0.jpg"
+
+
+    [params.contact]
+        enable = true
+        location = "Auckland, New Zealand"
+
+        [[params.contact.list]]
+        icon = "fas fa-envelope-square"
+        url = "mailto:#"
+        text = "kevin.ct.chang@gmail.com"
+        [[params.contact.list]]
+        icon = "fas fa-phone-square"
+        url = "tel:#"
+        text = "+6421 292 8124"
+
+
+
+    [params.skills]
+        enable = true
+
+        [[params.skills.list]]
+        title = "Programming"
+        [[params.skills.list.items]]
+        details = "R"
+        [[params.skills.list.items]]
+        details = "SAS"
+        [[params.skills.list.items]]
+        details = "SQL"
+        [[params.skills.list.items]]
+        details = "Shiny Dashboard"
+        [[params.skills.list.items]]
+        details = "Rmarkdown"
+        [[params.skills.list.items]]
+        details = "GIT"
+        [[params.skills.list.items]]
+        details = "Excel"
+        [[params.skills.list.items]]
+        details = "SPSS"
+        [[params.skills.list.items]]
+        details = "Perl"        
+        [[params.skills.list.items]]
+        details = "Java" 
+
+        [[params.skills.list]]
+        title = "Statistics"
+        [[params.skills.list.items]]
+        details = "Experimental design"
+        [[params.skills.list.items]]
+        details = "Advanced statistical modelling"
+        [[params.skills.list.items]]
+        details = "Survey analysis"
+        [[params.skills.list.items]]
+        details = "Data visualisation"
+        [[params.skills.list.items]]
+        details = "Machine learning"
+        [[params.skills.list.items]]
+        details = "Microsimulation"
+       
+        [[params.skills.list]]
+        title = "Professional"
+        [[params.skills.list.items]]
+        details = "Strong problem solver"
+        [[params.skills.list.items]]
+        details = "Good time management"
+        [[params.skills.list.items]]
+        details = "Effective communication"
+        [[params.skills.list.items]]
+        details = "Active Learning"        
+        [[params.skills.list.items]]
+        details = "Team player"
+
+
+
+    [params.education]
+        enable = true
+
+        [[params.education.list]]
+        degree = "PhD in Statistics and Biological Sciences"
+        university = "University of Auckland"
+        dates = "2017"
+        [[params.education.list]]
+        degree = "BSc (Hon) in Bioinformatics"
+        university = "University of Auckland"
+        dates = "2008"
+        [[params.education.list]]
+        degree = "BSc in Bioinformatics"
+        university = "University of Auckland"
+        dates = "2007"
+
+
+
+    [params.awards]
+        enable = false
+
+        [[params.awards.list]]
+        name = "Award Lorem Ipsum"
+        body = "Microsoft lorem ipsum"
+        date = "2019"
+        [[params.awards.list]]
+        name = "Award Donec Sodales"
+        body = "Oracle Aenean"
+        date = "2017"
+
+
+    [params.languages]
+        enable = true
+
+        [[params.languages.list]]
+        name = "English"
+        level = "Fluent"
+        [[params.languages.list]]
+        name = "Mandarin Chinese"
+        level = "Fluent"
+
+    [params.interests]
+        enable = true
+
+        [[params.interests.list]]
+        name = "Running"
+        [[params.interests.list]]
+        name = "Photography"
+        [[params.interests.list]]
+        name = "Travelling"
+
+    [params.summary]
+        enable = true
+        text = "Expert Data Analyst with strong analytic, research and consulting skills. Experienced in handling and managing large and complex data, in particular, survey and administrative datasets within Statistics NZ’s Integrated Data Infrastructure (IDI) databases, including data extraction, cleaning, manipulation, validation, modelling, visualisation, and with parallel computing. Proficient in experimental design, advanced statistical modelling and microsimulation. Over ten years of experience in R programming with automaticed report using Rmarkdown and interactive R Shiny dashboard."
+
+
+    [params.experience]
+        enable = true
+
+        [[params.experience.list]]
+        title = "Modelling Analyst"
+        dates = "2019 - Present"
+        company = "The New Zealand Treasury, Wellington"
+        details = "Maintain, develop, and operate Treasury’s microsimulation model of the tax and welfare system."
+        [[params.experience.list.items]]
+        details = "Support advice on tax and welfare system by modelling policy changes and assessing income, costs, poverty, inequality and distributional impacts at the individual, family, and household levels."
+        [[params.experience.list.items]]
+        details = "Build empirical foundations for Treasury’s policy advice in partnership with policy teams both within NZ Treasury and other government agencies such as the Ministry of Social Development and Inland Revenue."
+        [[params.experience.list.items]]
+        details = "Provide insight allowing the government to make inform decisions that will improve the living standards for all New Zealanders."
+        [[params.experience.list.items]]
+        details = "Investigating and linking between various types of survey and administrative datasets within Statistics NZ’s IDI databases for the microsimulation model."
+        [[params.experience.list.items]]
+        details = "Developed 2 Shiny Dashboard applications, in showing income compositions and distributions, 5 internal R packages, containing R functions for repetitive processes, and 1 Rmarkdown template for automatic reports."
+
+        [[params.experience.list]]
+        title = "Statistical Consultant"
+        dates = "2014 - 2019"
+        company = "Statistical Consulting Centre, University of Auckland"
+        details = "Providing statistical services to clients from both within and external to the University of Auckland."
+        [[params.experience.list.items]]
+        details = "Worked for more than 60 clients ranging from medical professionals to commercial companies, providing both expert advice and analytical services."
+        [[params.experience.list.items]]
+        details = "Supported 5 different teams/departments across Faculties of Science, Arts, Medicine, and Business at the University of Auckland."
+        [[params.experience.list.items]]
+        details = "Taught 6 introductory R workshops – with lectures and labs - over a period of 3 years in Auckland and Wellington to academic, government and corporate participants."
+        [[params.experience.list.items]]       
+        details = "Developed 4 web-deployed Shiny applications for the Centre of Methods and Policy Application in the Social Sciences (COMPASS), University of Auckland"
+
+
+    [params.projects]
+        enable = true
+
+        [[params.projects.list]]
+        title = "Vulnerable Children Investment Approach"
+        meta = "Ernst Young, Australia lead, funded by Ministry of Justice and Ministry of Social Development"
+        tagline = "Analysed the indicators, risk and protective factors relating to family violence and sexual violence that can be observed from administrative datasets within Statistics NZ’s IDI and their links to outcomes for victims and their families. Designed a R-based microsimulation model for it."
+        
+        [[params.projects.list]]
+        title = "Knowledge laboratory"
+        meta = "COMPASS, UoA, funded by MBIE"
+        tagline = "Developing a knowledge laboratory of the early life-course using systematic reviews and meta analyses. A Shiny application for policy makers in government agencies – Using microsimulation to test which factors most improve child wellbeing (funded by MBIE): https://compassnz.shinyapps.io/knowlabshiny/ ."
+
+        [[params.projects.list]]
+        title = "Pacific Aid Visualisation tool"
+        meta = "COMPASS, UoA, funded by MFAT"
+        tagline = "Mapping of aid donors and recipients in the Pacific region (funded by MFAT) : https://compassnz.shinyapps.io/NZIPR/"
+
+        [[params.projects.list]]
+        title = "New Zealand as a social laboratory"
+        meta = "COMPASS, UoA, funded by Royal Society"
+        tagline = "Using microsimulation based on census data to test scenarios (funded by Royal Society): https://compassnz.shinyapps.io/SociaLabShiny/"
+        
+
+    [params.information]
+        enable = true
+
+        [[params.information.list]]
+        title = "Selected Papers"
+        [[params.information.list.items]]
+        details = "Shackleton, N., **Chang, K.**, Lay-yee, R., D’Souza, S., Davis, P., & Milne, B. (2019). Microsimulation model of child and adolescent overweight: making use of what we already know. International Journal of Obesity, 1-11."
+        [[params.information.list.items]]
+        details = "Lay-Yee, R., Milne, B., Shackleton, N., **Chang, K.** & Davis P. (2018). Preventing youth depression: Simulating the impact of parenting interventions. Advances in Life Course Research, 37, 15-22."
+        [[params.information.list.items]]
+        details = "Courtney, M. G. R. & **Chang, K. C.** (2018). Dealing with non‐normality: An introduction and step‐by‐step guide using R. Test, 40, 51-59."
+        [[params.information.list.items]]
+        details = "Zhao, J., Mackay, L., **Chang, K.**, Mavoa, S., Stewart, T., Ikeda, E., ... & Smith, M. (2019). Visualising combined time use patterns of children’s activities and their association with weight status and neighborhood context. International Journal of Environmental Research and Public Health, 16(5), 897."
+        [[params.information.list.items]]
+        details = "Sutherland, K., Clatworthy, M., **Chang, K.**, Rahardja, R., & Young, S. W. (2019). Risk factors for revision anterior cruciate ligament reconstruction and frequency with which patients change surgeons. Orthopaedic Journal of Sports Medicine, 7(11)."
+        [[params.information.list.items]]
+        details = "Mackenzie, B. W., **Chang, K.**, Zoing, M., Jain, R., Hoggard, M., Biswas, K., Douglas, R. G., & Taylor, M. W. (2019). Longitudinal study of the bacterial and fungal microbiota in the human sinuses reveals seasonal and annual changes in diversity. Scientific Reports, 9(1), 1-10."
+      
+
+
+
+    [params.social]
+        enable = true
+
+        [[params.social.list]]
+        icon = "fab fa-github-square"
+        url = "//github.com/kcha193"
+        title = "kcha193"
+        [[params.social.list]]
+        icon = "fab fa-linkedin"
+        url = "//linkedin.com/in/kevin-ct-chang"
+        title = "kevin-ct-chang"
+        [[params.social.list]]
+        icon = "fab fa-twitter-square"
+        url = "//twitter.com/kevin_ct_chang"
+        title = "@kevin_ct_chang"
+
+
+
+
+
