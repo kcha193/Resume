@@ -181,7 +181,7 @@ googleAnalytics = "UA-XXXXXXX-Y"
         [[params.experience.list.items]]
         details = "Taught 6 introductory R workshops – with lectures and labs - over a period of 3 years in Auckland and Wellington to academic, government and corporate participants."
         [[params.experience.list.items]]       
-        details = "Developed 4 web-deployed Shiny applications for the Centre of Methods and Policy Application in the Social Sciences (COMPASS), University of Auckland"
+        details = "Developed 4 web-deployed Shiny applications for the Centre of Methods and Policy Application in the Social Sciences (COMPASS), University of Auckland."
 
 
     [params.projects]
@@ -189,24 +189,31 @@ googleAnalytics = "UA-XXXXXXX-Y"
 
         [[params.projects.list]]
         title = "Vulnerable Children Investment Approach"
-        meta = "Ernst Young, Australia lead, funded by Ministry of Justice and Ministry of Social Development"
-        tagline = "Analysed the indicators, risk and protective factors relating to family violence and sexual violence that can be observed from administrative datasets within Statistics NZ’s IDI and their links to outcomes for victims and their families. Designed a R-based microsimulation model for it."
-        
-        [[params.projects.list]]
-        title = "Knowledge laboratory"
-        meta = "COMPASS, UoA, funded by MBIE"
-        tagline = "Developing a knowledge laboratory of the early life-course using systematic reviews and meta analyses. A Shiny application for policy makers in government agencies – Using microsimulation to test which factors most improve child wellbeing (funded by MBIE): https://compassnz.shinyapps.io/knowlabshiny/ ."
+        meta = "Ernst Young, Australia lead, funded by MoJ and MSD"
+        tagline = "Analysed the indicators, risk and protective factors relating to family violence and sexual violence that can be observed from administrative datasets within Statistics NZ’s IDI and their links to outcomes for victims and their families."
 
+        [[params.projects.list]]
+        title = "Knowledge Laboratory"
+        meta = "COMPASS, UoA, funded by MBIE"
+        tagline = "Developing a knowledge laboratory of the early life-course using systematic reviews and meta analyses. A Shiny application for policy makers in government agencies – Using microsimulation to test which factors most improve child wellbeing."
+        url = "https://compassnz.shinyapps.io/knowlabshiny/"
         [[params.projects.list]]
         title = "Pacific Aid Visualisation tool"
-        meta = "COMPASS, UoA, funded by MFAT"
-        tagline = "Mapping of aid donors and recipients in the Pacific region (funded by MFAT) : https://compassnz.shinyapps.io/NZIPR/"
-
-        [[params.projects.list]]
-        title = "New Zealand as a social laboratory"
-        meta = "COMPASS, UoA, funded by Royal Society"
-        tagline = "Using microsimulation based on census data to test scenarios (funded by Royal Society): https://compassnz.shinyapps.io/SociaLabShiny/"
+        meta = "NZIPR, UoA, funded by MFAT"
+        tagline = "Mapping of aid donors and recipients in the Pacific region."
+        url = "https://compassnz.shinyapps.io/NZIPR/"
         
+        [[params.projects.list]]
+        title = "New Zealand as a Social laboratory"
+        meta = "COMPASS, UoA, funded by Royal Society"
+        tagline = "Using microsimulation based on New Zealand Census data to test scenarios."
+        url = "https://compassnz.shinyapps.io/SociaLabShiny/"
+        
+        [[params.projects.list]]
+        title = "Visualising recent COVID cases"
+        meta = "Side Project"
+        tagline = "Shiny Dashboard with Highcharter R package visualising recent COVID cases using COVID-19 Data Repository by the Center for Systems Science and Engineering (CSSE) at Johns Hopkins University."
+        url = "https://kcha193.shinyapps.io/covid19shiny/"       
 
     [params.information]
         enable = true
