@@ -102,15 +102,15 @@ googleAnalytics = "UA-XXXXXXX-Y"
         enable = true
 
         [[params.education.list]]
-        degree = "PhD in Statistics and Biological Sciences"
+        degree = "Ph.D. in Statistics and Biological Sciences"
         university = "University of Auckland"
         dates = "2017"
         [[params.education.list]]
-        degree = "BSc (Hon) in Bioinformatics"
+        degree = "B.Sc. (Hon) in Bioinformatics"
         university = "University of Auckland"
         dates = "2008"
         [[params.education.list]]
-        degree = "BSc in Bioinformatics"
+        degree = "B.Sc. in Bioinformatics"
         university = "University of Auckland"
         dates = "2007"
 
