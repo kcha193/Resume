@@ -82,6 +82,10 @@ googleAnalytics = "UA-XXXXXXX-Y"
         [[params.skills.list]]
         title = "Professional"
         [[params.skills.list.items]]
+        details = "Research"
+        [[params.skills.list.items]]
+        details = "Consulting"
+        [[params.skills.list.items]]
         details = "Strong problem solver"
         [[params.skills.list.items]]
         details = "Good time management"
@@ -147,7 +151,7 @@ googleAnalytics = "UA-XXXXXXX-Y"
 
     [params.summary]
         enable = true
-        text = "Expert Data Analyst with strong analytic, research and consulting skills. Experienced in handling and managing large and complex data, in particular, survey and administrative datasets within Statistics NZ’s Integrated Data Infrastructure (IDI) databases, including data extraction, cleaning, manipulation, validation, modelling, visualisation, and with parallel computing. Proficient in experimental design, advanced statistical modelling and microsimulation. Over ten years of experience in R programming with automaticed report using Rmarkdown and interactive R Shiny dashboard."
+        text = "Expert Data Analyst with strong analytic, research and consulting skills. Experienced in handling and managing large and complex data, such as survey and administrative data within Statistics NZ’s Integrated Data Infrastructure (IDI) databases, including data extraction, cleaning, manipulation, validation, modelling, visualisation, and with parallel computing. Proficient in experimental design, advanced statistical modelling and microsimulation. Over ten years of experience in R programming with automated reporting using Rmarkdown and interactive dashboard developing using R Shiny."
 
 
     [params.experience]
