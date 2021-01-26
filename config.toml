@@ -255,7 +255,10 @@ googleAnalytics = "UA-XXXXXXX-Y"
         icon = "fab fa-twitter-square"
         url = "//twitter.com/kevin_ct_chang"
         title = "@kevin_ct_chang"
-
+        [[params.social.list]]
+        icon = "fab fa-researchgate"
+        url = "//researchgate.net/profile/Kevin_Chang22"
+        title = "Kevin_Chang22"
 
 
 
