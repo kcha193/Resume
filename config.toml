@@ -34,7 +34,7 @@ googleAnalytics = "UA-XXXXXXX-Y"
         [[params.contact.list]]
         icon = "fas fa-phone-square"
         url = "tel:#"
-        text = "+6421 292 8124"
+        text = "+64 21 292 8124"
 
 
 
@@ -183,7 +183,7 @@ googleAnalytics = "UA-XXXXXXX-Y"
         [[params.experience.list.items]]
         details = "Supported 5 different teams/departments across Faculties of Science, Arts, Medicine, and Business at the University of Auckland."
         [[params.experience.list.items]]
-        details = "Taught 6 introductory R workshops – with lectures and labs - over a period of 3 years in Auckland and Wellington to academic, government and corporate participants."
+        details = "Taught 6 introductory R workshops – with lectures and hands-on exercise - over a period of 3 years in Auckland and Wellington to academic, government and corporate participants."
         [[params.experience.list.items]]       
         details = "Developed 4 web-deployed Shiny applications for the Centre of Methods and Policy Application in the Social Sciences (COMPASS), University of Auckland."
 
