@@ -46,9 +46,9 @@ googleAnalytics = "UA-XXXXXXX-Y"
         [[params.skills.list.items]]
         details = "R"
         [[params.skills.list.items]]
-        details = "SAS"
+        details = "SQL"        
         [[params.skills.list.items]]
-        details = "SQL"
+        details = "SAS"
         [[params.skills.list.items]]
         details = "Shiny Dashboard"
         [[params.skills.list.items]]
@@ -160,7 +160,7 @@ googleAnalytics = "UA-XXXXXXX-Y"
         [[params.experience.list]]
         title = "Model Assurance Specialist"
         dates = "2021 - Present"
-        company = "ASB Bank"
+        company = "ASB Bank, Auckland, New Zealand"
         details = "Works at ASB Model Assurance Centre of Excellence, Financial Risk and Compliance (Line 1 Risk) of Financial Services division."
         [[params.experience.list.items]]
         details = "Performs end to end independent validation to ASB Bank’s models and tools."
