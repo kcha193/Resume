@@ -19,7 +19,7 @@ googleAnalytics = "UA-XXXXXXX-Y"
     [params.profile]
         enable = true
         name = "Kevin Chang"
-        tagline = "Data Modelling Analyst"
+        tagline = "Model Assurance Specialist"
         avatar = "0.jpg"
 
 
@@ -158,8 +158,22 @@ googleAnalytics = "UA-XXXXXXX-Y"
         enable = true
 
         [[params.experience.list]]
+        title = "Model Assurance Specialist"
+        dates = "2021 - Present"
+        company = "ASB Bank"
+        details = "Works at ASB Model Assurance Centre of Excellence, Financial Risk and Compliance (Line 1 Risk) of Financial Services division."
+        [[params.experience.list.items]]
+        details = "Performs end to end independent validation to ASB Bank’s models and tools."
+        [[params.experience.list.items]]
+        details = "Assists Model Owners/stakeholders to conduct root cause analyses."
+        [[params.experience.list.items]]
+        details = "Coaches lower level analysts."
+        [[params.experience.list.items]]
+        details = "Provides technical support to the Model Assurance team."
+        
+        [[params.experience.list]]
         title = "Modelling Analyst"
-        dates = "2019 - Present"
+        dates = "2019 - 2021"
         company = "The New Zealand Treasury, Wellington"
         details = "Maintain, develop, and operate Treasury’s microsimulation model of the tax and welfare system."
         [[params.experience.list.items]]
