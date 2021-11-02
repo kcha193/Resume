@@ -22,7 +22,6 @@ googleAnalytics = "UA-XXXXXXX-Y"
         tagline = "Model Analytics/Assurance/Validation Specialist at ASB Bank"
         avatar = "0.jpg"
 
-
     [params.contact]
         enable = true
         location = "Auckland, New Zealand"
@@ -35,7 +34,6 @@ googleAnalytics = "UA-XXXXXXX-Y"
         icon = "fas fa-phone-square"
         url = "tel:#"
         text = "+64 21 292 8124"
-
 
 
     [params.skills]
