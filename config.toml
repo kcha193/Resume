@@ -19,7 +19,7 @@ googleAnalytics = "UA-XXXXXXX-Y"
     [params.profile]
         enable = true
         name = "Kevin Chang"
-        tagline = "Model Assurance Specialist"
+        tagline = "Model Analytics/Assurance/Validation Specialist at ASB Bank"
         avatar = "0.jpg"
 
 
