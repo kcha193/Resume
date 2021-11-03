@@ -235,6 +235,8 @@ googleAnalytics = "UA-XXXXXXX-Y"
         [[params.information.list]]
         title = "Selected Papers"
         [[params.information.list.items]]
+        details = "Courtney, M. G. R., **Chang, K.**, Mei, E., Meissel, K., Rowe, L., & Issayeva, L. (2021). autopsych: An R Shiny Tool for the Reproducible Rasch Analysis, Differential Item Functioning, Equating, and Examination of Group Effects. PLoS ONE 16(10)."
+        [[params.information.list.items]]
         details = "Shackleton, N., **Chang, K.**, Lay-yee, R., D’Souza, S., Davis, P., & Milne, B. (2019). Microsimulation model of child and adolescent overweight: making use of what we already know. International Journal of Obesity, 1-11."
         [[params.information.list.items]]
         details = "Lay-Yee, R., Milne, B., Shackleton, N., **Chang, K.** & Davis P. (2018). Preventing youth depression: Simulating the impact of parenting interventions. Advances in Life Course Research, 37, 15-22."
@@ -247,8 +249,6 @@ googleAnalytics = "UA-XXXXXXX-Y"
         [[params.information.list.items]]
         details = "Mackenzie, B. W., **Chang, K.**, Zoing, M., Jain, R., Hoggard, M., Biswas, K., Douglas, R. G., & Taylor, M. W. (2019). Longitudinal study of the bacterial and fungal microbiota in the human sinuses reveals seasonal and annual changes in diversity. Scientific Reports, 9(1), 1-10."
       
-
-
 
     [params.social]
         enable = true
