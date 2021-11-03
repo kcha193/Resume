@@ -260,6 +260,7 @@ googleAnalytics = "UA-XXXXXXX-Y"
         [[params.social.list]]
         icon = "fab fa-linkedin"
         url = "//linkedin.com/in/kevin-ct-chang"
+        title = "kevin-ct-chang"
         [[params.social.list]]
         icon = "fab fa-medium"
         url = "//kevinctchang.medium.com/"
