@@ -11,7 +11,7 @@ googleAnalytics = "UA-XXXXXXX-Y"
     author = "Kevin Chang"
     description = "DevResume - Bootstrap 4 Resume/CV Template For Software Developers"
 
-    primaryColor = "#F6BE00" #"#54B689"
+    primaryColor = "#54B689"
     textPrimaryColor = "#292929"
 
     [params.profile]
