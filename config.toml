@@ -202,6 +202,24 @@ googleAnalytics = "UA-XXXXXXX-Y"
         enable = true
 
         [[params.projects.list]]
+        title = "Automated Psychometrics"
+        meta = "Side Project"
+        tagline = "This shiny application allows school assessment experts, test developers, and researchers to perform routine psychometric analyses and equating of student test data and to examine the effect of student demographic and group conditions on student test performance."
+        url = "https://autopsych.shinyapps.io/version_1_0_0/" 
+        
+        [[params.projects.list]]
+        title = "Mapping locations of interest of COVID-19 in NZ"
+        meta = "Side Project"
+        tagline = "This dashboard maps and tabulates the contact tracing locations of interest for COVID-19 in NZ, using the data from the Ministry of Health."
+        url = "http://kcha193.shinyapps.io/covid_locations/" 
+
+        [[params.projects.list]]
+        title = "Visualising recent COVID cases"
+        meta = "Side Project"
+        tagline = "Shiny Dashboard with Highcharter R package visualising recent COVID cases using COVID-19 Data Repository by the Center for Systems Science and Engineering (CSSE) at Johns Hopkins University."
+        url = "https://kcha193.shinyapps.io/covid19shiny/"      
+
+        [[params.projects.list]]
         title = "Vulnerable Children Investment Approach"
         meta = "Ernst Young, Australia lead, funded by MoJ and MSD"
         tagline = "Analysed the indicators, risk and protective factors relating to family violence and sexual violence that can be observed from administrative datasets within Statistics NZ’s IDI and their links to outcomes for victims and their families."
@@ -223,12 +241,8 @@ googleAnalytics = "UA-XXXXXXX-Y"
         tagline = "Using microsimulation based on New Zealand Census data to test scenarios."
         url = "https://compassnz.shinyapps.io/SociaLabShiny/"
         
-        [[params.projects.list]]
-        title = "Visualising recent COVID cases"
-        meta = "Side Project"
-        tagline = "Shiny Dashboard with Highcharter R package visualising recent COVID cases using COVID-19 Data Repository by the Center for Systems Science and Engineering (CSSE) at Johns Hopkins University."
-        url = "https://kcha193.shinyapps.io/covid19shiny/"       
-
+ 
+        
     [params.information]
         enable = true
 
