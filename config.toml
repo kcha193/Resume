@@ -164,9 +164,7 @@ googleAnalytics = "UA-XXXXXXX-Y"
         details = "Assists Model Owners/stakeholders to conduct root cause analyses."
         [[params.experience.list.items]]
         details = "Coaches lower level analysts."
-        [[params.experience.list.items]]
-        details = "Provides technical support to the Model Assurance team."
-        
+
         [[params.experience.list]]
         title = "Modelling Analyst"
         dates = "2019 - 2021"
