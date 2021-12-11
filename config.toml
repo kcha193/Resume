@@ -147,7 +147,7 @@ googleAnalytics = "UA-XXXXXXX-Y"
 
     [params.summary]
         enable = true
-        text = "Expert Data Analyst with strong analytic, research and consulting skills. Experienced in handling and managing large and complex data, such as survey and administrative data within Statistics NZ’s Integrated Data Infrastructure (IDI) databases, including data extraction, cleaning, manipulation, validation, modelling, visualisation, and with parallel computing. Proficient in experimental design, advanced statistical modelling and microsimulation. Over ten years of experience in R programming with automated reporting using Rmarkdown and interactive dashboard developing using R Shiny."
+        text = "Expert Data and Model Analyst with strong analytic, research and consulting skills. Experienced in manipulating and managing large and complex datasets, such as survey and administrative data within Statistics NZ's Integrated Data Infrastructure (IDI) database and customers' financial information in the database of retail bank industry, including data extraction, cleaning, manipulation, validation, modelling, visualisation, and with parallel computing. Proficient in experimental design, advanced statistical modelling and microsimulation. Over ten years of experience in R programming with automated reporting using Rmarkdown and interactive dashboard developing using R Shiny. More than five years of experience in SQL and SAS programming in data extraction and advanced statistical modelling."
 
 
     [params.experience]
@@ -157,25 +157,17 @@ googleAnalytics = "UA-XXXXXXX-Y"
         title = "Model Assurance Specialist"
         dates = "2021 - Present"
         company = "ASB Bank, Auckland, New Zealand"
-        details = "Works at ASB Model Assurance Centre of Excellence, Financial Risk and Compliance (Line 1 Risk) of Financial Services division."
+        details = "Works at ASB Model Assurance, Financial Risk and Compliance (Line 1 Risk) of Financial Services division."
         [[params.experience.list.items]]
-        details = "Liaise with model owners and work collaboratively with various teams to understand the model and follow end-to-end information through the model to an output."
+        details = "Independent end to end validations on critical pan bank models and quantitative tools following ASB Model and Tools Validation Standard and consistent with Model Risk Policy."
+        [[params.experience.list.items]]
+        details = "Liaise with model owners and work collaboratively with various teams to understand the model and follow end-to-end information through the an input, model to an output."
         [[params.experience.list.items]]
         details = "Perform model diagnostics and quantitative analysis to understand the soundness of the model. Appropriately challenge the modelling results, the thought process around the choice of methodology, and the interpretation of relevant regulatory and internal requirements to enable stakeholders to understand the model's strengths, weaknesses, and limitations."
         [[params.experience.list.items]]
         details = "Support the model owners and divisional Line 1 Risk team to understand, raise and formalise action plans relating to issues/incidents identified during the validation process. Escalate to relevant stakeholders and senior management when required."
         [[params.experience.list.items]]
         details = "Document the investigation evidence and findings thoroughly and write up validation report."
-        [[params.experience.list.items]]
-        details = "Support my team members in Model Assurance. Share learnings and my knowledge. Enjoy and embrace the positive team culture."
-        [[params.experience.list.items]]
-        details = "Independent end to end validations on critical pan bank models and quantitative tools following ASB Model and Tools Validation Standard and consistent with Model Risk Policy."
-        [[params.experience.list.items]]
-        details = "Prompt communication to Senior Management on Regulatory and Condition of Registration breaches or model incidents/issues discovered from validation activities."
-        [[params.experience.list.items]]
-        details = "ASB model risk appetite metric is within the limit. The management team in model Assurance is supported, and the positive team culture is well maintained."
-        [[params.experience.list.items]]
-        details = "Productive business partnerships across the Bank. Uplift of the model risk management awareness. Enhancement of ASB Operational Risk Management Framework relating to the management of models and tools."
 
         [[params.experience.list]]
         title = "Modelling Analyst"
