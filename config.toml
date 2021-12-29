@@ -17,7 +17,7 @@ googleAnalytics = "UA-XXXXXXX-Y"
     [params.profile]
         enable = true
         name = "Kevin Chang"
-        tagline = "Model Assurance Specialist | Modelling Analyst | Statistical Consultant at [ASB Bank](https://www.asb.co.nz/)."
+        tagline = "Model Assurance Specialist | Modelling Analyst | Statistical Consultant at ASB Bank in New Zealand."
         avatar = "0.jpg"
 
     [params.contact]
