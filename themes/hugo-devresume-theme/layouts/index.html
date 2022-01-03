@@ -20,14 +20,14 @@
                 
                 <hr>
 
-                {{ if .Site.Params.social.enable }}
-                {{ partial "social.html" . }}
-                {{ end }}
-
-                <hr>
-
                 {{ if .Site.Params.summary.enable }}
                 {{ partial "summary.html" . }}
+                {{ end }}
+                
+                <hr>
+
+                {{ if .Site.Params.social.enable }}
+                {{ partial "social.html" . }}
                 {{ end }}
 
                 <hr>
