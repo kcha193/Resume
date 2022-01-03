@@ -17,6 +17,12 @@
             <article class="resume-wrapper mx-auto theme-bg-light p-5 mb-5 my-5 shadow-lg">
 
                 {{ partial "header.html" . }}
+                
+                <hr>
+
+                {{ if .Site.Params.social.enable }}
+                {{ partial "social.html" . }}
+                {{ end }}
 
                 <hr>
 
@@ -52,11 +58,6 @@
 
                 </div><!--//resume-body-->
 
-                <hr>
-
-                {{ if .Site.Params.social.enable }}
-                {{ partial "social.html" . }}
-                {{ end }}
 
             </article>
 
