@@ -42,7 +42,9 @@ googleAnalytics = "UA-XXXXXXX-Y"
         [[params.skills.list.items]]
         details = "R"
         [[params.skills.list.items]]
-        details = "SQL"        
+        details = "SQL"     
+        [[params.skills.list.items]]
+        details = "Python"
         [[params.skills.list.items]]
         details = "SAS"
         [[params.skills.list.items]]
