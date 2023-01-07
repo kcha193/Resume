@@ -274,15 +274,15 @@ googleAnalytics = "UA-XXXXXXX-Y"
         [[params.social.list]]
         icon = "fab fa-github-square"
         url = "//github.com/kcha193"
-        title = "github.com/kcha193"
+        title = "kcha193"
         [[params.social.list]]
         icon = "fab fa-linkedin"
         url = "//linkedin.com/in/kevin-ct-chang"
-        title = "linkedin.com/in/kevin-ct-chang"
+        title = "kevin-ct-chang"
         [[params.social.list]]
         icon = "fab fa-medium"
         url = "//kevinctchang.medium.com/"
-        title = "kevinctchang.medium.com"
+        title = "kevinctchang"
         [[params.social.list]]
         icon = "fab fa-twitter-square"
         url = "//twitter.com/kevin_ct_chang"
@@ -290,7 +290,7 @@ googleAnalytics = "UA-XXXXXXX-Y"
         [[params.social.list]]
         icon = "fab fa-researchgate"
         url = "//researchgate.net/profile/Kevin_Chang22"
-        title = "researchgate.net/profile/Kevin_Chang22"
+        title = "Kevin_Chang22"
 
 
 
