@@ -149,12 +149,34 @@ googleAnalytics = "UA-XXXXXXX-Y"
 
     [params.summary]
         enable = true
-        text = "Expert Data and Model Analyst with strong analytic, research and consulting skills. Experienced in manipulating and managing large and complex datasets, such as survey and administrative data within Statistics NZ's Integrated Data Infrastructure (IDI) database and customers' financial information in the database of retail bank industry, including data extraction, cleaning, manipulation, validation, modelling, visualisation, and with parallel computing. Proficient in experimental design, advanced statistical modelling and microsimulation. Over ten years of experience in R programming with automated reporting using Rmarkdown and interactive dashboard developing using R Shiny. More than five years of experience in SQL and SAS programming in data extraction and advanced statistical modelling."
+        text = "Expert Data Scientist, Model Assurance Specialist and Model Analyst with strong analytic, research and consulting skills. Experienced in manipulating and managing large and complex datasets, such as survey and administrative data within Statistics NZ's Integrated Data Infrastructure (IDI) database and customers' financial information in the database of retail bank industry, including data extraction, cleaning, manipulation, validation, modelling, visualisation, and with parallel computing. Proficient in experimental design, advanced statistical modelling and microsimulation. Over ten years of experience in R programming with automated reporting using Rmarkdown and interactive dashboard developing using R Shiny. More than five years of experience in SQL and SAS programming in data extraction and advanced statistical modelling."
 
 
     [params.experience]
         enable = true
 
+        [[params.experience.list]]
+        title = "Data Scientist"
+        dates = "2023 - Present"
+        company = "ASB Bank, Auckland, New Zealand"
+        details = "Work collaboratively with the wider analytics team and platform to provide collective insight and value for stakeholders."
+        [[params.experience.list.items]]
+        details = "Answer key Analytics questions by developing, implementing and maintaining models in areas such as following."
+        [[params.experience.list.items]]
+        details = "Predictive modelling for product and conversation recommendation."
+        [[params.experience.list.items]]
+        details = "Customer Segmentation for grouping customers together based on comparable characteristics relevant to business need around life stage, spend and product appetite."        
+        [[params.experience.list.items]]
+        details = "Churn Modelling to understand the time before a customer drops a product or leaves the bank"
+        [[params.experience.list.items]]
+        details = "Time Series analysis to predict trajectory in portfolio growth, or measure the effectiveness of an advertising campaign."
+        [[params.experience.list.items]]
+        details = "Support members of the wider Analytics community using Data Science techniques."
+        [[params.experience.list.items]]
+        details = "Work to technical standards, tooling, policies and guardrails for my Chapter."
+
+
+        
         [[params.experience.list]]
         title = "Model Assurance Specialist"
         dates = "2021 - Present"
@@ -173,7 +195,7 @@ googleAnalytics = "UA-XXXXXXX-Y"
 
         [[params.experience.list]]
         title = "Modelling Analyst"
-        dates = "2019 - 2021"
+        dates = "2019 - 2023"
         company = "The New Zealand Treasury, Wellington"
         details = "Maintain, develop, and operate Treasury’s microsimulation model of the tax and welfare system."
         [[params.experience.list.items]]
