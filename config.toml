@@ -179,7 +179,7 @@ googleAnalytics = "UA-XXXXXXX-Y"
         
         [[params.experience.list]]
         title = "Model Assurance Specialist"
-        dates = "2021 - Present"
+        dates = "2021 - 2023"
         company = "ASB Bank, Auckland, New Zealand"
         details = "Works at ASB Model Assurance, Financial Risk and Compliance (Line 1 Risk) of Financial Services division."
         [[params.experience.list.items]]
@@ -195,7 +195,7 @@ googleAnalytics = "UA-XXXXXXX-Y"
 
         [[params.experience.list]]
         title = "Modelling Analyst"
-        dates = "2019 - 2023"
+        dates = "2019 - 2021"
         company = "The New Zealand Treasury, Wellington"
         details = "Maintain, develop, and operate Treasury’s microsimulation model of the tax and welfare system."
         [[params.experience.list.items]]
