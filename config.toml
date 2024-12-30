@@ -149,7 +149,7 @@ googleAnalytics = "UA-XXXXXXX-Y"
 
     [params.summary]
         enable = true
-        text = "Expert Data Scientist, Model Assurance Specialist and Model Analyst with strong analytic, research and consulting skills. Experienced in manipulating and managing large and complex datasets, such as survey and administrative data within Statistics NZ's Integrated Data Infrastructure (IDI) database and customers' financial information in the database of retail bank industry, including data extraction, cleaning, manipulation, validation, modelling, visualisation, and with parallel computing. Proficient in experimental design, advanced statistical modelling and microsimulation. Over ten years of experience in R programming with automated reporting using Rmarkdown and interactive dashboard developing using R Shiny. More than five years of experience in SQL and SAS programming in data extraction and advanced statistical modelling."
+        text = "Accomplished Data Scientist with over a decade of experience in advanced analytics, statistical modeling, and data-driven consulting. Expert in managing complex datasets, building machine learning models with Python on the Databricks platform, and implementing Large Language Models (LLMs) for AI solutions. Proficient in R programming, SQL, and SAS for data extraction, modeling, and visualization, with additional expertise in data warehousing using Snowflake and dbt. Skilled in experimental design, microsimulation, and creating automated reports and dashboards. Known for delivering scalable, strategic solutions and driving actionable insights from data."
 
 
     [params.experience]
@@ -161,7 +161,7 @@ googleAnalytics = "UA-XXXXXXX-Y"
         company = "ASB Bank, Auckland, New Zealand"
         details = "Work collaboratively with the wider analytics team and platform to provide collective insight and value for stakeholders."
         [[params.experience.list.items]]
-        details = "Answer key Analytics questions by developing, implementing and maintaining models in areas such as following."
+        details = "Answer key analytics questions by developing, implementing and maintaining models in areas such as following."
         [[params.experience.list.items]]
         details = "Predictive modelling for product and conversation recommendation."
         [[params.experience.list.items]]
@@ -169,12 +169,9 @@ googleAnalytics = "UA-XXXXXXX-Y"
         [[params.experience.list.items]]
         details = "Churn Modelling to understand the time before a customer drops a product or leaves the bank"
         [[params.experience.list.items]]
-        details = "Time Series analysis to predict trajectory in portfolio growth, or measure the effectiveness of an advertising campaign."
-        [[params.experience.list.items]]
         details = "Support members of the wider Analytics community using Data Science techniques."
         [[params.experience.list.items]]
         details = "Work to technical standards, tooling, policies and guardrails for my Chapter."
-
 
         
         [[params.experience.list]]
