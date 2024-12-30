@@ -46,6 +46,12 @@ googleAnalytics = "UA-XXXXXXX-Y"
         [[params.skills.list.items]]
         details = "Python"
         [[params.skills.list.items]]
+        details = "Snowflake"
+        [[params.skills.list.items]]
+        details = "Databricks"
+        [[params.skills.list.items]]
+        details = "dbt"
+        [[params.skills.list.items]]
         details = "SAS"
         [[params.skills.list.items]]
         details = "Shiny Dashboard"
@@ -54,13 +60,8 @@ googleAnalytics = "UA-XXXXXXX-Y"
         [[params.skills.list.items]]
         details = "GIT"
         [[params.skills.list.items]]
-        details = "Excel"
-        [[params.skills.list.items]]
         details = "SPSS"
-        [[params.skills.list.items]]
-        details = "Perl"        
-        [[params.skills.list.items]]
-        details = "Java" 
+
 
         [[params.skills.list]]
         title = "Statistics"
@@ -159,11 +160,12 @@ googleAnalytics = "UA-XXXXXXX-Y"
         title = "Data Scientist"
         dates = "2023 - Present"
         company = "ASB Bank, Auckland, New Zealand"
-        details = "Work collaboratively with the wider analytics team and platform to provide collective insight and value for stakeholders."
-        [[params.experience.list.items]]
-        details = "Answer key analytics questions by developing, implementing and maintaining models in areas such as following."
+        details = "Work collaboratively with the wider analytics team and platform to provide collective insight and value for stakeholders. Answer key analytics questions by developing, implementing and maintaining models in areas such as following."
+
         [[params.experience.list.items]]
         details = "Predictive modelling for product and conversation recommendation."
+        [[params.experience.list.items]]
+        details = "Customer life time value modelling to predict the customers' future value to the bank."  
         [[params.experience.list.items]]
         details = "Customer Segmentation for grouping customers together based on comparable characteristics relevant to business need around life stage, spend and product appetite."        
         [[params.experience.list.items]]
