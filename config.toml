@@ -150,7 +150,7 @@ googleAnalytics = "UA-XXXXXXX-Y"
 
     [params.summary]
         enable = true
-        text = "Accomplished Data Scientist with over 20 years of experience driving business impact through advanced analytics, machine learning, and data product development. Proven ability to lead end-to-end analytical initiatives—from customer lifetime value modelling to large-scale microsimulation systems—that directly influence strategic decisions and revenue growth. Known for translating complex solutions into actionable business outcomes, mentoring teams, and setting analytics best practices. Expertise spans financial services, government policy analytics, and research consulting, with a strong focus on applying Generative AI to deliver scalable, innovative insights."
+        text = "Accomplished Data Scientist with 20+ years of experience driving business impact through advanced analytics, machine learning, and data product development. Proven ability to lead end-to-end analytical initiatives—from customer lifetime value modelling to large-scale microsimulation systems—that directly influence strategic decisions and revenue growth. Known for translating complex solutions into actionable business outcomes, mentoring teams, and setting analytics best practices. Expertise spans financial services, government policy analytics, and research consulting, with a strong focus on applying Generative AI to deliver scalable, innovative insights."
 
 
     [params.experience]
@@ -163,18 +163,15 @@ googleAnalytics = "UA-XXXXXXX-Y"
         details = "Lead strategic analytics initiatives, drive customer growth, and business innovation across the bank:"
 
         [[params.experience.list.items]]
-        details = "Customer Intelligence & Growth: Developed and deployed predictive models for customer lifetime value,
-segmentation, churn prediction, and product recommendation, delivering actionable insights that inform
+        details = "Customer Intelligence & Growth: Developed and deployed predictive models for customer lifetime value, segmentation, churn prediction, and product recommendation, delivering actionable insights that inform
 strategic planning and drive measurable revenue growth."
         [[params.experience.list.items]]
         details = "Generative AI: Applied large language models (LLMs) to analyse open-ended survey responses, identifying
 common themes and customer sentiments driving NPS results and customer experience insights."  
         [[params.experience.list.items]]
-        details = "CData Product Leadership: Partner with product, design, and engineering teams to build scalable insights
-platforms and analytics tools that enable data-driven decision-making across business units."        
+        details = "CData Product Leadership: Partner with product, design, and engineering teams to build scalable insights platforms and analytics tools that enable data-driven decision-making across business units."        
         [[params.experience.list.items]]
-        details = "Strategic Partnerships: Collaborate with senior stakeholders to translate complex analytical findings into
-strategic recommendations, ensuring technical work delivers clear business value."
+        details = "Strategic Partnerships: Collaborate with senior stakeholders to translate complex analytical findings into strategic recommendations, ensuring technical work delivers clear business value."
         [[params.experience.list.items]]
         details = "Support members of the wider Analytics community using Data Science techniques."
         [[params.experience.list.items]]
