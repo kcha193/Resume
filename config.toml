@@ -161,13 +161,11 @@ googleAnalytics = "UA-XXXXXXX-Y"
         dates = "2023 - Present"
         company = "ASB Bank, Auckland, New Zealand"
         details = "Lead strategic analytics initiatives, drive customer growth, and business innovation across the bank:"
-
         [[params.experience.list.items]]
         details = "Customer Intelligence & Growth: Developed and deployed predictive models for customer lifetime value, segmentation, churn prediction, and product recommendation, delivering actionable insights that inform
 strategic planning and drive measurable revenue growth."
         [[params.experience.list.items]]
-        details = "Generative AI: Applied large language models (LLMs) to analyse open-ended survey responses, identifying
-common themes and customer sentiments driving NPS results and customer experience insights."  
+        details = "Generative AI: Applied large language models (LLMs) to analyse open-ended survey responses, identifying common themes and customer sentiments driving NPS results and customer experience insights."  
         [[params.experience.list.items]]
         details = "CData Product Leadership: Partner with product, design, and engineering teams to build scalable insights platforms and analytics tools that enable data-driven decision-making across business units."        
         [[params.experience.list.items]]
