@@ -150,7 +150,12 @@ googleAnalytics = "UA-XXXXXXX-Y"
 
     [params.summary]
         enable = true
-        text = "Accomplished Data Scientist with over a decade of experience in advanced analytics, statistical modeling, and data-driven consulting. Expert in managing complex datasets, building machine learning models with Python on the Databricks platform, and implementing Large Language Models (LLMs) for AI solutions. Proficient in R programming, SQL, and SAS for data extraction, modeling, and visualization, with additional expertise in data warehousing using Snowflake and dbt. Skilled in experimental design, microsimulation, and creating automated reports and dashboards. Known for delivering scalable, strategic solutions and driving actionable insights from data."
+        text = "Accomplished Data Scientist with over 12 years of experience driving business impact through advanced analytics,
+machine learning, and data product development. Proven ability to lead end-to-end analytical initiatives—from
+customer lifetime value modelling to large-scale microsimulation systems—that directly influence strategic decisions
+and revenue growth. Known for translating complex solutions into actionable business outcomes, mentoring teams, and
+setting analytics best practices. Expertise spans financial services, government policy analytics, and research consulting,
+with a strong focus on applying Generative AI to deliver scalable, innovative insights."
 
 
     [params.experience]
