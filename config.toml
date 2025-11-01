@@ -166,61 +166,53 @@ googleAnalytics = "UA-XXXXXXX-Y"
         [[params.experience.list.items]]
         details = "Generative AI: Applied large language models (LLMs) to analyse open-ended survey responses, identifying common themes and customer sentiments driving NPS results and customer experience insights."  
         [[params.experience.list.items]]
-        details = "CData Product Leadership: Partner with product, design, and engineering teams to build scalable insights platforms and analytics tools that enable data-driven decision-making across business units."        
+        details = "Data Product Leadership: Partner with product, design, and engineering teams to build scalable insights platforms and analytics tools that enable data-driven decision-making across business units."        
         [[params.experience.list.items]]
-        details = "Strategic Partnerships: Collaborate with senior stakeholders to translate complex analytical findings into strategic recommendations, ensuring technical work delivers clear business value."
+        details = "Product Development: Created interactive R Shiny dashboards and internal R packages that streamlined policy analysis workflows and improved accessibility of insights for policy analysts."
         [[params.experience.list.items]]
-        details = "Support members of the wider Analytics community using Data Science techniques."
-        [[params.experience.list.items]]
-        details = "Work to technical standards, tooling, policies and guardrails for my Chapter."
-
+        details = "Stakeholder Collaboration: Worked closely with policy teams, Statistics NZ, and other government agencies to ensure analytical outputs aligned with strategic policy objectives."
         
         [[params.experience.list]]
         title = "Model Assurance Specialist"
         dates = "2021 - 2023"
         company = "ASB Bank, Auckland, New Zealand"
-        details = "Works at ASB Model Assurance, Financial Risk and Compliance (Line 1 Risk) of Financial Services division."
+        details = "Provided independent, rigorous validation of critical bank-wide models to ensure regulatory compliance and risk management:"
         [[params.experience.list.items]]
-        details = "Independent end to end validations on critical pan bank models and quantitative tools following ASB Model and Tools Validation Standard and consistent with Model Risk Policy."
+        details = "Conducted comprehensive end-to-end validations of risk, credit, and operational models, assessing methodology, data quality, implementation, and ongoing performance monitoring."
         [[params.experience.list.items]]
-        details = "Liaise with model owners and work collaboratively with various teams to understand the model and follow end-to-end information through the an input, model to an output."
+        details = "Challenged model assumptions and methodologies through rigorous statistical analysis, identifying limitations and recommending enhancements that strengthened model reliability.
         [[params.experience.list.items]]
-        details = "Perform model diagnostics and quantitative analysis to understand the soundness of the model. Appropriately challenge the modelling results, the thought process around the choice of methodology, and the interpretation of relevant regulatory and internal requirements to enable stakeholders to understand the model's strengths, weaknesses, and limitations."
+        details = "Collaborated with model developers, risk managers, and senior stakeholders to ensure models met regulatory standards (RBNZ/APRA requirements) and internal risk policies.
         [[params.experience.list.items]]
-        details = "Support the model owners and divisional Line 1 Risk team to understand, raise and formalise action plans relating to issues/incidents identified during the validation process. Escalate to relevant stakeholders and senior management when required."
-        [[params.experience.list.items]]
-        details = "Document the investigation evidence and findings thoroughly and write up validation report."
+        details = "Delivered clear, comprehensive validation reports to senior management and governance committees, facilitating informed decision-making on model approval and risk mitigation."
 
         [[params.experience.list]]
         title = "Modelling Analyst"
         dates = "2019 - 2021"
         company = "The New Zealand Treasury, Wellington"
-        details = "Maintain, develop, and operate Treasury’s microsimulation model of the tax and welfare system."
+        details = "Developed sophisticated analytical tools supporting government policy development and fiscal planning:"
         [[params.experience.list.items]]
-        details = "Support advice on tax and welfare system by modelling policy changes and assessing income, costs, poverty, inequality and distributional impacts at the individual, family, and household levels."
+        details = "Policy Impact Modelling: Built and maintained microsimulation models to analyse tax and welfare policy impacts, directly informing Budget decisions and Ministerial recommendations."
         [[params.experience.list.items]]
-        details = "Build empirical foundations for Treasury’s policy advice in partnership with policy teams both within NZ Treasury and other government agencies such as the Ministry of Social Development and Inland Revenue."
+        details = "Data Integration & Engineering: Integrated complex survey and administrative datasets (IDI, HES) to create robust analytical foundations for policy evaluation."
         [[params.experience.list.items]]
-        details = "Provide insight allowing the government to make inform decisions that will improve the living standards for all New Zealanders."
+        details = "Product Development: Created interactive R Shiny dashboards and internal R packages that streamlined policy analysis workflows and improved accessibility of insights for policy analysts."
         [[params.experience.list.items]]
-        details = "Investigating and linking between various types of survey and administrative datasets within Statistics NZ’s IDI databases for the microsimulation model."
-        [[params.experience.list.items]]
-        details = "Developed 2 Shiny Dashboard applications, in showing income compositions and distributions, 5 internal R packages, containing R functions for repetitive processes, and 1 Rmarkdown template for automatic reports."
+        details = "Stakeholder Collaboration: Worked closely with policy teams, Statistics NZ, and other government agencies to ensure analytical outputs aligned with strategic policy objectives."
 
         [[params.experience.list]]
         title = "Statistical Consultant"
         dates = "2014 - 2019"
         company = "Statistical Consulting Centre, University of Auckland"
-        details = "Providing statistical services to clients from both within and external to the University of Auckland."
+        details = "Delivered end-to-end analytical consulting solutions across academia, government, and industry, building custom solutions for complex statistical challenges:"
         [[params.experience.list.items]]
-        details = "Worked for more than 60 clients ranging from medical professionals to commercial companies, providing both expert advice and analytical services."
+        details = "Provided statistical expertise to 60+ clients across academic, government, and commercial sectors, translating business questions into rigorous analytical approaches."
         [[params.experience.list.items]]
-        details = "Supported 5 different teams/departments across Faculties of Science, Arts, Medicine, and Business at the University of Auckland."
+        details = "Designed and deployed web-based analytical tools and custom R packages for clients, including government agencies and research institutions."
         [[params.experience.list.items]]
-        details = "Taught 6 introductory R workshops – with lectures and hands-on exercise - over a period of 3 years in Auckland and Wellington to academic, government and corporate participants."
+        details = "Conducted advanced analyses spanning experimental design, survey methodology, longitudinal modelling, and causal inference"
         [[params.experience.list.items]]       
-        details = "Developed 4 web-deployed Shiny applications for the Centre of Methods and Policy Application in the Social Sciences (COMPASS), University of Auckland."
-
+        details = "Led R programming workshops and training sessions, building analytical capability among researchers and practitioners."
 
     [params.projects]
         enable = true
@@ -265,8 +257,7 @@ googleAnalytics = "UA-XXXXXXX-Y"
         tagline = "Using microsimulation based on New Zealand Census data to test scenarios."
         url = "https://compassnz.shinyapps.io/SociaLabShiny/"
         
- 
-        
+         
     [params.information]
         enable = true
 
