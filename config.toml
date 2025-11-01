@@ -264,7 +264,7 @@ googleAnalytics = "UA-XXXXXXX-Y"
         [[params.information.list]]
         title = "Selected Papers"
         [[params.information.list.items]]
-        details = "Chang, K (2017). Computer generation of designs for two-phase experiments with applications to multiplex experiments in proteomics [Doctoral thesis, The University of Auckland].  	ResearchSpace@Auckland. http://hdl.handle.net/2292/37016 
+        details = "Chang, K (2017). Computer generation of designs for two-phase experiments with applications to multiplex experiments in proteomics [Doctoral thesis, The University of Auckland].  	ResearchSpace@Auckland. http://hdl.handle.net/2292/37016"
         [[params.information.list.items]]
         details = "Courtney, M. G. R., **Chang, K.**, Mei, E., Meissel, K., Rowe, L., & Issayeva, L. (2021). autopsych: An R Shiny Tool for the Reproducible Rasch Analysis, Differential Item Functioning, Equating, and Examination of Group Effects. PLoS ONE 16(10)."
         [[params.information.list.items]]
