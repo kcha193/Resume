@@ -180,9 +180,9 @@ googleAnalytics = "UA-XXXXXXX-Y"
         [[params.experience.list.items]]
         details = "Conducted comprehensive end-to-end validations of risk, credit, and operational models, assessing methodology, data quality, implementation, and ongoing performance monitoring."
         [[params.experience.list.items]]
-        details = "Challenged model assumptions and methodologies through rigorous statistical analysis, identifying limitations and recommending enhancements that strengthened model reliability.
+        details = "Challenged model assumptions and methodologies through rigorous statistical analysis, identifying limitations and recommending enhancements that strengthened model reliability."
         [[params.experience.list.items]]
-        details = "Collaborated with model developers, risk managers, and senior stakeholders to ensure models met regulatory standards (RBNZ/APRA requirements) and internal risk policies.
+        details = "Collaborated with model developers, risk managers, and senior stakeholders to ensure models met regulatory standards (RBNZ/APRA requirements) and internal risk policies."
         [[params.experience.list.items]]
         details = "Delivered clear, comprehensive validation reports to senior management and governance committees, facilitating informed decision-making on model approval and risk mitigation."
 
