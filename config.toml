@@ -4,7 +4,7 @@ baseURL = "https://kevin-cv.netlify.app/"
 languageCode = "en"
 title = "Kevin's Resume"
 theme = "hugo-devresume-theme"
-googleAnalytics = "UA-XXXXXXX-Y"
+# googleAnalytics = "UA-XXXXXXX-Y"
 
 
 [params]
@@ -26,11 +26,11 @@ googleAnalytics = "UA-XXXXXXX-Y"
 
         [[params.contact.list]]
         icon = "fas fa-envelope-square"
-        url = "mailto:#"
+        url = "mailto:kevin.ct.chang@gmail.com"
         text = "kevin.ct.chang@gmail.com"
         [[params.contact.list]]
         icon = "fas fa-phone-square"
-        url = "tel:#"
+        url = "tel:+64212928124"
         text = "+64 21 292 8124"
 
 
@@ -118,15 +118,6 @@ googleAnalytics = "UA-XXXXXXX-Y"
     [params.awards]
         enable = false
 
-        [[params.awards.list]]
-        name = "Award Lorem Ipsum"
-        body = "Microsoft lorem ipsum"
-        date = "2019"
-        [[params.awards.list]]
-        name = "Award Donec Sodales"
-        body = "Oracle Aenean"
-        date = "2017"
-
 
     [params.languages]
         enable = true
@@ -164,9 +155,9 @@ googleAnalytics = "UA-XXXXXXX-Y"
         [[params.experience.list.items]]
         details = "Customer Intelligence & Growth: Developed and deployed predictive models for customer lifetime value, segmentation, churn prediction, and product recommendation, delivering actionable insights that inform strategic planning and drive measurable revenue growth."
         [[params.experience.list.items]]
-        details = "Generative AI: Applied large language models (LLMs) to analyse open-ended survey responses, identifying common themes and customer sentiments driving NPS results and customer experience insights."  
+        details = "Generative AI: Applied large language models (LLMs) to analyse open-ended survey responses, identifying common themes and customer sentiments driving NPS results and customer experience insights."
         [[params.experience.list.items]]
-        details = "Data Product Leadership: Partner with product, design, and engineering teams to build scalable insights platforms and analytics tools that enable data-driven decision-making across business units."        
+        details = "Data Product Leadership: Partner with product, design, and engineering teams to build scalable insights platforms and analytics tools that enable data-driven decision-making across business units."
         [[params.experience.list.items]]
         details = "Product Development: Created interactive R Shiny dashboards and internal R packages that streamlined policy analysis workflows and improved accessibility of insights for policy analysts."
         [[params.experience.list.items]]
@@ -221,19 +212,19 @@ googleAnalytics = "UA-XXXXXXX-Y"
         title = "Automated Psychometrics"
         meta = "Side Project"
         tagline = "This shiny application allows school assessment experts, test developers, and researchers to perform routine psychometric analyses and equating of student test data and to examine the effect of student demographic and group conditions on student test performance."
-        url = "https://autopsych.shinyapps.io/version_1_0_0/" 
-        
+        url = "https://autopsych.shinyapps.io/version_1_0_0/"
+
         [[params.projects.list]]
         title = "Mapping locations of interest of COVID-19 in NZ"
         meta = "Side Project"
         tagline = "This dashboard maps and tabulates the contact tracing locations of interest for COVID-19 in NZ, using the data from the Ministry of Health."
-        url = "http://kcha193.shinyapps.io/covid_locations/" 
+        url = "https://kcha193.shinyapps.io/covid_locations/"
 
         [[params.projects.list]]
         title = "Visualising recent COVID cases"
         meta = "Side Project"
         tagline = "Shiny Dashboard with Highcharter R package visualising recent COVID cases using COVID-19 Data Repository by the Center for Systems Science and Engineering (CSSE) at Johns Hopkins University."
-        url = "https://kcha193.shinyapps.io/covid19shiny/"      
+        url = "https://kcha193.shinyapps.io/covid19shiny/"
 
         [[params.projects.list]]
         title = "Vulnerable Children Investment Approach"
