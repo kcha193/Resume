@@ -65,7 +65,7 @@ const ogImage = '/avatar.jpg';
     <script is:inline>
       (function() {
         var stored = localStorage.getItem('theme');
-        var pref = stored || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        var pref = stored || 'dark';
         document.documentElement.dataset.theme = pref;
       })();
     </script>
