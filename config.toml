@@ -17,7 +17,7 @@ theme = "hugo-devresume-theme"
     [params.profile]
         enable = true
         name = "Kevin Chang"
-        tagline = "Data Scientist at ASB Bank in New Zealand"
+        tagline = "Senior Data Scientist at ASB Bank in New Zealand"
         avatar = "0.jpg"
 
     [params.contact]
@@ -141,15 +141,31 @@ theme = "hugo-devresume-theme"
 
     [params.summary]
         enable = true
-        text = "Accomplished Data Scientist with 20+ years of experience driving business impact through advanced analytics, machine learning, and data product development. Proven ability to lead end-to-end analytical initiatives—from customer lifetime value modelling to large-scale microsimulation systems—that directly influence strategic decisions and revenue growth. Known for translating complex solutions into actionable business outcomes, mentoring teams, and setting analytics best practices. Expertise spans financial services, government policy analytics, and research consulting, with a strong focus on applying Generative AI to deliver scalable, innovative insights."
+        text = "Senior Data Scientist with 12+ years of experience driving measurable business outcomes through advanced analytics, machine learning, and data product development, currently focused on Personal Banking Pricing at ASB where he develops models and analytical frameworks to optimise pricing strategy, customer value, and revenue growth. Proven track record of leading end-to-end analytical initiatives—from customer lifetime value (CLV) and customer intelligence systems to large-scale microsimulation models used in government policy and forecasting—bringing a rare combination of commercial, technical, and policy modelling expertise across complex problem spaces. Recognised for translating sophisticated models into clear, actionable insights that influence senior decision-making, while mentoring teams and establishing analytics best practices. Experience spans financial services, government policy analytics, and consulting, with a growing focus on applying Generative AI and LLMs to unlock value from unstructured data and enable scalable, next-generation decision systems."
 
 
     [params.experience]
         enable = true
 
         [[params.experience.list]]
+        title = "Senior Data Scientist"
+        dates = "2026 - Present"
+        company = "ASB Bank, Auckland, New Zealand"
+        details = "Lead pricing strategy by integrating market intelligence, competitor dynamics, and advanced analytics to drive revenue growth and competitive positioning:"
+        [[params.experience.list.items]]
+        details = "Drive continuous improvement of pricing strategies, models, and processes to enhance customer experience and business performance."
+        [[params.experience.list.items]]
+        details = "Develop and implement pricing models and analytical frameworks to support new product features or enhancements aligned with customer and market needs."
+        [[params.experience.list.items]]
+        details = "Monitor product performance, including pricing impact on revenue, profitability, and customer outcomes, and provide actionable insights to optimise P&L performance."
+        [[params.experience.list.items]]
+        details = "Evaluate post-launch performance using advanced analytics, recommending adjustments to pricing, product features, and customer strategies to improve outcomes."
+        [[params.experience.list.items]]
+        details = "Identify, assess, and proactively manage risks associated with pricing decisions, including regulatory, conduct, and model risks."
+  
+        [[params.experience.list]]
         title = "Data Scientist"
-        dates = "2023 - Present"
+        dates = "2023 - 2026"
         company = "ASB Bank, Auckland, New Zealand"
         details = "Lead strategic analytics initiatives, drive customer growth, and business innovation across the bank:"
         [[params.experience.list.items]]
@@ -158,11 +174,7 @@ theme = "hugo-devresume-theme"
         details = "Generative AI: Applied large language models (LLMs) to analyse open-ended survey responses, identifying common themes and customer sentiments driving NPS results and customer experience insights."
         [[params.experience.list.items]]
         details = "Data Product Leadership: Partner with product, design, and engineering teams to build scalable insights platforms and analytics tools that enable data-driven decision-making across business units."
-        [[params.experience.list.items]]
-        details = "Product Development: Created interactive R Shiny dashboards and internal R packages that streamlined policy analysis workflows and improved accessibility of insights for policy analysts."
-        [[params.experience.list.items]]
-        details = "Stakeholder Collaboration: Worked closely with policy teams, Statistics NZ, and other government agencies to ensure analytical outputs aligned with strategic policy objectives."
-        
+
         [[params.experience.list]]
         title = "Model Assurance Specialist"
         dates = "2021 - 2023"
