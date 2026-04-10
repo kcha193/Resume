@@ -1,15 +1,6 @@
 ---
 import ThemeToggle from './ThemeToggle';
-
-const navItems = [
-  { label: 'About', href: '#about' },
-  { label: 'Experience', href: '#experience' },
-  { label: 'Projects', href: '#projects' },
-  { label: 'Skills', href: '#skills' },
-  { label: 'Publications', href: '#publications' },
-  { label: 'Education', href: '#education' },
-  { label: 'Contact', href: '#contact' },
-];
+import NavMenu from './NavMenu';
 ---
 
 <header class="sticky top-0 z-50 bg-white/80 dark:bg-zinc-950/80 backdrop-blur-md border-b border-zinc-100 dark:border-zinc-800">
@@ -22,20 +13,7 @@ const navItems = [
       KC
     </a>
 
-    <nav aria-label="Site navigation">
-      <ul class="hidden md:flex items-center gap-6 text-sm text-zinc-500 dark:text-zinc-400">
-        {navItems.map(({ label, href }) => (
-          <li>
-            <a
-              href={href}
-              class="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors no-underline"
-            >
-              {label}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </nav>
+    <NavMenu client:load />
 
     <div class="flex items-center gap-2">
       <a
