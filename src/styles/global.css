@@ -7,15 +7,15 @@
 
 /* ─── Design tokens ─────────────────────────────────────────────────────────── */
 :root {
-  --brand: #04a0bf;
-  --brand-dark: #0cbad9;
-  --brand-glow: rgba(4, 160, 191, 0.25);
+  --brand: #FCBD1A;
+  --brand-dark: #FFD04D;
+  --brand-glow: rgba(252, 189, 26, 0.30);
   --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono Variable", ui-monospace, monospace;
 }
 
 [data-theme="dark"] {
-  --brand: #0cbad9;
+  --brand: #FFD04D;
 }
 
 /* ─── Base reset ─────────────────────────────────────────────────────────────── */

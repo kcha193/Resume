@@ -70,7 +70,9 @@ To update resume content, edit the relevant file in **`src/content/`** and push.
 
 ## Theme / Styling
 
-- Brand colour: `--brand` CSS custom property in `src/styles/global.css` (currently `#04a0bf`)
+- Brand colour: `--brand` CSS custom property in `src/styles/global.css` (currently `#FCBD1A` — ASB yellow; dark mode `#FFD04D`)
+- Buttons with `bg-[var(--brand)]` use `text-zinc-900` (not `text-white`) because yellow requires dark text for WCAG contrast
+- Hero background gradient: `from-white via-yellow-50/40 to-amber-50/20` (light) / zinc scale (dark)
 - Dark mode: `data-theme="dark"` on `<html>`, toggled by ThemeToggle island; set before paint in BaseLayout to avoid FOUC
 - Tailwind dark variant: `@variant dark (&:where([data-theme=dark], [data-theme=dark] *))` in `global.css` — this means `dark:` utilities work against the `data-theme` attribute, not the `dark` class
 - Base link colour is set inside `@layer base` so Tailwind utility classes like `text-white` always override it

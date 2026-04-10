@@ -89,7 +89,7 @@ All CV content lives in `src/content/`. Edit the relevant file and push — Netl
 | Publications | `src/content/publications/publications.yaml` |
 | Education | `src/content/education/education.yaml` |
 | Skills | `src/content/skills/skills.yaml` |
-| Brand colour | `--brand` CSS var in `src/styles/global.css` |
+| Brand colour | `--brand` CSS var in `src/styles/global.css` — currently `#FCBD1A` (ASB yellow) |
 | Printable resume | `public/resume.html` |
 
 ---
