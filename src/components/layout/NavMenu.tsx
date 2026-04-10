@@ -56,7 +56,7 @@ export default function NavMenu() {
       {open && (
         <nav
           aria-label="Mobile navigation"
-          className="md:hidden absolute top-14 left-0 right-0 bg-white/95 dark:bg-zinc-950/95 backdrop-blur-md border-b border-zinc-100 dark:border-zinc-800 z-50"
+          className="md:hidden absolute top-14 left-0 right-0 bg-zinc-50/95 dark:bg-zinc-950/95 backdrop-blur-md border-b border-zinc-100 dark:border-zinc-800 z-50"
         >
           <ul className="max-w-6xl mx-auto px-4 py-4 space-y-1">
             {navItems.map(({ label, href }) => (

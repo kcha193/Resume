@@ -30,7 +30,7 @@ html {
 
 body {
   font-family: var(--font-sans);
-  background-color: #fff;
+  background-color: #fafafa; /* zinc-50 */
   color: #1a1a1a;
 }
 
