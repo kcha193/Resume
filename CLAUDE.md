@@ -1,88 +1,72 @@
-# CLAUDE.md - Project Context
+# CLAUDE.md
 
 ## Project Overview
 
-This is Kevin Chang's personal resume/CV website built with [Hugo](https://gohugo.io/) and the [DevResume theme](https://github.com/KevinCochrane/hugo-devresume-theme). The site is automatically deployed to Netlify.
+This is Kevin Chang's personal resume/CV website, built with **Hugo** and the **hugo-devresume-theme**, deployed to **Netlify** at https://kevin-cv.netlify.app/.
 
-**Live Site:** https://kevin-cv.netlify.app/
+## Tech Stack
 
-## Key Files & Structure
+- **Hugo** (v0.80.0) — static site generator
+- **R / blogdown** — build orchestration via RStudio
+- **Bootstrap 4** — responsive CSS framework
+- **SCSS** — theme styling (compiled by Hugo)
+- **renv** — R package dependency management
+- **Netlify** — CI/CD and hosting (auto-deploys on push to `main`)
 
-- **`config.toml`** - Main configuration file containing all profile content (experience, skills, education, projects, etc.)
-- **`README.md`** - Documentation for the project
-- **`themes/hugo-devresume-theme/`** - Theme directory (submodule)
-- **`content/post/`** - Blog post content
-- **`renv/`** - R environment management (for blogdown)
+## Architecture
 
-## Before You Start
+All resume content lives in a single file: **`config.toml`**. There is no markdown content — the theme reads everything (experience, education, skills, projects, papers, contact info) directly from `config.toml` params.
 
-1. **Understanding the site** - This is a Hugo static site. All content is configured in `config.toml`, not in separate markdown files.
-2. **Theme is a submodule** - The theme is included as a git submodule. Don't edit theme files directly.
-3. **Deployment is automatic** - Changes pushed to the main branch automatically deploy to Netlify via their CI/CD pipeline.
+```
+config.toml          ← ALL resume content (single source of truth)
+index.Rmd            ← blogdown entry point (minimal)
+themes/hugo-devresume-theme/
+  layouts/
+    index.html       ← main template, assembles partials
+    partials/        ← header, experience, skills, education, etc.
+  assets/scss/
+    devresume.scss   ← theme styles (uses Hugo template vars for colors)
+public/              ← generated output (committed, served by Netlify)
+```
 
-## Common Tasks
-
-### Updating Profile Content
-
-Edit `config.toml`:
-- **Profile info:** `[params.profile]`
-- **Skills:** `[params.skills.list]`
-- **Experience:** `[params.experience.list]`
-- **Education:** `[params.education.list]`
-- **Projects:** `[params.projects.list]`
-- **Publications:** `[params.information.list]`
-- **Social links:** `[params.social.list]`
-
-### Local Development
+## Key Commands
 
 ```bash
-# Start development server
-hugo server
+# Build the site (from R/RStudio)
+blogdown::build_site()
 
-# Preview with drafts
-hugo server -D
-
-# Build production site
+# Or directly with Hugo
 hugo
+
+# Local dev server
+hugo server -D
 ```
 
-### Adding Blog Posts
+## Content Editing
 
-```bash
-hugo new post/my-post-title.md
-# Edit content/post/my-post-title/index.md
-# Update frontmatter to set draft: false when ready
-```
+To update resume content, edit **`config.toml`** only. Sections:
+- `[params.profile]` — name, tagline, avatar
+- `[params.contact]` — email, phone, location
+- `[params.summary]` — professional summary
+- `[params.skills]` — grouped skill lists
+- `[[params.experience.list]]` — work history entries
+- `[[params.projects.list]]` — project entries
+- `[[params.information.list]]` — publications/papers
+- `[[params.education.list]]` — degrees
+- `[[params.social.list]]` — GitHub, LinkedIn, etc.
 
-### Updating the Theme
+## Theme Customization
 
-```bash
-git submodule update --remote
-```
+- Colors are set in `config.toml` under `[params.theme]` (primary: `#04a0bf`)
+- Layout changes go in `themes/hugo-devresume-theme/layouts/partials/`
+- Style changes go in `themes/hugo-devresume-theme/assets/scss/devresume.scss`
 
 ## Deployment
 
-The site uses Netlify for automatic deployment. Any push to the main branch triggers a build. You can view deployment status at: https://app.netlify.com/sites/kevin-cv/deploys
+Push to `main` → Netlify auto-builds and deploys. The `public/` directory is also committed.
 
-## Git Workflow
+## Notes
 
-1. Create a feature branch for changes
-2. Test locally with `hugo server`
-3. Commit changes
-4. Push to main branch
-5. Netlify automatically builds and deploys
-
-## Color & Styling
-
-Primary color is configured in `config.toml`:
-- `primaryColor = "#04a0bf"` (teal)
-- `textPrimaryColor = "#292929"` (dark gray)
-
-To change colors, modify these values in `config.toml`.
-
-## Contact Information
-
-- **Email:** kevin.ct.chang@gmail.com
-- **Location:** Auckland, New Zealand
-- **GitHub:** https://github.com/kcha193
-- **LinkedIn:** https://linkedin.com/in/kevin-ct-chang
+- Hugo version pinned at 0.80.0 — newer versions may have breaking changes with this theme
+- The theme uses FontAwesome for icons (referenced by class name in config)
+- TOML multiline strings use `"""` — watch for quoting issues (common in recent commits)
