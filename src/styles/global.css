@@ -39,13 +39,15 @@ body {
   color: #f4f4f5; /* zinc-100 */
 }
 
-/* ─── Prose links ────────────────────────────────────────────────────────────── */
-a {
-  color: var(--brand);
-  text-decoration: none;
-}
-a:hover {
-  text-decoration: underline;
+/* ─── Prose links (in @layer base so Tailwind utilities can override) ────────── */
+@layer base {
+  a {
+    color: var(--brand);
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
 }
 
 /* ─── Focus ring ─────────────────────────────────────────────────────────────── */
