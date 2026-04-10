@@ -1,0 +1,57 @@
+---
+import ThemeToggle from './ThemeToggle';
+
+const navItems = [
+  { label: 'About', href: '#about' },
+  { label: 'Experience', href: '#experience' },
+  { label: 'Projects', href: '#projects' },
+  { label: 'Skills', href: '#skills' },
+  { label: 'Publications', href: '#publications' },
+  { label: 'Education', href: '#education' },
+  { label: 'Contact', href: '#contact' },
+];
+---
+
+<header class="sticky top-0 z-50 bg-white/80 dark:bg-zinc-950/80 backdrop-blur-md border-b border-zinc-100 dark:border-zinc-800">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between h-14">
+    <a
+      href="/"
+      class="font-semibold text-sm text-zinc-900 dark:text-zinc-100 hover:text-[var(--brand)] transition-colors no-underline"
+      aria-label="Kevin Chang – home"
+    >
+      KC
+    </a>
+
+    <nav aria-label="Site navigation">
+      <ul class="hidden md:flex items-center gap-6 text-sm text-zinc-500 dark:text-zinc-400">
+        {navItems.map(({ label, href }) => (
+          <li>
+            <a
+              href={href}
+              class="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors no-underline"
+            >
+              {label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <div class="flex items-center gap-2">
+      <a
+        href="/resume.html"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-[var(--brand)] text-white text-sm font-medium hover:opacity-90 transition-opacity no-underline"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+          <polyline points="7 10 12 15 17 10"/>
+          <line x1="12" y1="15" x2="12" y2="3"/>
+        </svg>
+        Resume
+      </a>
+      <ThemeToggle client:load />
+    </div>
+  </div>
+</header>

@@ -1,0 +1,80 @@
+---
+import '../styles/global.css';
+import '../styles/print.css';
+import { buildPersonSchema } from '../lib/seo';
+
+interface Props {
+  profile: {
+    name: string;
+    tagline: string;
+    summary: string;
+    email: string;
+    location: string;
+    social: Array<{ platform: string; url: string; handle: string; icon: string }>;
+  };
+  title?: string;
+  description?: string;
+}
+
+const {
+  profile,
+  title = `${profile.name} | Senior Data Scientist`,
+  description = profile.summary.replace(/\*\*/g, '').slice(0, 160),
+} = Astro.props;
+
+const jsonLd = buildPersonSchema(profile);
+const ogImage = '/avatar.jpg';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="profile" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:url" content="https://kevin-cv.netlify.app/" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://kevin-cv.netlify.app/" />
+
+    <!-- Sitemap -->
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Social rel=me -->
+    {profile.social.map(s => (
+      <link rel="me" href={s.url} />
+    ))}
+
+    <!-- Dark mode: set before paint to avoid FOUC -->
+    <script is:inline>
+      (function() {
+        var stored = localStorage.getItem('theme');
+        var pref = stored || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.dataset.theme = pref;
+      })();
+    </script>
+
+    <!-- JSON-LD -->
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </head>
+  <body>
+    <a href="#main-content" class="skip-link">Skip to content</a>
+    <slot />
+  </body>
+</html>

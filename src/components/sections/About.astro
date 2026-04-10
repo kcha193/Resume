@@ -1,0 +1,33 @@
+---
+interface Props {
+  summary: string;
+}
+const { summary } = Astro.props;
+
+// Convert **bold** to <strong> in summary text
+const html = summary.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+---
+
+<section
+  id="about"
+  class="py-20 bg-white dark:bg-zinc-950"
+  aria-labelledby="about-heading"
+>
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="max-w-[65ch]">
+      <p class="text-sm font-mono text-[var(--brand)] tracking-widest uppercase mb-3">
+        About
+      </p>
+      <h2
+        id="about-heading"
+        class="text-3xl font-bold text-zinc-900 dark:text-zinc-100 mb-8"
+      >
+        Summary
+      </h2>
+      <p
+        class="text-base leading-relaxed text-zinc-600 dark:text-zinc-400"
+        set:html={html}
+      />
+    </div>
+  </div>
+</section>

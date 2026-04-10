@@ -1,0 +1,42 @@
+@media print {
+  /* Hide interactive elements */
+  header nav,
+  .theme-toggle,
+  .skip-link,
+  footer {
+    display: none !important;
+  }
+
+  /* Reset dark mode for print */
+  [data-theme="dark"] body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+
+  /* Avoid page breaks inside cards */
+  article,
+  section {
+    break-inside: avoid;
+  }
+
+  /* Ensure links show URLs */
+  a[href]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.75em;
+    color: #555;
+  }
+
+  a[href^="#"]::after,
+  a[href^="mailto"]::after {
+    content: "";
+  }
+
+  body {
+    font-size: 11pt;
+    line-height: 1.4;
+  }
+
+  h1 { font-size: 20pt; }
+  h2 { font-size: 14pt; }
+  h3 { font-size: 12pt; }
+}

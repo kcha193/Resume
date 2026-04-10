@@ -1,0 +1,117 @@
+---
+interface Props {
+  profile: {
+    name: string;
+    tagline: string;
+    avatar: string;
+    email: string;
+    social: Array<{ platform: string; url: string; handle: string; icon: string }>;
+  };
+}
+const { profile } = Astro.props;
+
+const linkedin = profile.social.find(s => s.platform === 'linkedin');
+---
+
+<section
+  class="relative min-h-[92vh] flex items-center overflow-hidden bg-gradient-to-br from-white via-sky-50/30 to-teal-50/20 dark:from-zinc-950 dark:via-zinc-900 dark:to-zinc-950"
+  aria-labelledby="hero-heading"
+>
+  <!-- Soft background orb -->
+  <div
+    class="absolute -top-32 -right-32 w-[600px] h-[600px] rounded-full opacity-20 dark:opacity-10 pointer-events-none"
+    style={`background: radial-gradient(circle, var(--brand) 0%, transparent 70%);`}
+    aria-hidden="true"
+  />
+
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-20 grid md:grid-cols-2 gap-12 items-center w-full">
+    <!-- Text -->
+    <div class="order-2 md:order-1">
+      <p class="text-sm font-mono text-[var(--brand)] tracking-widest uppercase mb-4">
+        Senior Data Scientist · Auckland, NZ
+      </p>
+      <h1
+        id="hero-heading"
+        class="text-5xl sm:text-6xl font-black tracking-tight text-zinc-900 dark:text-zinc-50 leading-none mb-6"
+      >
+        {profile.name}
+      </h1>
+      <p class="text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed max-w-lg mb-10">
+        {profile.tagline}
+      </p>
+
+      <div class="flex flex-wrap gap-3">
+        <a
+          href="/resume.html"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[var(--brand)] text-white font-semibold text-sm hover:opacity-90 active:scale-95 transition-all shadow-lg shadow-[var(--brand-glow)] no-underline"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download Resume
+        </a>
+
+        {linkedin && (
+          <a
+            href={linkedin.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-zinc-200 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 font-semibold text-sm hover:border-[var(--brand)] hover:text-[var(--brand)] active:scale-95 transition-all no-underline"
+          >
+            LinkedIn
+          </a>
+        )}
+
+        <a
+          href={`mailto:${profile.email}`}
+          class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-zinc-200 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 font-semibold text-sm hover:border-[var(--brand)] hover:text-[var(--brand)] active:scale-95 transition-all no-underline"
+        >
+          Contact
+        </a>
+      </div>
+
+      <!-- Social row -->
+      <div class="flex items-center gap-4 mt-8">
+        {profile.social.map(s => (
+          <a
+            href={s.url}
+            target="_blank"
+            rel="noopener me noreferrer"
+            aria-label={s.platform}
+            class="text-zinc-400 hover:text-[var(--brand)] transition-colors no-underline text-sm font-mono"
+          >
+            {s.handle}
+          </a>
+        ))}
+      </div>
+    </div>
+
+    <!-- Avatar -->
+    <div class="order-1 md:order-2 flex justify-center md:justify-end">
+      <div class="relative">
+        <div
+          class="absolute inset-0 rounded-full blur-3xl opacity-30 scale-110"
+          style={`background: var(--brand);`}
+          aria-hidden="true"
+        />
+        <img
+          src={profile.avatar}
+          alt={`${profile.name} profile photo`}
+          width="280"
+          height="280"
+          loading="eager"
+          fetchpriority="high"
+          class="relative w-48 h-48 sm:w-64 sm:h-64 md:w-72 md:h-72 rounded-full object-cover ring-4 ring-white dark:ring-zinc-900 shadow-2xl"
+        />
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 animate-bounce" aria-hidden="true">
+    <span class="text-xs text-zinc-400 font-mono tracking-widest uppercase">Scroll</span>
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="6 9 12 15 18 9"/>
+    </svg>
+  </div>
+</section>

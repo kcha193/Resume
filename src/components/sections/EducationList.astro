@@ -1,0 +1,86 @@
+---
+import { getCollection } from 'astro:content';
+
+const [eduEntry] = await getCollection('education');
+const { items } = eduEntry.data;
+
+const profileCollection = await getCollection('profile');
+const profile = profileCollection[0].data;
+---
+
+<section
+  id="education"
+  class="py-20 bg-zinc-50 dark:bg-zinc-900/50"
+  aria-labelledby="education-heading"
+>
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="grid md:grid-cols-3 gap-12">
+      <!-- Education -->
+      <div class="md:col-span-2">
+        <p class="text-sm font-mono text-[var(--brand)] tracking-widest uppercase mb-3">
+          Academic
+        </p>
+        <h2
+          id="education-heading"
+          class="text-3xl font-bold text-zinc-900 dark:text-zinc-100 mb-8"
+        >
+          Education
+        </h2>
+        <ul class="space-y-6">
+          {items.map(item => (
+            <li class="flex gap-4">
+              <span class="font-mono text-sm text-[var(--brand)] min-w-[3.5rem] pt-0.5">
+                {item.year}
+              </span>
+              <div>
+                <p class="font-semibold text-zinc-900 dark:text-zinc-100 text-sm">
+                  {item.degree}
+                </p>
+                <p class="text-sm text-zinc-500 dark:text-zinc-400">
+                  {item.university}
+                </p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Languages & Interests -->
+      <div>
+        <p class="text-sm font-mono text-[var(--brand)] tracking-widest uppercase mb-3">
+          Personal
+        </p>
+        <h2 class="text-3xl font-bold text-zinc-900 dark:text-zinc-100 mb-8">
+          &nbsp;
+        </h2>
+
+        <div class="mb-8">
+          <h3 class="text-xs font-mono tracking-widest uppercase text-zinc-400 mb-3">
+            Languages
+          </h3>
+          <ul class="space-y-2">
+            {profile.languages.map(lang => (
+              <li class="flex items-center justify-between text-sm">
+                <span class="text-zinc-700 dark:text-zinc-300">{lang.name}</span>
+                <span class="font-mono text-xs text-zinc-400">{lang.level}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="text-xs font-mono tracking-widest uppercase text-zinc-400 mb-3">
+            Interests
+          </h3>
+          <div class="flex flex-wrap gap-2">
+            {profile.interests.map(interest => (
+              <span class="px-2.5 py-1 rounded-full text-xs border border-zinc-200 dark:border-zinc-700 text-zinc-600 dark:text-zinc-400">
+                {interest}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

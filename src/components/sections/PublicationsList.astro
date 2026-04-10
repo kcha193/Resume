@@ -1,0 +1,72 @@
+---
+import { getCollection } from 'astro:content';
+
+const [pubsEntry] = await getCollection('publications');
+const { items } = pubsEntry.data;
+
+// Sort by year descending
+const sorted = [...items].sort((a, b) => b.year - a.year);
+
+// Group by year
+const byYear = sorted.reduce<Record<number, typeof sorted>>((acc, item) => {
+  acc[item.year] = acc[item.year] || [];
+  acc[item.year].push(item);
+  return acc;
+}, {});
+
+const years = Object.keys(byYear)
+  .map(Number)
+  .sort((a, b) => b - a);
+
+function boldKC(text: string) {
+  return text
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*(.+?)\*/g, '<em>$1</em>');
+}
+---
+
+<section
+  id="publications"
+  class="py-20 bg-white dark:bg-zinc-950"
+  aria-labelledby="publications-heading"
+>
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <p class="text-sm font-mono text-[var(--brand)] tracking-widest uppercase mb-3">
+      Research
+    </p>
+    <h2
+      id="publications-heading"
+      class="text-3xl font-bold text-zinc-900 dark:text-zinc-100 mb-12"
+    >
+      Publications
+    </h2>
+
+    <div class="max-w-3xl space-y-8">
+      {years.map(year => (
+        <div>
+          <div class="flex items-center gap-4 mb-4">
+            <span class="font-mono text-sm font-semibold text-[var(--brand)]">{year}</span>
+            <div class="flex-1 h-px bg-zinc-100 dark:bg-zinc-800" aria-hidden="true" />
+          </div>
+          <ul class="space-y-4">
+            {byYear[year].map(item => (
+              <li class="text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+                <span set:html={boldKC(item.citation)} />
+                {item.doi && (
+                  <a
+                    href={item.doi}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="ml-2 inline-flex items-center gap-1 text-xs font-mono text-[var(--brand)] hover:underline"
+                  >
+                    DOI ↗
+                  </a>
+                )}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,34 @@
+---
+import ExperienceCard from './ExperienceCard.astro';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  items: CollectionEntry<'experience'>[];
+}
+
+const { items } = Astro.props;
+---
+
+<section
+  id="experience"
+  class="py-20 bg-zinc-50 dark:bg-zinc-900/50"
+  aria-labelledby="experience-heading"
+>
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <p class="text-sm font-mono text-[var(--brand)] tracking-widest uppercase mb-3">
+      Career
+    </p>
+    <h2
+      id="experience-heading"
+      class="text-3xl font-bold text-zinc-900 dark:text-zinc-100 mb-12"
+    >
+      Experience
+    </h2>
+
+    <div class="max-w-3xl">
+      {items.map((entry, i) => (
+        <ExperienceCard entry={entry} isLast={i === items.length - 1} />
+      ))}
+    </div>
+  </div>
+</section>

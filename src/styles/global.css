@@ -1,0 +1,85 @@
+@import "tailwindcss";
+@import "@fontsource-variable/inter";
+@import "@fontsource-variable/jetbrains-mono";
+
+/* ─── Dark mode variant ─────────────────────────────────────────────────────── */
+@variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
+/* ─── Design tokens ─────────────────────────────────────────────────────────── */
+:root {
+  --brand: #04a0bf;
+  --brand-dark: #0cbad9;
+  --brand-glow: rgba(4, 160, 191, 0.25);
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono Variable", ui-monospace, monospace;
+}
+
+[data-theme="dark"] {
+  --brand: #0cbad9;
+}
+
+/* ─── Base reset ─────────────────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: #fff;
+  color: #1a1a1a;
+}
+
+[data-theme="dark"] body {
+  background-color: #09090b; /* zinc-950 */
+  color: #f4f4f5; /* zinc-100 */
+}
+
+/* ─── Prose links ────────────────────────────────────────────────────────────── */
+a {
+  color: var(--brand);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+/* ─── Focus ring ─────────────────────────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* ─── Skip link ──────────────────────────────────────────────────────────────── */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  padding: 0.5rem 1rem;
+  background: var(--brand);
+  color: #fff;
+  border-radius: 0 0 4px 4px;
+  font-weight: 600;
+  z-index: 9999;
+  transition: top 0.2s;
+}
+.skip-link:focus {
+  top: 0;
+}
+
+/* ─── Scrollbar ──────────────────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--brand);
+  border-radius: 3px;
+}

@@ -1,0 +1,33 @@
+---
+import ProjectCard from './ProjectCard.astro';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  items: CollectionEntry<'projects'>[];
+}
+
+const { items } = Astro.props;
+const sorted = [...items].sort((a, b) => b.data.year - a.data.year);
+---
+
+<section
+  id="projects"
+  class="py-20 bg-white dark:bg-zinc-950"
+  aria-labelledby="projects-heading"
+>
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <p class="text-sm font-mono text-[var(--brand)] tracking-widest uppercase mb-3">
+      Work
+    </p>
+    <h2
+      id="projects-heading"
+      class="text-3xl font-bold text-zinc-900 dark:text-zinc-100 mb-12"
+    >
+      Projects
+    </h2>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {sorted.map(entry => <ProjectCard entry={entry} />)}
+    </div>
+  </div>
+</section>
