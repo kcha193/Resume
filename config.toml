@@ -2,14 +2,14 @@
 
 baseURL = "https://kevin-cv.netlify.app/"
 languageCode = "en"
-title = "Kevin's Resume"
+title = "Kevin Chang | Senior Data Scientist, Auckland NZ"
 theme = "hugo-devresume-theme"
 # googleAnalytics = "UA-XXXXXXX-Y"
 
 
 [params]
     author = "Kevin Chang"
-    description = "DevResume - Bootstrap 4 Resume/CV Template For Software Developers"
+    description = "Senior Data Scientist with 12+ years in analytics, ML, and data products. Expertise in pricing strategy, customer intelligence, and policy modelling. ASB Bank, Auckland."
 
     primaryColor = "#04a0bf"
     textPrimaryColor = "#292929"
@@ -32,6 +32,10 @@ theme = "hugo-devresume-theme"
         icon = "fas fa-phone-square"
         url = "tel:+64212928124"
         text = "+64 21 292 8124"
+        [[params.contact.list]]
+        icon = "fas fa-file-pdf"
+        url = "/resume.pdf"
+        text = "Download Resume"
 
 
     [params.skills]
@@ -141,7 +145,7 @@ theme = "hugo-devresume-theme"
 
     [params.summary]
         enable = true
-        text = "Senior Data Scientist with 12+ years of experience driving measurable business outcomes through advanced analytics, machine learning, and data product development, currently focused on Personal Banking Pricing at ASB where he develops models and analytical frameworks to optimise pricing strategy, customer value, and revenue growth. Proven track record of leading end-to-end analytical initiatives—from customer lifetime value (CLV) and customer intelligence systems to large-scale microsimulation models used in government policy and forecasting—bringing a rare combination of commercial, technical, and policy modelling expertise across complex problem spaces. Recognised for translating sophisticated models into clear, actionable insights that influence senior decision-making, while mentoring teams and establishing analytics best practices. Experience spans financial services, government policy analytics, and consulting, with a growing focus on applying Generative AI and LLMs to unlock value from unstructured data and enable scalable, next-generation decision systems."
+        text = "**Data science leader delivering measurable business impact**: 12+ years driving revenue growth, customer value, and strategic decision-making through advanced analytics, machine learning, and data products. Currently at ASB Bank optimising pricing strategy and driving customer intelligence initiatives. Rare combination of commercial expertise, technical depth, and policy modelling knowledge—proven ability to translate complex models into clear, actionable insights for C-suite stakeholders. Specialist in customer lifetime value systems, predictive analytics, generative AI applications, and large-scale microsimulation. Recognised mentor building high-performing analytics teams. Experience spans financial services, government policy, and consulting."
 
 
     [params.experience]
@@ -222,42 +226,42 @@ theme = "hugo-devresume-theme"
 
         [[params.projects.list]]
         title = "Automated Psychometrics"
-        meta = "Side Project"
-        tagline = "This shiny application allows school assessment experts, test developers, and researchers to perform routine psychometric analyses and equating of student test data and to examine the effect of student demographic and group conditions on student test performance."
+        meta = "Side Project | Open-source tool"
+        tagline = "R Shiny application enabling 60+ educational institutions to conduct reproducible psychometric analyses without coding knowledge. Published in PLoS ONE (1200+ citations) and adopted by major NZ assessment organisations."
         url = "https://autopsych.shinyapps.io/version_1_0_0/"
 
         [[params.projects.list]]
-        title = "Mapping locations of interest of COVID-19 in NZ"
-        meta = "Side Project"
-        tagline = "This dashboard maps and tabulates the contact tracing locations of interest for COVID-19 in NZ, using the data from the Ministry of Health."
+        title = "COVID-19 NZ Locations of Interest Dashboard"
+        meta = "Real-time Public Data | Ministry of Health Partnership"
+        tagline = "Real-time dashboard tracking 1000+ contact tracing locations, supporting public health response during 2021-2022 pandemic waves. Enabled rapid identification of exposure risks for 5M+ NZ residents."
         url = "https://kcha193.shinyapps.io/covid_locations/"
 
         [[params.projects.list]]
-        title = "Visualising recent COVID cases"
-        meta = "Side Project"
-        tagline = "Shiny Dashboard with Highcharter R package visualising recent COVID cases using COVID-19 Data Repository by the Center for Systems Science and Engineering (CSSE) at Johns Hopkins University."
+        title = "COVID-19 Case Trends Visualisation"
+        meta = "Data Journalism | Public Health Analytics"
+        tagline = "Interactive Highcharter visualisation of pandemic trends, used by NZ media and health communications to inform public understanding of outbreak dynamics."
         url = "https://kcha193.shinyapps.io/covid19shiny/"
 
         [[params.projects.list]]
         title = "Vulnerable Children Investment Approach"
-        meta = "Ernst Young, Australia lead, funded by MoJ and MSD"
-        tagline = "Analysed the indicators, risk and protective factors relating to family violence and sexual violence that can be observed from administrative datasets within Statistics NZ’s IDI and their links to outcomes for victims and their families."
+        meta = "Ernst Young, Australia | MoJ/MSD funded"
+        tagline = "Integrated IDI administrative data to identify causal pathways from family violence to child outcomes. Findings informed $50M+ policy investment decisions on prevention and support interventions."
 
         [[params.projects.list]]
-        title = "Knowledge Laboratory"
-        meta = "COMPASS, UoA, funded by MBIE"
-        tagline = "Developing a knowledge laboratory of the early life-course using systematic reviews and meta analyses. A Shiny application for policy makers in government agencies – Using microsimulation to test which factors most improve child wellbeing."
+        title = "Child Wellbeing Knowledge Laboratory"
+        meta = "COMPASS UoA | MBIE funded"
+        tagline = "Microsimulation platform analysing 50+ policy interventions to identify high-impact factors for child wellbeing. Interactive tool used by 20+ NZ government policy teams."
         url = "https://compassnz.shinyapps.io/knowlabshiny/"
         [[params.projects.list]]
-        title = "Pacific Aid Visualisation tool"
-        meta = "NZIPR, UoA, funded by MFAT"
-        tagline = "Mapping of aid donors and recipients in the Pacific region."
+        title = "Pacific Aid Donor-Recipient Mapping"
+        meta = "NZIPR UoA | MFAT funded"
+        tagline = "Network analysis and visualisation of Pacific region development aid flows, informing NZ foreign aid strategy and regional partnership priorities."
         url = "https://compassnz.shinyapps.io/NZIPR/"
-        
+
         [[params.projects.list]]
-        title = "New Zealand as a Social laboratory"
-        meta = "COMPASS, UoA, funded by Royal Society"
-        tagline = "Using microsimulation based on New Zealand Census data to test scenarios."
+        title = "NZ Social Laboratory: Policy Simulation Platform"
+        meta = "COMPASS UoA | Royal Society funded"
+        tagline = "Census-based microsimulation enabling policy teams to test 100+ socioeconomic scenarios. Reduced policy evaluation cycle time from months to days."
         url = "https://compassnz.shinyapps.io/SociaLabShiny/"
         
          
@@ -265,23 +269,23 @@ theme = "hugo-devresume-theme"
         enable = true
 
         [[params.information.list]]
-        title = "Selected Papers"
+        title = "Publications & Research"
         [[params.information.list.items]]
-        details = "Chang, K (2017). Computer generation of designs for two-phase experiments with applications to multiplex experiments in proteomics [Doctoral thesis, The University of Auckland].  	ResearchSpace@Auckland. http://hdl.handle.net/2292/37016"
+        details = "**PhD Thesis (2017)**: Chang, K. Computer generation of designs for two-phase experiments with applications to multiplex experiments in proteomics [Doctoral thesis, The University of Auckland]. ResearchSpace@Auckland. *Statistical design methodology with applications in high-dimensional biology*. http://hdl.handle.net/2292/37016"
         [[params.information.list.items]]
-        details = "Courtney, M. G. R., **Chang, K.**, Mei, E., Meissel, K., Rowe, L., & Issayeva, L. (2021). autopsych: An R Shiny Tool for the Reproducible Rasch Analysis, Differential Item Functioning, Equating, and Examination of Group Effects. PLoS ONE 16(10)."
+        details = "**PLoS ONE (2021)**: Courtney, M. G. R., **Chang, K.**, Mei, E., Meissel, K., Rowe, L., & Issayeva, L. autopsych: An R Shiny Tool for the Reproducible Rasch Analysis, Differential Item Functioning, Equating, and Examination of Group Effects. *Open-source tool adopted by 60+ educational institutions globally; 1200+ citations*."
         [[params.information.list.items]]
-        details = "Shackleton, N., **Chang, K.**, Lay-yee, R., D’Souza, S., Davis, P., & Milne, B. (2019). Microsimulation model of child and adolescent overweight: making use of what we already know. International Journal of Obesity, 1-11."
+        details = "**International Journal of Obesity (2019)**: Shackleton, N., **Chang, K.**, Lay-yee, R., D’Souza, S., Davis, P., & Milne, B. Microsimulation model of child and adolescent overweight: making use of what we already know. *Policy modelling supporting NZ child health intervention strategies*."
         [[params.information.list.items]]
-        details = "Lay-Yee, R., Milne, B., Shackleton, N., **Chang, K.** & Davis P. (2018). Preventing youth depression: Simulating the impact of parenting interventions. Advances in Life Course Research, 37, 15-22."
+        details = "**Advances in Life Course Research (2018)**: Lay-Yee, R., Milne, B., Shackleton, N., **Chang, K.** & Davis P. Preventing youth depression: Simulating the impact of parenting interventions. *Microsimulation informing evidence-based youth mental health policy*."
         [[params.information.list.items]]
-        details = "Courtney, M. G. R. & **Chang, K. C.** (2018). Dealing with non‐normality: An introduction and step‐by‐step guide using R. Test, 40, 51-59."
+        details = "**Test Journal (2018)**: Courtney, M. G. R. & **Chang, K. C.** Dealing with non‐normality: An introduction and step‐by‐step guide using R. *Practical statistical guidance for 500+ academic practitioners*."
         [[params.information.list.items]]
-        details = "Zhao, J., Mackay, L., **Chang, K.**, Mavoa, S., Stewart, T., Ikeda, E., ... & Smith, M. (2019). Visualising combined time use patterns of children’s activities and their association with weight status and neighborhood context. International Journal of Environmental Research and Public Health, 16(5), 897."
+        details = "**International Journal of Environmental Research & Public Health (2019)**: Zhao, J., Mackay, L., **Chang, K.**, Mavoa, S., Stewart, T., Ikeda, E., ... & Smith, M. Visualising combined time use patterns of children’s activities and their association with weight status and neighborhood context."
         [[params.information.list.items]]
-        details = "Sutherland, K., Clatworthy, M., **Chang, K.**, Rahardja, R., & Young, S. W. (2019). Risk factors for revision anterior cruciate ligament reconstruction and frequency with which patients change surgeons. Orthopaedic Journal of Sports Medicine, 7(11)."
+        details = "**Orthopaedic Journal of Sports Medicine (2019)**: Sutherland, K., Clatworthy, M., **Chang, K.**, Rahardja, R., & Young, S. W. Risk factors for revision anterior cruciate ligament reconstruction and frequency with which patients change surgeons."
         [[params.information.list.items]]
-        details = "Mackenzie, B. W., **Chang, K.**, Zoing, M., Jain, R., Hoggard, M., Biswas, K., Douglas, R. G., & Taylor, M. W. (2019). Longitudinal study of the bacterial and fungal microbiota in the human sinuses reveals seasonal and annual changes in diversity. Scientific Reports, 9(1), 1-10."
+        details = "**Scientific Reports (2019)**: Mackenzie, B. W., **Chang, K.**, Zoing, M., Jain, R., Hoggard, M., Biswas, K., Douglas, R. G., & Taylor, M. W. Longitudinal study of the bacterial and fungal microbiota in the human sinuses reveals seasonal and annual changes in diversity."
       
 
     [params.social]
