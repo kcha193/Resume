@@ -34,7 +34,7 @@ theme = "hugo-devresume-theme"
         text = "+64 21 292 8124"
         [[params.contact.list]]
         icon = "fas fa-file-pdf"
-        url = "/resume.pdf"
+        url = "/resume.html"
         text = "Download Resume"
 
 
