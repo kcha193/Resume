@@ -12,10 +12,10 @@ Kevin Chang's personal CV website, built with **Astro 5** and **Tailwind CSS 4**
 
 | | |
 |---|---|
-| **Framework** | [Astro 5](https://astro.build/) — static site generator with island architecture |
+| **Framework** | [Astro 5](https://astro.build/) — static site generator, zero client-side framework |
 | **Styling** | [Tailwind CSS 4](https://tailwindcss.com/) via `@tailwindcss/vite` + CSS custom properties |
 | **Fonts** | Self-hosted Inter Variable (body) + JetBrains Mono Variable (dates/code) |
-| **Interactivity** | React 18 islands (theme toggle, mobile nav menu) |
+| **Interactivity** | Vanilla JS only — theme toggle and mobile nav are pure Astro components |
 | **Content** | Astro content collections — YAML for structured data, Markdown for prose |
 | **Deployment** | [Netlify](https://netlify.com/) — auto-deploys on push to `main` |
 
@@ -25,13 +25,14 @@ Kevin Chang's personal CV website, built with **Astro 5** and **Tailwind CSS 4**
 
 ```
 .
-├── astro.config.mjs           # Astro config (React, sitemap, Tailwind vite plugin)
+├── astro.config.mjs           # Astro config (sitemap, Tailwind vite plugin)
 ├── netlify.toml               # Build command + cache headers
 ├── tsconfig.json
 ├── package.json
 ├── public/                    # Static assets (served as-is)
 │   ├── avatar.jpg
 │   ├── favicon.svg
+│   ├── og-image.png           # 1200×630 Open Graph image
 │   ├── resume.html            # Printable resume
 │   └── robots.txt
 └── src/
@@ -39,12 +40,12 @@ Kevin Chang's personal CV website, built with **Astro 5** and **Tailwind CSS 4**
     │   ├── config.ts          # Zod schemas for all collections
     │   ├── profile/           # profile.yaml — name, contact, social, languages, interests
     │   ├── experience/        # One .md file per role (5 total)
-    │   ├── projects/          # One .md file per project (7 total)
+    │   ├── projects/          # One .md file per project (8 total); set featured: true for highlights
     │   ├── publications/      # publications.yaml
     │   ├── education/         # education.yaml
     │   └── skills/            # skills.yaml
     ├── components/
-    │   ├── layout/            # Header.astro, NavMenu.tsx, ThemeToggle.tsx
+    │   ├── layout/            # Header.astro, NavMenu.astro, ThemeToggle.astro
     │   ├── sections/          # Hero, About, ExperienceTimeline, ProjectsGrid,
     │   │                      #   SkillsMatrix, PublicationsList, EducationList,
     │   │                      #   ContactFooter
@@ -55,9 +56,9 @@ Kevin Chang's personal CV website, built with **Astro 5** and **Tailwind CSS 4**
     │   └── index.astro        # Single-page CV
     ├── lib/
     │   ├── seo.ts             # JSON-LD Person schema builder
-    │   └── utils.ts           # formatDate, boldMarkdown helpers
+    │   └── utils.ts           # formatDate, renderInlineMarkdown helpers
     └── styles/
-        ├── global.css         # Tailwind import, CSS vars, dark mode variant
+        ├── global.css         # Tailwind import, CSS vars, dark mode variant, motion guard
         └── print.css          # @media print overrides
 ```
 
@@ -85,7 +86,7 @@ All CV content lives in `src/content/`. Edit the relevant file and push — Netl
 |---|---|
 | Name, contact, social links, languages, interests | `src/content/profile/profile.yaml` |
 | Work experience | `src/content/experience/<role>.md` — one file per role |
-| Projects | `src/content/projects/<project>.md` — one file per project |
+| Projects | `src/content/projects/<project>.md` — set `featured: true` on up to 3 for visual highlight |
 | Publications | `src/content/publications/publications.yaml` |
 | Education | `src/content/education/education.yaml` |
 | Skills | `src/content/skills/skills.yaml` |
@@ -96,11 +97,12 @@ All CV content lives in `src/content/`. Edit the relevant file and push — Netl
 
 ## Features
 
-- **Dark mode** — respects `prefers-color-scheme`, togglable, no FOUC
+- **Dark mode default** — dark on first visit, togglable, persisted to localStorage, no FOUC
+- **Zero JS framework** — theme toggle and mobile nav use vanilla JS; no React in the bundle
 - **Mobile-friendly** — hamburger nav, responsive layouts at every breakpoint
-- **SEO** — `<title>`, meta description, Open Graph, JSON-LD `Person` schema, canonical URL, `sitemap.xml`
-- **Performance** — self-hosted variable fonts, `<9 KB` JS on initial load (islands only), immutable cache headers on `/_astro/*`
-- **Accessibility** — semantic landmarks, skip-to-content link, focus-visible rings, aria labels
+- **SEO** — `<title>`, meta description, Open Graph, JSON-LD `Person` schema (with `worksFor`, `alumniOf`, `image`), canonical URL, `sitemap.xml`
+- **Performance** — self-hosted variable fonts, ~0KB JS framework overhead, immutable cache headers on `/_astro/*`
+- **Accessibility** — semantic landmarks, skip-to-content link (WCAG AA contrast), focus-visible rings, aria labels, `prefers-reduced-motion` guard
 
 ---
 
