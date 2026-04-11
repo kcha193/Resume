@@ -1,9 +1,11 @@
 ---
+import { Image } from 'astro:assets';
+import avatarSrc from '../../assets/avatar.jpg';
+
 interface Props {
   profile: {
     name: string;
     tagline: string;
-    avatar: string;
     email: string;
     social: Array<{ platform: string; url: string; handle: string; icon: string }>;
   };
@@ -12,11 +14,6 @@ const { profile } = Astro.props;
 
 const linkedin = profile.social.find(s => s.platform === 'linkedin');
 const github   = profile.social.find(s => s.platform === 'github');
-
-// Show only the most useful socials inline on mobile
-const featuredSocial = profile.social.filter(s =>
-  ['github', 'linkedin', 'medium'].includes(s.platform)
-);
 ---
 
 <section
@@ -99,11 +96,11 @@ const featuredSocial = profile.social.filter(s =>
           style={`background: var(--brand);`}
           aria-hidden="true"
         />
-        <img
-          src={profile.avatar}
+        <Image
+          src={avatarSrc}
           alt={`${profile.name} profile photo`}
-          width="280"
-          height="280"
+          width={280}
+          height={280}
           loading="eager"
           fetchpriority="high"
           class="relative w-36 h-36 sm:w-52 sm:h-52 md:w-72 md:h-72 rounded-full object-cover ring-4 ring-zinc-50 dark:ring-zinc-900 shadow-2xl"

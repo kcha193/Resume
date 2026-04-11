@@ -5,7 +5,6 @@ const profile = defineCollection({
   schema: z.object({
     name: z.string(),
     tagline: z.string(),
-    avatar: z.string().min(1),
     location: z.string(),
     email: z.string().email(),
     summary: z.string(),
