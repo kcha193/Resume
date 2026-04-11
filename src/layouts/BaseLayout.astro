@@ -18,12 +18,13 @@ interface Props {
 
 const {
   profile,
-  title = `${profile.name} | Senior Data Scientist`,
+  title = `${profile.name} | ${profile.tagline}`,
   description = profile.summary.replace(/\*\*/g, '').slice(0, 160),
 } = Astro.props;
 
-const jsonLd = buildPersonSchema(profile);
-const ogImage = '/avatar.jpg';
+const siteUrl = Astro.site?.href ?? 'https://kevin-cv.netlify.app/';
+const jsonLd = buildPersonSchema(profile, siteUrl);
+const ogImage = new URL('/avatar.jpg', siteUrl).href;
 ---
 
 <!doctype html>
@@ -35,11 +36,11 @@ const ogImage = '/avatar.jpg';
     <meta name="description" content={description} />
 
     <!-- Open Graph -->
-    <meta property="og:type" content="profile" />
+    <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImage} />
-    <meta property="og:url" content="https://kevin-cv.netlify.app/" />
+    <meta property="og:url" content={siteUrl} />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -48,7 +49,7 @@ const ogImage = '/avatar.jpg';
     <meta name="twitter:image" content={ogImage} />
 
     <!-- Canonical -->
-    <link rel="canonical" href="https://kevin-cv.netlify.app/" />
+    <link rel="canonical" href={siteUrl} />
 
     <!-- Sitemap -->
     <link rel="sitemap" href="/sitemap-index.xml" />

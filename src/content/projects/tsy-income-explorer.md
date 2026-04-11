@@ -4,7 +4,7 @@ blurb: "The Income Explorer is an interactive app that models the relationship b
 url: "https://kcha193.shinyapps.io/IncomeExplorer/"
 stack: ["R", "Shiny", "NZ Treasury"]
 category: "policy"
-featured: true
+featured: false
 year: 2021
 ---
 

@@ -1,6 +1,6 @@
 ---
 import Badge from '../ui/Badge.astro';
-import { formatDate, boldMarkdown } from '../../lib/utils';
+import { formatDate, renderInlineMarkdown } from '../../lib/utils';
 import type { CollectionEntry } from 'astro:content';
 
 interface Props {
@@ -53,7 +53,7 @@ const { title, company, location, startDate, endDate, tags, highlights } = entry
     {highlights.map(h => (
       <li
         class="relative pl-5 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400 before:absolute before:left-0 before:top-2.5 before:h-1 before:w-1 before:rounded-full before:bg-[var(--brand)]"
-        set:html={boldMarkdown(h)}
+        set:html={renderInlineMarkdown(h)}
       />
     ))}
   </ul>

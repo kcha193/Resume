@@ -29,7 +29,7 @@ const projects = await getCollection('projects');
     <ProjectsGrid items={projects} />
     <SkillsMatrix />
     <PublicationsList />
-    <EducationList />
+    <EducationList languages={profile.languages} interests={profile.interests} />
   </main>
   <ContactFooter profile={profile} />
 </BaseLayout>

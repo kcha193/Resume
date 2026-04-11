@@ -1,11 +1,15 @@
 ---
 import { getCollection } from 'astro:content';
 
+interface Props {
+  languages: Array<{ name: string; level: string }>;
+  interests: string[];
+}
+
+const { languages, interests } = Astro.props;
+
 const [eduEntry] = await getCollection('education');
 const { items } = eduEntry.data;
-
-const profileCollection = await getCollection('profile');
-const profile = profileCollection[0].data;
 ---
 
 <section
@@ -57,7 +61,7 @@ const profile = profileCollection[0].data;
             Languages
           </h3>
           <ul class="space-y-2">
-            {profile.languages.map(lang => (
+            {languages.map(lang => (
               <li class="flex items-center justify-between text-sm">
                 <span class="text-zinc-700 dark:text-zinc-300">{lang.name}</span>
                 <span class="font-mono text-xs text-zinc-400">{lang.level}</span>
@@ -71,7 +75,7 @@ const profile = profileCollection[0].data;
             Interests
           </h3>
           <div class="flex flex-wrap gap-2">
-            {profile.interests.map(interest => (
+            {interests.map(interest => (
               <span class="px-2.5 py-1 rounded-full text-xs border border-zinc-200 dark:border-zinc-700 text-zinc-600 dark:text-zinc-400">
                 {interest}
               </span>

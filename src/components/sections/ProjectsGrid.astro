@@ -8,6 +8,9 @@ interface Props {
 
 const { items } = Astro.props;
 const sorted = [...items].sort((a, b) => b.data.year - a.data.year);
+
+const featured = sorted.filter(p => p.data.featured);
+const rest     = sorted.filter(p => !p.data.featured);
 ---
 
 <section
@@ -26,8 +29,16 @@ const sorted = [...items].sort((a, b) => b.data.year - a.data.year);
       Projects
     </h2>
 
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      {sorted.map(entry => <ProjectCard entry={entry} />)}
-    </div>
+    {featured.length > 0 && (
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
+        {featured.map(entry => <ProjectCard entry={entry} featured />)}
+      </div>
+    )}
+
+    {rest.length > 0 && (
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {rest.map(entry => <ProjectCard entry={entry} featured={false} />)}
+      </div>
+    )}
   </div>
 </section>

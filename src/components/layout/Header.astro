@@ -1,6 +1,6 @@
 ---
-import ThemeToggle from './ThemeToggle';
-import NavMenu from './NavMenu';
+import ThemeToggle from './ThemeToggle.astro';
+import NavMenu from './NavMenu.astro';
 ---
 
 <header class="sticky top-0 z-50 bg-zinc-50/80 dark:bg-zinc-950/80 backdrop-blur-md border-b border-zinc-100 dark:border-zinc-800">
@@ -13,7 +13,7 @@ import NavMenu from './NavMenu';
       KC
     </a>
 
-    <NavMenu client:load />
+    <NavMenu />
 
     <div class="flex items-center gap-2">
       <a
@@ -29,7 +29,7 @@ import NavMenu from './NavMenu';
         </svg>
         Resume
       </a>
-      <ThemeToggle client:load />
+      <ThemeToggle />
     </div>
   </div>
 </header>

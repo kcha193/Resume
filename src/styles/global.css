@@ -64,7 +64,7 @@ body {
   left: 1rem;
   padding: 0.5rem 1rem;
   background: var(--brand);
-  color: #fff;
+  color: #1a1a1a;
   border-radius: 0 0 4px 4px;
   font-weight: 600;
   z-index: 9999;
@@ -72,6 +72,15 @@ body {
 }
 .skip-link:focus {
   top: 0;
+}
+
+/* ─── Motion ─────────────────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 /* ─── Scrollbar ──────────────────────────────────────────────────────────────── */

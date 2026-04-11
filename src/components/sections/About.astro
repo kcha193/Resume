@@ -2,10 +2,9 @@
 interface Props {
   summary: string;
 }
+import { renderInlineMarkdown } from '../../lib/utils';
 const { summary } = Astro.props;
-
-// Convert **bold** to <strong> in summary text
-const html = summary.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+const html = renderInlineMarkdown(summary);
 ---
 
 <section

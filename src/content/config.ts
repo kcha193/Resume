@@ -8,7 +8,6 @@ const profile = defineCollection({
     avatar: z.string().min(1),
     location: z.string(),
     email: z.string().email(),
-    phone: z.string(),
     summary: z.string(),
     social: z.array(z.object({
       platform: z.string(),

@@ -3,7 +3,7 @@ title: "Vulnerable Children Investment Approach"
 blurb: "Integrated IDI administrative data to identify causal pathways from family violence to child outcomes. Findings informed $50M+ policy investment decisions on prevention and support interventions."
 stack: ["R", "IDI", "Causal Inference", "Policy Research"]
 category: "policy"
-featured: true
+featured: false
 year: 2019
 ---
 

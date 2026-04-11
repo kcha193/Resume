@@ -4,7 +4,7 @@ blurb: "Microsimulation platform analysing 50+ policy interventions to identify 
 url: "https://compassnz.shinyapps.io/knowlabshiny/"
 stack: ["R", "Shiny", "Microsimulation", "MBIE"]
 category: "policy"
-featured: true
+featured: false
 year: 2018
 ---
 

@@ -3,7 +3,6 @@ interface Props {
   profile: {
     name: string;
     email: string;
-    phone: string;
     social: Array<{ platform: string; url: string; handle: string; icon: string }>;
   };
 }
@@ -32,14 +31,6 @@ const year = new Date().getFullYear();
               class="hover:text-[var(--brand)] transition-colors"
             >
               {profile.email}
-            </a>
-          </p>
-          <p>
-            <a
-              href={`tel:${profile.phone.replace(/\s/g, '')}`}
-              class="hover:text-[var(--brand)] transition-colors"
-            >
-              {profile.phone}
             </a>
           </p>
         </div>
