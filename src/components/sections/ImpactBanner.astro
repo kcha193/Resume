@@ -1,9 +1,9 @@
 ---
 const metrics = [
-  { value: '12+', label: 'Years Experience' },
-  { value: '5',   label: 'Roles Held' },
-  { value: '8',   label: 'Major Projects' },
-  { value: '3',   label: 'Sectors' },
+  { value: '12+', label: 'Years Experience', sublabel: '' },
+  { value: '5',   label: 'Roles Held',       sublabel: '' },
+  { value: '8',   label: 'Major Projects',   sublabel: '' },
+  { value: '3',   label: 'Sectors',          sublabel: 'Finance · Government · Consulting' },
 ] as const;
 ---
 
@@ -35,6 +35,9 @@ const metrics = [
         >
           <div class="text-5xl font-black text-[var(--brand)] leading-none mb-2">{m.value}</div>
           <div class="font-mono text-xs tracking-widest uppercase text-zinc-500">{m.label}</div>
+          {m.sublabel && (
+            <div class="text-xs text-zinc-600 mt-1">{m.sublabel}</div>
+          )}
         </div>
       ))}
     </div>

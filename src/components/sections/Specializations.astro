@@ -45,7 +45,7 @@ const specializations = [
               ? 'bg-[rgba(252,189,26,0.06)] border-[rgba(252,189,26,0.2)] hover:border-[var(--brand)]/40'
               : 'bg-zinc-800/30 border-zinc-800 hover:border-[var(--brand)]/40',
           ]}
-          style={i > 0 ? `transition-delay: ${i * 80}ms` : ''}
+          style={`transition-delay: ${i * 80}ms`}
         >
           <div class="text-2xl mb-3" aria-hidden="true">{spec.icon}</div>
           <h3 class:list={[
