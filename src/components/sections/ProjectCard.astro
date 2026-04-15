@@ -1,5 +1,4 @@
 ---
-import Badge from '../ui/Badge.astro';
 import type { CollectionEntry } from 'astro:content';
 
 interface Props {
@@ -11,16 +10,18 @@ const { entry, featured = false } = Astro.props;
 const { title, blurb, url, stack, category, year } = entry.data;
 ---
 
-<article class:list={[
-  'group flex flex-col rounded-xl border bg-white dark:bg-zinc-900 p-6 transition-all duration-300',
-  'hover:shadow-lg hover:shadow-[var(--brand-glow)]',
-  featured
-    ? 'border-[var(--brand)]/40 dark:border-[var(--brand)]/30 hover:border-[var(--brand)]'
-    : 'border-zinc-100 dark:border-zinc-800 hover:border-[var(--brand)]',
-]}>
+<article
+  class:list={[
+    'group flex flex-col rounded-xl border p-6 transition-all duration-300',
+    featured
+      ? 'bg-[#0d0d00] border-[var(--brand)]/35 shadow-[0_0_20px_rgba(252,189,26,0.06)] hover:border-[var(--brand)]/60 hover:shadow-[0_0_28px_rgba(252,189,26,0.10)]'
+      : 'bg-zinc-900 border-zinc-800 hover:border-[var(--brand)]/50 hover:shadow-[0_0_16px_rgba(252,189,26,0.06)]',
+  ]}
+  data-reveal
+>
   <!-- Top row: year + badges -->
   <div class="flex items-center justify-between mb-4">
-    <span class="font-mono text-xs text-zinc-400">{year}</span>
+    <span class="font-mono text-xs text-zinc-500">{year}</span>
     <div class="flex items-center gap-2">
       {featured && (
         <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-semibold bg-[var(--brand)] text-zinc-900">
@@ -28,12 +29,16 @@ const { title, blurb, url, stack, category, year } = entry.data;
           Featured
         </span>
       )}
-      <Badge class="capitalize">{category}</Badge>
+      <!-- Plain span avoids Badge component's conflicting brand color classes -->
+      <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium capitalize bg-zinc-800 border border-zinc-700 text-zinc-400">{category}</span>
     </div>
   </div>
 
   <!-- Title -->
-  <h3 class:list={['text-base font-semibold mb-3 leading-snug', featured ? 'text-zinc-900 dark:text-zinc-50' : 'text-zinc-900 dark:text-zinc-100']}>
+  <h3 class:list={[
+    'text-base font-semibold mb-3 leading-snug',
+    featured ? 'text-zinc-50' : 'text-zinc-100',
+  ]}>
     {url ? (
       <a
         href={url}
@@ -48,14 +53,17 @@ const { title, blurb, url, stack, category, year } = entry.data;
   </h3>
 
   <!-- Blurb -->
-  <p class="text-sm leading-relaxed text-zinc-600 dark:text-zinc-400 flex-1 mb-4">
+  <p class="text-sm leading-relaxed text-zinc-400 flex-1 mb-4">
     {blurb}
   </p>
 
   <!-- Stack -->
-  <div class="flex flex-wrap gap-1.5 mt-auto pt-2 border-t border-zinc-100 dark:border-zinc-800">
+  <div class="flex flex-wrap gap-1.5 mt-auto pt-2 border-t border-zinc-800">
     {stack.slice(0, 4).map(s => (
-      <span class="text-xs font-mono text-zinc-400 dark:text-zinc-500">{s}</span>
+      <span class:list={[
+        'text-xs font-mono',
+        featured ? 'text-[var(--brand)]' : 'text-zinc-500',
+      ]}>{s}</span>
     ))}
   </div>
 </article>
