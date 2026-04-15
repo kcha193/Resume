@@ -94,3 +94,14 @@ body {
   background: var(--brand);
   border-radius: 3px;
 }
+
+/* ─── Scroll reveal ─────────────────────────────────────────────────────────── */
+.js [data-reveal] {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.js [data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
