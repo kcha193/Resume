@@ -7,7 +7,7 @@ const { categories } = skillsEntry.data;
 
 <section
   id="skills"
-  class="py-12 sm:py-20 bg-zinc-50 dark:bg-zinc-900/50"
+  class="py-12 sm:py-20 bg-zinc-900/50"
   aria-labelledby="skills-heading"
 >
   <div class="max-w-6xl mx-auto px-4 sm:px-6">
@@ -16,26 +16,46 @@ const { categories } = skillsEntry.data;
     </p>
     <h2
       id="skills-heading"
-      class="text-3xl font-bold text-zinc-900 dark:text-zinc-100 mb-12"
+      class="text-3xl font-bold text-zinc-100 mb-12"
+      data-reveal
     >
       Skills
     </h2>
 
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-      {categories.map(cat => (
-        <div>
-          <h3 class="text-xs font-mono tracking-widest uppercase text-zinc-400 mb-4">
-            {cat.title}
-          </h3>
-          <div class="flex flex-wrap gap-2">
-            {cat.items.map(item => (
-              <span class="px-3 py-1 rounded-full text-sm border border-zinc-200 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 bg-white dark:bg-zinc-900 hover:border-[var(--brand)] hover:text-[var(--brand)] transition-colors cursor-default">
-                {item}
-              </span>
-            ))}
+      {categories.map(cat => {
+        const isLanguages = cat.title === 'Languages';
+        return (
+          <div
+            class:list={[
+              'rounded-xl p-5 border',
+              isLanguages
+                ? 'bg-[rgba(252,189,26,0.05)] border-[var(--brand)]/15'
+                : 'bg-zinc-900/30 border-zinc-800',
+            ]}
+            data-reveal
+          >
+            <h3 class:list={[
+              'text-xs font-mono tracking-widest uppercase mb-4',
+              isLanguages ? 'text-[var(--brand)]' : 'text-zinc-500',
+            ]}>
+              {cat.title}
+            </h3>
+            <div class="flex flex-wrap gap-2">
+              {cat.items.map(item => (
+                <span class:list={[
+                  'px-3 py-1 rounded-full text-sm border transition-colors cursor-default',
+                  isLanguages
+                    ? 'bg-[#1a1500] text-[var(--brand)] border-[var(--brand)]/30 hover:border-[var(--brand)]/60'
+                    : 'bg-zinc-800 text-zinc-400 border-zinc-700 hover:border-[var(--brand)]/40 hover:text-zinc-200',
+                ]}>
+                  {item}
+                </span>
+              ))}
+            </div>
           </div>
-        </div>
-      ))}
+        );
+      })}
     </div>
   </div>
 </section>

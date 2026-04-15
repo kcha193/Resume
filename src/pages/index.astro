@@ -2,12 +2,14 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/layout/Header.astro';
 import Hero from '../components/sections/Hero.astro';
+import Specializations from '../components/sections/Specializations.astro';
 import About from '../components/sections/About.astro';
 import ExperienceTimeline from '../components/sections/ExperienceTimeline.astro';
 import ProjectsGrid from '../components/sections/ProjectsGrid.astro';
 import SkillsMatrix from '../components/sections/SkillsMatrix.astro';
 import PublicationsList from '../components/sections/PublicationsList.astro';
 import EducationList from '../components/sections/EducationList.astro';
+import ImpactBanner from '../components/sections/ImpactBanner.astro';
 import ContactFooter from '../components/sections/ContactFooter.astro';
 import { getEntry, getCollection } from 'astro:content';
 
@@ -24,12 +26,14 @@ const projects = await getCollection('projects');
   <Header />
   <main id="main-content">
     <Hero profile={profile} />
+    <Specializations />
     <About summary={profile.summary} />
     <ExperienceTimeline items={experience} />
     <ProjectsGrid items={projects} />
     <SkillsMatrix />
     <PublicationsList />
     <EducationList languages={profile.languages} interests={profile.interests} />
+    <ImpactBanner />
   </main>
   <ContactFooter profile={profile} />
 </BaseLayout>
