@@ -1,0 +1,42 @@
+---
+const metrics = [
+  { value: '12+', label: 'Years Experience' },
+  { value: '5',   label: 'Roles Held' },
+  { value: '8',   label: 'Major Projects' },
+  { value: '3',   label: 'Sectors' },
+] as const;
+---
+
+<section
+  class="py-16 bg-gradient-to-br from-[#0d0d00] to-zinc-950"
+  aria-labelledby="impact-heading"
+>
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="text-center mb-10">
+      <p class="text-xs font-mono tracking-widest uppercase text-zinc-600 mb-3">
+        By the Numbers
+      </p>
+      <h2
+        id="impact-heading"
+        class="text-2xl font-bold text-white"
+        data-reveal
+      >
+        Impact at a Glance
+      </h2>
+    </div>
+    <div
+      class="grid grid-cols-2 lg:grid-cols-4 divide-x divide-y lg:divide-y-0 divide-zinc-800 border border-zinc-800 rounded-xl overflow-hidden"
+    >
+      {metrics.map((m, i) => (
+        <div
+          data-reveal
+          class="py-8 px-6 text-center"
+          style={`transition-delay: ${i * 100}ms`}
+        >
+          <div class="text-5xl font-black text-[var(--brand)] leading-none mb-2">{m.value}</div>
+          <div class="font-mono text-xs tracking-widest uppercase text-zinc-500">{m.label}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
