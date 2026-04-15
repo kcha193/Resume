@@ -23,7 +23,7 @@ const years = Object.keys(byYear)
 
 <section
   id="publications"
-  class="py-12 sm:py-20 bg-zinc-50 dark:bg-zinc-950"
+  class="py-12 sm:py-20 bg-zinc-950"
   aria-labelledby="publications-heading"
 >
   <div class="max-w-6xl mx-auto px-4 sm:px-6">
@@ -32,7 +32,8 @@ const years = Object.keys(byYear)
     </p>
     <h2
       id="publications-heading"
-      class="text-3xl font-bold text-zinc-900 dark:text-zinc-100 mb-12"
+      class="text-3xl font-bold text-zinc-100 mb-12"
+      data-reveal
     >
       Publications
     </h2>
@@ -42,11 +43,11 @@ const years = Object.keys(byYear)
         <div>
           <div class="flex items-center gap-4 mb-4">
             <span class="font-mono text-sm font-semibold text-[var(--brand)]">{year}</span>
-            <div class="flex-1 h-px bg-zinc-100 dark:bg-zinc-800" aria-hidden="true" />
+            <div class="flex-1 h-px bg-zinc-800" aria-hidden="true" />
           </div>
           <ul class="space-y-4">
             {byYear[year].map(item => (
-              <li class="text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+              <li class="text-sm leading-relaxed text-zinc-400">
                 <span set:html={renderInlineMarkdown(item.citation)} />
                 {item.doi && (
                   <a
