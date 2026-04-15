@@ -1,0 +1,62 @@
+---
+const specializations = [
+  {
+    icon: '📊',
+    title: 'CLV Systems',
+    description: 'Customer lifetime value modelling & intelligence',
+    featured: true,
+  },
+  {
+    icon: '💰',
+    title: 'Pricing Strategy',
+    description: 'Revenue optimisation & pricing analytics',
+    featured: false,
+  },
+  {
+    icon: '🏛️',
+    title: 'Microsimulation',
+    description: 'Large-scale policy & population modelling',
+    featured: false,
+  },
+  {
+    icon: '🤖',
+    title: 'Generative AI',
+    description: 'LLM applications & agentic pipelines',
+    featured: false,
+  },
+] as const;
+---
+
+<section
+  class="py-10 bg-zinc-900"
+  aria-label="Core expertise"
+>
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <p class="text-xs font-mono tracking-widest uppercase text-zinc-600 text-center mb-8">
+      Core Expertise
+    </p>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      {specializations.map((spec, i) => (
+        <div
+          data-reveal
+          class:list={[
+            'rounded-xl p-6 border transition-colors',
+            spec.featured
+              ? 'bg-[rgba(252,189,26,0.06)] border-[rgba(252,189,26,0.2)] hover:border-[var(--brand)]/40'
+              : 'bg-zinc-800/30 border-zinc-800 hover:border-[var(--brand)]/40',
+          ]}
+          style={i > 0 ? `transition-delay: ${i * 80}ms` : ''}
+        >
+          <div class="text-2xl mb-3" aria-hidden="true">{spec.icon}</div>
+          <h3 class:list={[
+            'text-sm font-bold mb-2',
+            spec.featured ? 'text-[var(--brand)]' : 'text-zinc-200',
+          ]}>
+            {spec.title}
+          </h3>
+          <p class="text-xs text-zinc-500 leading-relaxed">{spec.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
