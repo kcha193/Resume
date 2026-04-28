@@ -22,14 +22,6 @@ export function buildPersonSchema(
       '@type': 'PostalAddress',
       addressLocality: profile.location,
     },
-    worksFor: {
-      '@type': 'Organization',
-      name: 'ASB Bank',
-    },
-    alumniOf: {
-      '@type': 'EducationalOrganization',
-      name: 'University of Auckland',
-    },
     sameAs: profile.social.map((s) => s.url),
     knowsAbout: [
       'Data Science',

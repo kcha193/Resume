@@ -9,8 +9,9 @@ interface Props {
 const { items } = Astro.props;
 const sorted = [...items].sort((a, b) => b.data.year - a.data.year);
 
-const featured = sorted.filter(p => p.data.featured);
-const rest     = sorted.filter(p => !p.data.featured);
+const featured = sorted.filter(p => p.data.featured).slice(0, 3);
+const featuredIds = new Set(featured.map((p) => p.id));
+const rest = sorted.filter(p => !featuredIds.has(p.id));
 ---
 
 <section
