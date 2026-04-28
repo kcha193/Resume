@@ -17,9 +17,13 @@ const profileEntry = await getEntry('profile', 'profile');
 const profile = profileEntry!.data;
 
 const experience = (await getCollection('experience')).sort(
-  (a, b) => a.data.order - b.data.order
+  (a, b) => a.data.order - b.data.order,
 );
+
 const projects = await getCollection('projects');
+const [skillsEntry] = await getCollection('skills');
+const [pubsEntry] = await getCollection('publications');
+const [educationEntry] = await getCollection('education');
 ---
 
 <BaseLayout profile={profile}>
@@ -30,9 +34,13 @@ const projects = await getCollection('projects');
     <About summary={profile.summary} />
     <ExperienceTimeline items={experience} />
     <ProjectsGrid items={projects} />
-    <SkillsMatrix />
-    <PublicationsList />
-    <EducationList languages={profile.languages} interests={profile.interests} />
+    <SkillsMatrix categories={skillsEntry.data.categories} />
+    <PublicationsList items={pubsEntry.data.items} />
+    <EducationList
+      items={educationEntry.data.items}
+      languages={profile.languages}
+      interests={profile.interests}
+    />
     <ImpactBanner />
   </main>
   <ContactFooter profile={profile} />

@@ -1,15 +1,11 @@
 ---
-import { getCollection } from 'astro:content';
-
 interface Props {
+  items: Array<{ degree: string; university: string; year: number }>;
   languages: Array<{ name: string; level: string }>;
   interests: string[];
 }
 
-const { languages, interests } = Astro.props;
-
-const [eduEntry] = await getCollection('education');
-const { items } = eduEntry.data;
+const { items, languages, interests } = Astro.props;
 ---
 
 <section

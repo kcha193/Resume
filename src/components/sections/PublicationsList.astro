@@ -1,15 +1,20 @@
 ---
-import { getCollection } from 'astro:content';
 import { renderInlineMarkdown } from '../../lib/utils';
 
-const [pubsEntry] = await getCollection('publications');
-const { items } = pubsEntry.data;
+interface PublicationItem {
+  year: number;
+  citation: string;
+  doi?: string;
+}
 
-// Sort by year descending
+interface Props {
+  items: PublicationItem[];
+}
+
+const { items } = Astro.props;
+
 const sorted = [...items].sort((a, b) => b.year - a.year);
-
-// Group by year
-const byYear = sorted.reduce<Record<number, typeof sorted>>((acc, item) => {
+const byYear = sorted.reduce<Record<number, PublicationItem[]>>((acc, item) => {
   acc[item.year] = acc[item.year] || [];
   acc[item.year].push(item);
   return acc;
@@ -18,7 +23,6 @@ const byYear = sorted.reduce<Record<number, typeof sorted>>((acc, item) => {
 const years = Object.keys(byYear)
   .map(Number)
   .sort((a, b) => b - a);
-
 ---
 
 <section

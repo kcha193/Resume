@@ -1,8 +1,9 @@
 ---
-import { getCollection } from 'astro:content';
+interface Props {
+  categories: Array<{ title: string; items: string[] }>;
+}
 
-const [skillsEntry] = await getCollection('skills');
-const { categories } = skillsEntry.data;
+const { categories } = Astro.props;
 ---
 
 <section
