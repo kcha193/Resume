@@ -1,6 +1,9 @@
 ---
 interface Props {
-  categories: Array<{ title: string; items: string[] }>;
+  categories: Array<{
+    title: string;
+    items: string[];
+  }>;
 }
 
 const { categories } = Astro.props;
@@ -8,55 +11,40 @@ const { categories } = Astro.props;
 
 <section
   id="skills"
-  class="py-12 sm:py-20 bg-zinc-900/50"
+  class="section-shell bg-white dark:bg-zinc-900/55"
   aria-labelledby="skills-heading"
 >
-  <div class="max-w-6xl mx-auto px-4 sm:px-6">
-    <p class="text-sm font-mono text-[var(--brand)] tracking-widest uppercase mb-3">
-      Toolkit
-    </p>
-    <h2
-      id="skills-heading"
-      class="text-3xl font-bold text-zinc-100 mb-12"
-      data-reveal
-    >
-      Skills
-    </h2>
+  <div class="section-inner">
+    <div class="mb-12 grid gap-6 lg:grid-cols-[0.75fr_1fr] lg:items-end">
+      <div>
+        <p class="eyebrow">Capability Map</p>
+        <h2 id="skills-heading" class="section-title">
+          Technical depth with commercial context.
+        </h2>
+      </div>
+      <p class="section-copy max-w-2xl lg:justify-self-end">
+        Skill groups are organised for recruiters and hiring leaders: what Kevin can do, where it applies, and how it shows up in banking, pricing, analytics, and AI work.
+      </p>
+    </div>
 
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-      {categories.map(cat => {
-        const isLanguages = cat.title === 'Languages';
-        return (
-          <div
-            class:list={[
-              'rounded-xl p-5 border',
-              isLanguages
-                ? 'bg-[rgba(252,189,26,0.05)] border-[var(--brand)]/15'
-                : 'bg-zinc-900/30 border-zinc-800',
-            ]}
-            data-reveal
-          >
-            <h3 class:list={[
-              'text-xs font-mono tracking-widest uppercase mb-4',
-              isLanguages ? 'text-[var(--brand)]' : 'text-zinc-500',
-            ]}>
-              {cat.title}
-            </h3>
-            <div class="flex flex-wrap gap-2">
-              {cat.items.map(item => (
-                <span class:list={[
-                  'px-3 py-1 rounded-full text-sm border transition-colors cursor-default',
-                  isLanguages
-                    ? 'bg-[#1a1500] text-[var(--brand)] border-[var(--brand)]/30 hover:border-[var(--brand)]/60'
-                    : 'bg-zinc-800 text-zinc-400 border-zinc-700 hover:border-[var(--brand)]/40 hover:text-zinc-200',
-                ]}>
-                  {item}
-                </span>
-              ))}
-            </div>
+    <div class="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+      {categories.map((cat, index) => (
+        <article class:list={[
+          'rounded-lg border border-zinc-950/10 bg-[#f8f7f2]/70 p-5 shadow-sm dark:border-white/10 dark:bg-white/[0.035]',
+          index === 1 && 'border-[var(--brand)]/45',
+        ]}>
+          <h3 class="text-sm font-black text-zinc-950 dark:text-zinc-50">
+            {cat.title}
+          </h3>
+          <div class="mt-4 flex flex-wrap gap-2">
+            {cat.items.map(item => (
+              <span class="rounded-full border border-zinc-950/10 bg-white/70 px-3 py-1.5 text-sm font-medium text-zinc-700 transition-colors hover:border-[var(--brand)] dark:border-white/10 dark:bg-zinc-950/35 dark:text-zinc-300">
+                {item}
+              </span>
+            ))}
           </div>
-        );
-      })}
+        </article>
+      ))}
     </div>
   </div>
 </section>

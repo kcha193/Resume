@@ -3,11 +3,11 @@ import ThemeToggle from './ThemeToggle.astro';
 import NavMenu from './NavMenu.astro';
 ---
 
-<header class="sticky top-0 z-50 bg-zinc-50/80 dark:bg-zinc-950/80 backdrop-blur-md border-b border-zinc-100 dark:border-zinc-800">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between h-14">
+<header class="sticky top-0 z-50 border-b border-zinc-950/10 bg-[#f8f7f2]/82 backdrop-blur-xl dark:border-white/10 dark:bg-zinc-950/82">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
     <a
       href="/"
-      class="font-semibold text-sm text-zinc-900 dark:text-zinc-100 hover:text-[var(--brand)] transition-colors no-underline"
+      class="inline-flex h-9 w-9 items-center justify-center rounded-md border border-zinc-950/10 bg-white/70 text-sm font-black text-zinc-950 shadow-sm transition-colors hover:border-[var(--brand)] hover:text-zinc-950 dark:border-white/10 dark:bg-white/5 dark:text-zinc-50 dark:hover:text-white no-underline"
       aria-label="Kevin Chang – home"
     >
       KC
@@ -20,7 +20,7 @@ import NavMenu from './NavMenu.astro';
         href="/resume.html"
         target="_blank"
         rel="noopener noreferrer"
-        class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-[var(--brand)] text-zinc-900 text-sm font-medium hover:opacity-90 transition-opacity no-underline"
+        class="hidden sm:inline-flex items-center gap-1.5 rounded-md bg-[var(--brand)] px-3.5 py-2 text-sm font-semibold text-zinc-950 shadow-sm shadow-[var(--brand-glow)] transition-transform hover:-translate-y-0.5 hover:opacity-95 no-underline"
       >
         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>

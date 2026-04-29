@@ -1,4 +1,5 @@
 ---
+import Badge from '../ui/Badge.astro';
 import type { CollectionEntry } from 'astro:content';
 
 interface Props {
@@ -8,43 +9,40 @@ interface Props {
 
 const { entry, featured = false } = Astro.props;
 const { title, blurb, url, stack, category, year } = entry.data;
+const proofPoint = entry.body?.trim();
 ---
 
-<article
-  class:list={[
-    'group flex flex-col rounded-xl border p-6 transition-all duration-300',
-    featured
-      ? 'bg-[#0d0d00] border-[var(--brand)]/35 shadow-[0_0_20px_rgba(252,189,26,0.06)] hover:border-[var(--brand)]/60 hover:shadow-[0_0_28px_rgba(252,189,26,0.10)]'
-      : 'bg-zinc-900 border-zinc-800 hover:border-[var(--brand)]/50 hover:shadow-[0_0_16px_rgba(252,189,26,0.06)]',
-  ]}
-  data-reveal
->
-  <!-- Top row: year + badges -->
-  <div class="flex items-center justify-between mb-4">
-    <span class="font-mono text-xs text-zinc-500">{year}</span>
+<article class:list={[
+  'group flex flex-col rounded-lg border p-5 transition-colors duration-300',
+  featured
+    ? 'premium-card min-h-[25rem] border-[var(--brand)]/45 sm:p-6'
+    : 'border-zinc-950/10 bg-white/70 shadow-sm hover:border-[var(--brand)]/60 dark:border-white/10 dark:bg-white/[0.035]',
+]}>
+  <div class="mb-5 flex items-start justify-between gap-4">
+    <div>
+      <span class="font-mono text-xs font-semibold uppercase text-zinc-500 dark:text-zinc-400">{year}</span>
+      <Badge class="ml-2 capitalize">{category}</Badge>
+    </div>
     <div class="flex items-center gap-2">
       {featured && (
-        <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-semibold bg-[var(--brand)] text-zinc-900">
+        <span class="inline-flex items-center gap-1 rounded bg-[var(--brand)] px-2 py-1 text-xs font-bold text-zinc-950">
           <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
           Featured
         </span>
       )}
-      <!-- Plain span avoids Badge component's conflicting brand color classes -->
-      <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium capitalize bg-zinc-800 border border-zinc-700 text-zinc-400">{category}</span>
     </div>
   </div>
 
-  <!-- Title -->
   <h3 class:list={[
-    'text-base font-semibold mb-3 leading-snug',
-    featured ? 'text-zinc-50' : 'text-zinc-100',
+    'font-black leading-tight text-zinc-950 dark:text-zinc-50',
+    featured ? 'text-2xl' : 'text-lg',
   ]}>
     {url ? (
       <a
         href={url}
         target="_blank"
         rel="noopener noreferrer"
-        class="hover:text-[var(--brand)] transition-colors no-underline"
+        class="transition-colors hover:text-[var(--brand)] no-underline"
       >
         {title}
         <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="inline ml-1 opacity-60"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
@@ -52,18 +50,22 @@ const { title, blurb, url, stack, category, year } = entry.data;
     ) : title}
   </h3>
 
-  <!-- Blurb -->
-  <p class="text-sm leading-relaxed text-zinc-400 flex-1 mb-4">
+  <p class:list={[
+    'mt-4 flex-1 leading-7 text-zinc-700 dark:text-zinc-300',
+    featured ? 'text-base' : 'text-sm',
+  ]}>
     {blurb}
   </p>
 
-  <!-- Stack -->
-  <div class="flex flex-wrap gap-1.5 mt-auto pt-2 border-t border-zinc-800">
-    {stack.slice(0, 4).map(s => (
-      <span class:list={[
-        'text-xs font-mono',
-        featured ? 'text-[var(--brand)]' : 'text-zinc-500',
-      ]}>{s}</span>
+  {featured && proofPoint && (
+    <p class="mt-5 rounded-md border border-zinc-950/10 bg-zinc-50/70 p-3 text-xs leading-5 text-zinc-600 dark:border-white/10 dark:bg-zinc-950/35 dark:text-zinc-400">
+      {proofPoint}
+    </p>
+  )}
+
+  <div class="mt-5 flex flex-wrap gap-2 border-t border-zinc-950/10 pt-4 dark:border-white/10">
+    {stack.slice(0, featured ? 5 : 4).map(s => (
+      <span class="rounded-full bg-zinc-950/[0.055] px-2.5 py-1 text-xs font-semibold text-zinc-600 dark:bg-white/10 dark:text-zinc-300">{s}</span>
     ))}
   </div>
 </article>

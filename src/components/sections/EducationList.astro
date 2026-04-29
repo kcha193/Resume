@@ -1,6 +1,10 @@
 ---
 interface Props {
-  items: Array<{ degree: string; university: string; year: number }>;
+  items: Array<{
+    degree: string;
+    university: string;
+    year: number;
+  }>;
   languages: Array<{ name: string; level: string }>;
   interests: string[];
 }
@@ -10,34 +14,27 @@ const { items, languages, interests } = Astro.props;
 
 <section
   id="education"
-  class="py-12 sm:py-20 bg-zinc-900/50"
+  class="section-shell bg-white dark:bg-zinc-900/55"
   aria-labelledby="education-heading"
 >
-  <div class="max-w-6xl mx-auto px-4 sm:px-6">
-    <div class="grid md:grid-cols-3 gap-12">
-      <!-- Education -->
-      <div class="md:col-span-2">
-        <p class="text-sm font-mono text-[var(--brand)] tracking-widest uppercase mb-3">
-          Academic
-        </p>
-        <h2
-          id="education-heading"
-          class="text-3xl font-bold text-zinc-100 mb-8"
-          data-reveal
-        >
+  <div class="section-inner">
+    <div class="grid gap-6 lg:grid-cols-[1.25fr_0.75fr]">
+      <div class="rounded-lg border border-zinc-950/10 bg-[#f8f7f2]/70 p-6 shadow-sm dark:border-white/10 dark:bg-white/[0.035]">
+        <p class="eyebrow">Academic Foundation</p>
+        <h2 id="education-heading" class="section-title !text-3xl">
           Education
         </h2>
-        <ul class="space-y-6">
+        <ul class="mt-8 space-y-5">
           {items.map(item => (
-            <li class="flex gap-4">
-              <span class="font-mono text-sm text-[var(--brand)] min-w-[3.5rem] pt-0.5">
+            <li class="flex gap-4 rounded-md border border-zinc-950/10 bg-white/65 p-4 dark:border-white/10 dark:bg-zinc-950/35">
+              <span class="min-w-[3.5rem] pt-0.5 font-mono text-sm font-black text-[var(--link)] dark:text-[var(--brand)]">
                 {item.year}
               </span>
               <div>
-                <p class="font-semibold text-zinc-100 text-sm">
+                <p class="text-sm font-black text-zinc-950 dark:text-zinc-50">
                   {item.degree}
                 </p>
-                <p class="text-sm text-zinc-400">
+                <p class="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
                   {item.university}
                 </p>
               </div>
@@ -46,34 +43,29 @@ const { items, languages, interests } = Astro.props;
         </ul>
       </div>
 
-      <!-- Languages & Interests -->
-      <div class="mt-10 md:mt-0">
-        <p class="text-sm font-mono text-[var(--brand)] tracking-widest uppercase mb-3">
-          Personal
-        </p>
-        <div class="hidden md:block md:mb-8 md:h-[2.25rem]" aria-hidden="true" />
-
-        <div class="mb-8">
-          <h3 class="text-xs font-mono tracking-widest uppercase text-zinc-400 mb-3">
+      <div class="rounded-lg border border-zinc-950/10 bg-[#f8f7f2]/70 p-6 shadow-sm dark:border-white/10 dark:bg-white/[0.035]">
+        <p class="eyebrow">Personal Context</p>
+        <div class="mt-8">
+          <h3 class="mb-3 text-xs font-mono uppercase text-zinc-500 dark:text-zinc-400">
             Languages
           </h3>
           <ul class="space-y-2">
             {languages.map(lang => (
-              <li class="flex items-center justify-between text-sm">
-                <span class="text-zinc-300">{lang.name}</span>
-                <span class="font-mono text-xs text-zinc-400">{lang.level}</span>
+              <li class="flex items-center justify-between rounded-md border border-zinc-950/10 bg-white/65 px-3 py-2 text-sm dark:border-white/10 dark:bg-zinc-950/35">
+                <span class="font-semibold text-zinc-800 dark:text-zinc-200">{lang.name}</span>
+                <span class="font-mono text-xs text-zinc-500 dark:text-zinc-400">{lang.level}</span>
               </li>
             ))}
           </ul>
         </div>
 
-        <div>
-          <h3 class="text-xs font-mono tracking-widest uppercase text-zinc-400 mb-3">
+        <div class="mt-8">
+          <h3 class="mb-3 text-xs font-mono uppercase text-zinc-500 dark:text-zinc-400">
             Interests
           </h3>
           <div class="flex flex-wrap gap-2">
             {interests.map(interest => (
-              <span class="px-2.5 py-1 rounded-full text-xs border border-zinc-700 text-zinc-400">
+              <span class="rounded-full border border-zinc-950/10 bg-white/65 px-3 py-1.5 text-xs font-semibold text-zinc-600 dark:border-white/10 dark:bg-zinc-950/35 dark:text-zinc-300">
                 {interest}
               </span>
             ))}

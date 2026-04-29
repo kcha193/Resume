@@ -2,14 +2,12 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/layout/Header.astro';
 import Hero from '../components/sections/Hero.astro';
-import Specializations from '../components/sections/Specializations.astro';
-import About from '../components/sections/About.astro';
+import ProfessionalSnapshot from '../components/sections/ProfessionalSnapshot.astro';
 import ExperienceTimeline from '../components/sections/ExperienceTimeline.astro';
 import ProjectsGrid from '../components/sections/ProjectsGrid.astro';
 import SkillsMatrix from '../components/sections/SkillsMatrix.astro';
 import PublicationsList from '../components/sections/PublicationsList.astro';
 import EducationList from '../components/sections/EducationList.astro';
-import ImpactBanner from '../components/sections/ImpactBanner.astro';
 import ContactFooter from '../components/sections/ContactFooter.astro';
 import { getEntry, getCollection } from 'astro:content';
 
@@ -17,31 +15,28 @@ const profileEntry = await getEntry('profile', 'profile');
 const profile = profileEntry!.data;
 
 const experience = (await getCollection('experience')).sort(
-  (a, b) => a.data.order - b.data.order,
+  (a, b) => a.data.order - b.data.order
 );
-
 const projects = await getCollection('projects');
-const [skillsEntry] = await getCollection('skills');
-const [pubsEntry] = await getCollection('publications');
-const [educationEntry] = await getCollection('education');
+const skillsEntry = await getEntry('skills', 'skills');
+const publicationsEntry = await getEntry('publications', 'publications');
+const educationEntry = await getEntry('education', 'education');
 ---
 
 <BaseLayout profile={profile}>
   <Header />
   <main id="main-content">
     <Hero profile={profile} />
-    <Specializations />
-    <About summary={profile.summary} />
+    <ProfessionalSnapshot summary={profile.summary} experience={experience} />
     <ExperienceTimeline items={experience} />
     <ProjectsGrid items={projects} />
-    <SkillsMatrix categories={skillsEntry.data.categories} />
-    <PublicationsList items={pubsEntry.data.items} />
+    <SkillsMatrix categories={skillsEntry!.data.categories} />
+    <PublicationsList items={publicationsEntry!.data.items} />
     <EducationList
-      items={educationEntry.data.items}
+      items={educationEntry!.data.items}
       languages={profile.languages}
       interests={profile.interests}
     />
-    <ImpactBanner />
   </main>
   <ContactFooter profile={profile} />
 </BaseLayout>

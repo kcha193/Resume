@@ -10,12 +10,22 @@
   --brand: #FCBD1A;
   --brand-dark: #FFD04D;
   --brand-glow: rgba(252, 189, 26, 0.30);
+  --link: #6f4c00;
+  --ink: #18181b;
+  --paper: #f8f7f2;
+  --panel: #ffffff;
+  --line: rgba(24, 24, 27, 0.10);
   --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono Variable", ui-monospace, monospace;
 }
 
 [data-theme="dark"] {
   --brand: #FFD04D;
+  --link: #FFD04D;
+  --ink: #f4f4f5;
+  --paper: #09090b;
+  --panel: #121214;
+  --line: rgba(244, 244, 245, 0.12);
 }
 
 /* ─── Base reset ─────────────────────────────────────────────────────────────── */
@@ -30,23 +40,114 @@ html {
 
 body {
   font-family: var(--font-sans);
-  background-color: #fafafa; /* zinc-50 */
+  background:
+    linear-gradient(180deg, rgba(252, 189, 26, 0.07), transparent 28rem),
+    radial-gradient(circle at top left, rgba(252, 189, 26, 0.12), transparent 26rem),
+    var(--paper);
   color: #1a1a1a;
+  text-rendering: optimizeLegibility;
 }
 
 [data-theme="dark"] body {
-  background-color: #09090b; /* zinc-950 */
+  background:
+    linear-gradient(180deg, rgba(252, 189, 26, 0.08), transparent 24rem),
+    radial-gradient(circle at top left, rgba(252, 189, 26, 0.11), transparent 24rem),
+    #09090b;
   color: #f4f4f5; /* zinc-100 */
+}
+
+::selection {
+  background: var(--brand);
+  color: #18181b;
 }
 
 /* ─── Prose links (in @layer base so Tailwind utilities can override) ────────── */
 @layer base {
   a {
-    color: var(--brand);
+    color: var(--link);
     text-decoration: none;
   }
   a:hover {
     text-decoration: underline;
+  }
+}
+
+@layer components {
+  .section-shell {
+    position: relative;
+    padding-block: clamp(4rem, 7vw, 7rem);
+  }
+
+  .section-inner {
+    width: min(100% - 2rem, 72rem);
+    margin-inline: auto;
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--link);
+  }
+
+  [data-theme="dark"] .eyebrow {
+    color: var(--brand);
+  }
+
+  .eyebrow::before {
+    content: "";
+    width: 1.75rem;
+    height: 1px;
+    background: currentColor;
+  }
+
+  .section-title {
+    margin-top: 0.75rem;
+    color: #18181b;
+    font-size: 2.25rem;
+    font-weight: 850;
+    letter-spacing: 0;
+    line-height: 0.98;
+  }
+
+  @media (min-width: 768px) {
+    .section-title {
+      font-size: 3rem;
+    }
+  }
+
+  [data-theme="dark"] .section-title {
+    color: #fafafa;
+  }
+
+  .section-copy {
+    color: #52525b;
+    font-size: 1rem;
+    line-height: 1.75;
+  }
+
+  [data-theme="dark"] .section-copy {
+    color: #a1a1aa;
+  }
+
+  .premium-card {
+    border: 1px solid var(--line);
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.90), rgba(255, 255, 255, 0.76)),
+      var(--panel);
+    box-shadow: 0 24px 70px rgba(24, 24, 27, 0.08);
+  }
+
+  [data-theme="dark"] .premium-card {
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.025)),
+      var(--panel);
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.32);
   }
 }
 
