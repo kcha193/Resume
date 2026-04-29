@@ -10,35 +10,36 @@ const { items } = Astro.props;
 const sorted = [...items].sort((a, b) => b.data.year - a.data.year);
 
 const featured = sorted.filter(p => p.data.featured).slice(0, 3);
-const featuredIds = new Set(featured.map((p) => p.id));
+const featuredIds = new Set(featured.map(p => p.id));
 const rest = sorted.filter(p => !featuredIds.has(p.id));
 ---
 
 <section
   id="projects"
-  class="py-12 sm:py-20 bg-zinc-950"
+  class="section-shell bg-[#f8f7f2] dark:bg-zinc-950"
   aria-labelledby="projects-heading"
 >
-  <div class="max-w-6xl mx-auto px-4 sm:px-6">
-    <p class="text-sm font-mono text-[var(--brand)] tracking-widest uppercase mb-3">
-      Work
-    </p>
-    <h2
-      id="projects-heading"
-      class="text-3xl font-bold text-zinc-100 mb-12"
-      data-reveal
-    >
-      Projects
-    </h2>
+  <div class="section-inner">
+    <div class="mb-12 grid gap-6 lg:grid-cols-[0.75fr_1fr] lg:items-end">
+      <div>
+        <p class="eyebrow">Portfolio Proof</p>
+        <h2 id="projects-heading" class="section-title">
+          Data products with policy and business weight.
+        </h2>
+      </div>
+      <p class="section-copy max-w-2xl lg:justify-self-end">
+        Selected public work showing Kevin’s ability to turn modelling, research, and data engineering into tools that help teams make decisions.
+      </p>
+    </div>
 
     {featured.length > 0 && (
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
+      <div class="mb-6 grid gap-5 lg:grid-cols-3">
         {featured.map(entry => <ProjectCard entry={entry} featured />)}
       </div>
     )}
 
     {rest.length > 0 && (
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {rest.map(entry => <ProjectCard entry={entry} featured={false} />)}
       </div>
     )}

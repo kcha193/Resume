@@ -11,22 +11,23 @@ const { items } = Astro.props;
 
 <section
   id="experience"
-  class="py-12 sm:py-20 bg-zinc-900/50"
+  class="section-shell bg-white dark:bg-zinc-900/55"
   aria-labelledby="experience-heading"
 >
-  <div class="max-w-6xl mx-auto px-4 sm:px-6">
-    <p class="text-sm font-mono text-[var(--brand)] tracking-widest uppercase mb-3">
-      Career
-    </p>
-    <h2
-      id="experience-heading"
-      class="text-3xl font-bold text-zinc-100 mb-12"
-      data-reveal
-    >
-      Experience
-    </h2>
+  <div class="section-inner">
+    <div class="mb-12 grid gap-6 lg:grid-cols-[0.75fr_1fr] lg:items-end">
+      <div>
+        <p class="eyebrow">Career Evidence</p>
+        <h2 id="experience-heading" class="section-title">
+          Senior analytics work, made easy to scan.
+        </h2>
+      </div>
+      <p class="section-copy max-w-2xl lg:justify-self-end">
+        A progression across ASB Bank, New Zealand Treasury, and statistical consulting, with a through-line of rigorous modelling, stakeholder clarity, and practical data products.
+      </p>
+    </div>
 
-    <div class="max-w-3xl">
+    <div class="space-y-5">
       {items.map((entry, i) => (
         <ExperienceCard entry={entry} isLast={i === items.length - 1} />
       ))}

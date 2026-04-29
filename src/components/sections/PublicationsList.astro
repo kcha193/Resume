@@ -1,20 +1,21 @@
 ---
 import { renderInlineMarkdown } from '../../lib/utils';
 
-interface PublicationItem {
-  year: number;
-  citation: string;
-  doi?: string;
-}
-
 interface Props {
-  items: PublicationItem[];
+  items: Array<{
+    year: number;
+    citation: string;
+    doi?: string;
+  }>;
 }
 
 const { items } = Astro.props;
 
+// Sort by year descending
 const sorted = [...items].sort((a, b) => b.year - a.year);
-const byYear = sorted.reduce<Record<number, PublicationItem[]>>((acc, item) => {
+
+// Group by year
+const byYear = sorted.reduce<Record<number, typeof sorted>>((acc, item) => {
   acc[item.year] = acc[item.year] || [];
   acc[item.year].push(item);
   return acc;
@@ -23,42 +24,44 @@ const byYear = sorted.reduce<Record<number, PublicationItem[]>>((acc, item) => {
 const years = Object.keys(byYear)
   .map(Number)
   .sort((a, b) => b - a);
+
 ---
 
 <section
   id="publications"
-  class="py-12 sm:py-20 bg-zinc-950"
+  class="section-shell bg-[#f8f7f2] dark:bg-zinc-950"
   aria-labelledby="publications-heading"
 >
-  <div class="max-w-6xl mx-auto px-4 sm:px-6">
-    <p class="text-sm font-mono text-[var(--brand)] tracking-widest uppercase mb-3">
-      Research
-    </p>
-    <h2
-      id="publications-heading"
-      class="text-3xl font-bold text-zinc-100 mb-12"
-      data-reveal
-    >
-      Publications
-    </h2>
+  <div class="section-inner">
+    <div class="mb-10 grid gap-6 lg:grid-cols-[0.75fr_1fr] lg:items-end">
+      <div>
+        <p class="eyebrow">Credibility Proof</p>
+        <h2 id="publications-heading" class="section-title">
+          Research, publications, and analytical rigour.
+        </h2>
+      </div>
+      <p class="section-copy max-w-2xl lg:justify-self-end">
+        Peer-reviewed and thesis work that supports Kevin’s technical credibility without overwhelming the main career story.
+      </p>
+    </div>
 
-    <div class="max-w-3xl space-y-8">
+    <div class="grid gap-4 lg:grid-cols-2">
       {years.map(year => (
-        <div>
-          <div class="flex items-center gap-4 mb-4">
-            <span class="font-mono text-sm font-semibold text-[var(--brand)]">{year}</span>
-            <div class="flex-1 h-px bg-zinc-800" aria-hidden="true" />
+        <article class="rounded-lg border border-zinc-950/10 bg-white/70 p-5 shadow-sm dark:border-white/10 dark:bg-white/[0.035]">
+          <div class="mb-4 flex items-center gap-4">
+            <span class="rounded bg-[var(--brand)] px-2.5 py-1 font-mono text-sm font-black text-zinc-950">{year}</span>
+            <div class="h-px flex-1 bg-zinc-950/10 dark:bg-white/10" aria-hidden="true" />
           </div>
           <ul class="space-y-4">
             {byYear[year].map(item => (
-              <li class="text-sm leading-relaxed text-zinc-400">
+              <li class="text-sm leading-6 text-zinc-700 dark:text-zinc-300">
                 <span set:html={renderInlineMarkdown(item.citation)} />
                 {item.doi && (
                   <a
                     href={item.doi}
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="ml-2 inline-flex items-center gap-1 text-xs font-mono text-[var(--brand)] hover:underline"
+                    class="ml-2 inline-flex items-center gap-1 text-xs font-mono font-semibold text-zinc-800 underline decoration-[var(--brand)] underline-offset-4 hover:text-zinc-950 dark:text-zinc-100 dark:hover:text-white"
                   >
                     DOI ↗
                   </a>
@@ -66,7 +69,7 @@ const years = Object.keys(byYear)
               </li>
             ))}
           </ul>
-        </div>
+        </article>
       ))}
     </div>
   </div>
