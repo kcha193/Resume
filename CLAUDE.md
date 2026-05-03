@@ -11,6 +11,7 @@ Kevin Chang's personal resume/CV website, built with **Astro 5** and **Tailwind 
 - **Vanilla JS only** — theme toggle and mobile nav are pure Astro components with minimal inline scripts; React has been removed
 - **Self-hosted variable fonts** — Inter Variable (body), JetBrains Mono Variable (mono/dates)
 - **Astro content collections** — Zod-validated YAML + Markdown files
+- **`@astrojs/sitemap`** — auto-generates `sitemap-index.xml` at build time
 - **Netlify** — CI/CD and hosting (auto-deploys on push to `main`)
 
 ## Architecture
@@ -54,6 +55,7 @@ npm run dev          # local dev server → http://localhost:4321
 npm run build        # production build → dist/
 npm run preview      # preview dist/ locally
 npm run check        # Astro + TypeScript type check
+npm test             # site validation guardrails (scripts/validate-site.mjs)
 ```
 
 ## Content Editing
@@ -97,6 +99,6 @@ Push to `main` → Netlify runs `npm run build`, publishes `dist/`.
 
 - The `v1-hugo` git tag preserves the original Hugo 0.80 / R / blogdown site for reference
 - Content collection `.md` files (experience, projects) use standard Markdown — no MDX needed since no JSX components are used in content files
-- `public/og-image.png` should be replaced with a proper 1200×630 OG image; currently the avatar JPEG is used as a fallback
-- `src/components/layout/ThemeToggle.tsx` and `NavMenu.tsx` are legacy files left on disk (could not be deleted in the session they were deprecated); they are not imported anywhere and can be safely deleted
+- `scripts/validate-site.mjs` enforces invariants (1200×630 PNG OG image, header aria-label, no `text-zinc-500` in `ContactFooter`, no `public/.DS_Store`); run via `npm test` and re-run after touching those areas
+- `public/og-image.svg` is the source of truth; `public/og-image.png` is the rasterised social card referenced in meta tags
 - The `renv/` R environment, `themes/` Hugo theme, `config.toml`, and all R files were removed in the Astro migration
