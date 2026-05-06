@@ -7,6 +7,7 @@ const profile = defineCollection({
   schema: z.object({
     name: z.string().min(1),
     tagline: z.string().min(1).max(120),
+    seoDescription: z.string().optional(),
     location: z.string().min(1),
     email: z.string().email(),
     summary: z.string().min(40),
@@ -76,7 +77,7 @@ const education = defineCollection({
 const skills = defineCollection({
   type: 'data',
   schema: z.object({
-    categories: z.array(z.object({
+    tiers: z.array(z.object({
       title: z.string().min(1),
       items: z.array(z.string().min(1)).min(1),
     })).min(1),

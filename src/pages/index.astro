@@ -30,7 +30,7 @@ const educationEntry = await getEntry('education', 'education');
     <ProfessionalSnapshot summary={profile.summary} experience={experience} />
     <ExperienceTimeline items={experience} />
     <ProjectsGrid items={projects} />
-    <SkillsMatrix categories={skillsEntry!.data.categories} />
+    <SkillsMatrix tiers={skillsEntry!.data.tiers} />
     <PublicationsList items={publicationsEntry!.data.items} />
     <EducationList
       items={educationEntry!.data.items}

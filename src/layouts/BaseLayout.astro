@@ -2,14 +2,17 @@
 import '../styles/global.css';
 import '../styles/print.css';
 import { buildPersonSchema } from '../lib/seo';
+import avatarImg from '../assets/avatar.jpg';
 
 interface Props {
   profile: {
     name: string;
     tagline: string;
+    seoDescription?: string;
     summary: string;
     email: string;
     location: string;
+    languages: Array<{ name: string; level: string }>;
     social: Array<{ platform: string; url: string; handle: string; icon: string }>;
   };
   title?: string;
@@ -19,12 +22,13 @@ interface Props {
 const {
   profile,
   title = `${profile.name} | ${profile.tagline}`,
-  description = profile.summary.replace(/\*\*/g, '').slice(0, 160),
+  description = profile.seoDescription ?? profile.summary.replace(/\*\*/g, '').slice(0, 160),
 } = Astro.props;
 
-const siteUrl = Astro.site?.href ?? 'https://kevin-cv.netlify.app/';
-const jsonLd = buildPersonSchema(profile, siteUrl);
+const siteUrl = Astro.site!.href;
 const socialCardImage = new URL('/og-image.png', siteUrl).href;
+const profileImage = new URL(avatarImg.src, siteUrl).href;
+const jsonLd = buildPersonSchema(profile, siteUrl, profileImage);
 ---
 
 <!doctype html>

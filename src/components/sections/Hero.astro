@@ -31,6 +31,13 @@ const highlights = [
   { value: 'ASB Bank', label: 'Retail banking, pricing, and customer intelligence' },
   { value: 'Ph.D.', label: 'Statistics and Biological Sciences' },
 ];
+
+const stats = [
+  '12+ years',
+  '8 publications',
+  '1,200+ citations',
+  '60+ institutions',
+];
 ---
 
 <section
@@ -59,6 +66,15 @@ const highlights = [
       <p class="mt-6 max-w-2xl text-lg leading-8 text-zinc-700 dark:text-zinc-300">
         {profile.name} is a senior data scientist translating machine learning, pricing strategy, and customer intelligence into clear commercial decisions for financial services leaders.
       </p>
+
+      <div class="mt-6 inline-flex max-w-full flex-wrap items-center gap-x-3 gap-y-2 rounded-md border border-zinc-950/10 bg-white/60 px-4 py-2.5 text-sm font-semibold text-zinc-700 shadow-sm dark:border-white/10 dark:bg-white/[0.04] dark:text-zinc-300" aria-label="Career impact stats">
+        {stats.map((stat, index) => (
+          <>
+            <span>{stat}</span>
+            {index < stats.length - 1 && <span class="text-[var(--brand)]" aria-hidden="true">·</span>}
+          </>
+        ))}
+      </div>
 
       <div class="mt-7 flex flex-wrap gap-2.5" aria-label="Core expertise">
         {credibilityBadges.map(badge => (
