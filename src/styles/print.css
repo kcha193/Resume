@@ -1,7 +1,7 @@
 @media print {
   /* Hide interactive elements */
   header nav,
-  .theme-toggle,
+  #theme-toggle,
   .skip-link,
   footer {
     display: none !important;
