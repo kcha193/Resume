@@ -33,6 +33,10 @@ function assertSourceExcludes(path, forbidden) {
 assertPng('public/og-image.png', 1200, 630);
 assertSourceIncludes('src/components/layout/Header.astro', 'aria-label="KC — Kevin Chang home"');
 assertSourceExcludes('src/components/sections/ContactFooter.astro', 'text-zinc-500');
+assertSourceIncludes('src/components/sections/ExperienceTimeline.astro', "import { render, type CollectionEntry } from 'astro:content';");
+assertSourceIncludes('src/components/sections/ExperienceTimeline.astro', 'summary={item.summary}');
+assertSourceIncludes('src/components/sections/ExperienceCard.astro', 'summary: AstroComponentFactory;');
+assertSourceExcludes('src/components/sections/ExperienceCard.astro', 'entry.body');
 
 try {
   statSync(new URL('../public/.DS_Store', import.meta.url));
