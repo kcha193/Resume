@@ -82,6 +82,20 @@ const navItems = [
   const nav    = document.getElementById('mobile-nav')!;
   const iconOpen  = document.getElementById('nav-icon-open')!;
   const iconClose = document.getElementById('nav-icon-close')!;
+  const focusableSelector = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
+
+  function getFocusableElements() {
+    return [
+      toggle,
+      ...nav.querySelectorAll<HTMLElement>(focusableSelector),
+    ];
+  }
+
+  function focusFirstNavItem() {
+    const firstFocusable = nav.querySelector<HTMLElement>(focusableSelector);
+
+    firstFocusable?.focus();
+  }
 
   function openMenu() {
     nav.classList.remove('hidden');
@@ -89,6 +103,7 @@ const navItems = [
     toggle.setAttribute('aria-label', 'Close menu');
     iconOpen.classList.add('hidden');
     iconClose.classList.remove('hidden');
+    focusFirstNavItem();
   }
 
   function closeMenu() {
@@ -97,6 +112,36 @@ const navItems = [
     toggle.setAttribute('aria-label', 'Open menu');
     iconOpen.classList.remove('hidden');
     iconClose.classList.add('hidden');
+    toggle.focus();
+  }
+
+  function trapFocus(event: KeyboardEvent) {
+    if (nav.classList.contains('hidden')) return;
+
+    if (event.key === 'Escape') {
+      event.preventDefault();
+      closeMenu();
+      return;
+    }
+
+    if (event.key !== 'Tab') return;
+
+    const focusableElements = getFocusableElements();
+    const firstFocusable = focusableElements[0];
+    const lastFocusable = focusableElements[focusableElements.length - 1];
+
+    if (!firstFocusable || !lastFocusable) return;
+
+    if (event.shiftKey && document.activeElement === firstFocusable) {
+      event.preventDefault();
+      lastFocusable.focus();
+      return;
+    }
+
+    if (!event.shiftKey && document.activeElement === lastFocusable) {
+      event.preventDefault();
+      firstFocusable.focus();
+    }
   }
 
   toggle.addEventListener('click', () => {
@@ -105,4 +150,5 @@ const navItems = [
 
   // Close when a nav link is clicked
   nav.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+  document.addEventListener('keydown', trapFocus);
 </script>

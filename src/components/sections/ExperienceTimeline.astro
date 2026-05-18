@@ -1,12 +1,23 @@
 ---
 import ExperienceCard from './ExperienceCard.astro';
-import type { CollectionEntry } from 'astro:content';
+import { render, type CollectionEntry } from 'astro:content';
 
 interface Props {
   items: CollectionEntry<'experience'>[];
 }
 
 const { items } = Astro.props;
+
+const renderedItems = await Promise.all(
+  items.map(async (entry) => {
+    const { Content } = await render(entry);
+
+    return {
+      entry,
+      summary: Content,
+    };
+  }),
+);
 ---
 
 <section
@@ -28,8 +39,12 @@ const { items } = Astro.props;
     </div>
 
     <div class="space-y-5">
-      {items.map((entry, i) => (
-        <ExperienceCard entry={entry} isLast={i === items.length - 1} />
+      {renderedItems.map((item, i) => (
+        <ExperienceCard
+          entry={item.entry}
+          summary={item.summary}
+          isLast={i === renderedItems.length - 1}
+        />
       ))}
     </div>
   </div>

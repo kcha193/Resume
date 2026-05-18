@@ -33,6 +33,20 @@ function assertSourceExcludes(path, forbidden) {
 assertPng('public/og-image.png', 1200, 630);
 assertSourceIncludes('src/components/layout/Header.astro', 'aria-label="KC — Kevin Chang home"');
 assertSourceExcludes('src/components/sections/ContactFooter.astro', 'text-zinc-500');
+assertSourceIncludes('src/components/sections/ExperienceTimeline.astro', "import { render, type CollectionEntry } from 'astro:content';");
+assertSourceIncludes('src/components/sections/ExperienceTimeline.astro', 'summary={item.summary}');
+assertSourceIncludes('src/components/sections/ExperienceCard.astro', 'summary: AstroComponentFactory;');
+assertSourceExcludes('src/components/sections/ExperienceCard.astro', 'entry.body');
+assertSourceIncludes('src/components/layout/NavMenu.astro', "const focusableSelector = 'a[href], button:not([disabled]), [tabindex]:not([tabindex=\"-1\"])';");
+assertSourceIncludes('src/components/layout/NavMenu.astro', 'function trapFocus(event: KeyboardEvent)');
+assertSourceIncludes('src/components/layout/NavMenu.astro', "event.key === 'Escape'");
+assertSourceIncludes('src/components/layout/NavMenu.astro', "event.key !== 'Tab'");
+assertSourceIncludes('src/components/layout/NavMenu.astro', 'firstFocusable.focus();');
+assertSourceIncludes('src/components/layout/NavMenu.astro', 'lastFocusable.focus();');
+assertSourceIncludes('src/components/layout/NavMenu.astro', 'toggle.focus();');
+assertSourceIncludes('netlify.toml', '# TODO: Tighten script-src and style-src to hashes once Astro CSP nonce support stabilises.');
+assertSourceIncludes('netlify.toml', 'for = "/*"');
+assertSourceIncludes('netlify.toml', 'Content-Security-Policy = "default-src \'self\'; script-src \'self\' \'unsafe-inline\'; style-src \'self\' \'unsafe-inline\'; font-src \'self\'; img-src \'self\' data:; connect-src \'none\'; frame-ancestors \'none\'; base-uri \'self\'; form-action \'self\'"');
 
 try {
   statSync(new URL('../public/.DS_Store', import.meta.url));

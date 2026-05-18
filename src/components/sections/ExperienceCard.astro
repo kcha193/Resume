@@ -2,15 +2,16 @@
 import Badge from '../ui/Badge.astro';
 import { formatDate, renderInlineMarkdown } from '../../lib/utils';
 import type { CollectionEntry } from 'astro:content';
+import type { AstroComponentFactory } from 'astro/runtime/server/index.js';
 
 interface Props {
   entry: CollectionEntry<'experience'>;
+  summary: AstroComponentFactory;
   isLast: boolean;
 }
 
-const { entry, isLast } = Astro.props;
+const { entry, summary: Summary, isLast } = Astro.props;
 const { title, company, location, startDate, endDate, tags, highlights } = entry.data;
-const roleSummary = entry.body?.trim();
 ---
 
 <article class:list={[
@@ -44,12 +45,9 @@ const roleSummary = entry.body?.trim();
     </div>
 
     <div>
-      {roleSummary && (
-        <p
-          class="mb-5 text-base leading-7 text-zinc-700 dark:text-zinc-300"
-          set:html={renderInlineMarkdown(roleSummary)}
-        />
-      )}
+      <div class="mb-5 text-sm leading-6 text-zinc-600 dark:text-zinc-400">
+        <Summary />
+      </div>
 
       {tags.length > 0 && (
         <div class="mb-5 flex flex-wrap gap-2">

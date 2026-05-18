@@ -10,6 +10,12 @@
   [headers.values]
     Cache-Control = "public, max-age=0, must-revalidate"
 
+# TODO: Tighten script-src and style-src to hashes once Astro CSP nonce support stabilises.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"
+
 [[headers]]
   for = "/_astro/*"
   [headers.values]
