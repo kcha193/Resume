@@ -37,6 +37,13 @@ assertSourceIncludes('src/components/sections/ExperienceTimeline.astro', "import
 assertSourceIncludes('src/components/sections/ExperienceTimeline.astro', 'summary={item.summary}');
 assertSourceIncludes('src/components/sections/ExperienceCard.astro', 'summary: AstroComponentFactory;');
 assertSourceExcludes('src/components/sections/ExperienceCard.astro', 'entry.body');
+assertSourceIncludes('src/components/layout/NavMenu.astro', "const focusableSelector = 'a[href], button:not([disabled]), [tabindex]:not([tabindex=\"-1\"])';");
+assertSourceIncludes('src/components/layout/NavMenu.astro', 'function trapFocus(event: KeyboardEvent)');
+assertSourceIncludes('src/components/layout/NavMenu.astro', "event.key === 'Escape'");
+assertSourceIncludes('src/components/layout/NavMenu.astro', "event.key !== 'Tab'");
+assertSourceIncludes('src/components/layout/NavMenu.astro', 'firstFocusable.focus();');
+assertSourceIncludes('src/components/layout/NavMenu.astro', 'lastFocusable.focus();');
+assertSourceIncludes('src/components/layout/NavMenu.astro', 'toggle.focus();');
 
 try {
   statSync(new URL('../public/.DS_Store', import.meta.url));
