@@ -74,12 +74,18 @@ assertSourceExcludes('src/styles/print.css', '.theme-toggle');
 assertSourceIncludes('src/layouts/BaseLayout.astro', 'og:image:width');
 assertSourceIncludes('src/layouts/BaseLayout.astro', 'og:image:height');
 
-// Guard: resume.html must not be indexed (avoids SEO dilution)
-assertSourceIncludes('public/resume.html', 'noindex');
+// Guard: /resume page must not be indexed (avoids SEO dilution)
+assertSourceIncludes('src/pages/resume.astro', 'noindex');
 
 // Guard: dead components must not reappear
 assertFileAbsent('src/components/sections/About.astro');
 assertFileAbsent('src/components/sections/ImpactBanner.astro');
 assertFileAbsent('src/components/sections/Specializations.astro');
+
+// Guard: Inter Variable must be served from /fonts/ (stable URL for preload)
+assertSourceIncludes('src/styles/global.css', '/fonts/inter-latin-wght-normal.woff2');
+
+// Guard: BaseLayout must preload the Inter Variable latin font
+assertSourceIncludes('src/layouts/BaseLayout.astro', 'rel="preload"');
 
 console.log('Site validation checks passed.');

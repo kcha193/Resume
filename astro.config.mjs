@@ -5,7 +5,7 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
   site: 'https://kevin-cv.netlify.app',
   integrations: [
-    sitemap(),
+    sitemap({ filter: (page) => !page.endsWith('/resume/') && !page.endsWith('/resume') }),
   ],
   vite: {
     plugins: [tailwindcss()],

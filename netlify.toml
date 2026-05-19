@@ -5,6 +5,12 @@
 [build.environment]
   NODE_VERSION = "20"
 
+
+[[redirects]]
+  from = "/resume.html"
+  to = "/resume"
+  status = 301
+
 [[headers]]
   for = "/"
   [headers.values]

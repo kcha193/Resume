@@ -1,0 +1,175 @@
+---
+import { getCollection, getEntry } from 'astro:content';
+import { formatDate, renderInlineMarkdown } from '../lib/utils';
+
+const profileEntry = await getEntry('profile', 'profile');
+const profile = profileEntry!.data;
+
+const experiences = (await getCollection('experience'))
+  .sort((a, b) => b.data.startDate.getTime() - a.data.startDate.getTime());
+
+const educationEntry = await getEntry('education', 'education');
+const education = educationEntry!.data.items;
+
+const skillsEntry = await getEntry('skills', 'skills');
+const skills = skillsEntry!.data.tiers;
+
+const linkedin = profile.social.find(s => s.platform === 'linkedin');
+const github = profile.social.find(s => s.platform === 'github');
+---
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, follow" />
+  <title>{profile.name} - Resume</title>
+  <style is:global>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background: #f5f5f5;
+      padding: 20px;
+    }
+    .container {
+      max-width: 8.5in;
+      background: white;
+      margin: 0 auto;
+      padding: 40px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      line-height: 1.4;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 20px;
+      border-bottom: 3px solid #FCBD1A;
+      padding-bottom: 15px;
+    }
+    h1 { font-size: 28px; color: #1a1a1a; margin-bottom: 5px; }
+    .tagline { font-size: 14px; color: #666; margin-bottom: 8px; }
+    .contact-info { font-size: 12px; color: #666; }
+    .contact-info a { color: #1a1a1a; text-decoration: underline; }
+    .summary {
+      background: #f9f9f9;
+      padding: 12px;
+      margin: 20px 0;
+      border-left: 4px solid #FCBD1A;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    .section { margin-bottom: 18px; }
+    .section-title {
+      font-size: 14px;
+      font-weight: bold;
+      color: #1a1a1a;
+      text-transform: uppercase;
+      border-bottom: 2px solid #FCBD1A;
+      padding-bottom: 6px;
+      margin-bottom: 12px;
+    }
+    .entry { margin-bottom: 14px; }
+    .entry-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 3px;
+    }
+    .entry-title { font-weight: bold; font-size: 13px; }
+    .entry-company { font-size: 12px; color: #555; }
+    .entry-dates { font-size: 12px; color: #888; font-style: italic; }
+    .highlights { margin-left: 20px; margin-top: 4px; }
+    .highlights li { margin-bottom: 3px; font-size: 11px; color: #444; }
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 15px;
+      font-size: 12px;
+    }
+    .skill-category h4 {
+      font-weight: bold;
+      color: #1a1a1a;
+      margin-bottom: 6px;
+      font-size: 12px;
+    }
+    .skill-category ul { list-style: none; padding-left: 12px; }
+    .skill-category li { margin-bottom: 3px; font-size: 11px; }
+    @media print {
+      body { background: white; padding: 0; }
+      .container { box-shadow: none; padding: 0; max-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>{profile.name}</h1>
+      <div class="tagline">{profile.tagline}</div>
+      <div class="contact-info">
+        <a href={`mailto:${profile.email}`}>{profile.email}</a>
+        {linkedin && (
+          <span> | <a href={linkedin.url} target="_blank" rel="noopener noreferrer">LinkedIn</a></span>
+        )}
+        {github && (
+          <span> | <a href={github.url} target="_blank" rel="noopener noreferrer">GitHub</a></span>
+        )}
+      </div>
+    </header>
+
+    <div class="summary" set:html={renderInlineMarkdown(profile.summary)} />
+
+    <section class="section">
+      <div class="section-title">Professional Experience</div>
+      {experiences.map((exp) => (
+        <div class="entry">
+          <div class="entry-header">
+            <span>
+              <span class="entry-title">{exp.data.title}</span>
+              {' - '}
+              <span class="entry-company">{exp.data.company}</span>
+            </span>
+            <span class="entry-dates">
+              {formatDate(exp.data.startDate)} - {formatDate(exp.data.endDate)}
+            </span>
+          </div>
+          <ul class="highlights">
+            {exp.data.highlights.map((h) => <li set:html={renderInlineMarkdown(h)} />)}
+          </ul>
+        </div>
+      ))}
+    </section>
+
+    <section class="section">
+      <div class="section-title">Technical Skills</div>
+      <div class="skills-grid">
+        {skills.map((tier) => (
+          <div class="skill-category">
+            <h4>{tier.title}</h4>
+            <ul>
+              {tier.items.map((item) => <li>{item}</li>)}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">Education</div>
+      {education.map((edu) => (
+        <div class="entry">
+          <div class="entry-header">
+            <span>
+              <span class="entry-title">{edu.degree}</span>
+              {' - '}
+              <span class="entry-company">{edu.university}</span>
+            </span>
+            <span class="entry-dates">{edu.year}</span>
+          </div>
+        </div>
+      ))}
+    </section>
+  </div>
+</body>
+</html>
