@@ -28,11 +28,9 @@ tiers:
       - "Mentoring"
   - title: "Familiar"
     items:
-      - "SAS"
       - "Shiny Dashboard"
       - "R Markdown"
       - "Git"
-      - "SPSS"
       - "Product recommendation"
       - "Regulatory model risk"
       - "Survey analysis"
