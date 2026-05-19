@@ -5,6 +5,7 @@
 <button
   id="theme-toggle"
   aria-label="Toggle theme"
+  aria-pressed="false"
   class="rounded-md border border-zinc-950/10 bg-white/65 p-2 text-zinc-600 shadow-sm transition-colors hover:text-zinc-950 dark:border-white/10 dark:bg-white/5 dark:text-zinc-300 dark:hover:text-zinc-50"
 >
   <!-- Moon: visible in light mode (click to go dark) -->
@@ -47,10 +48,11 @@
   const btn = document.getElementById('theme-toggle')!;
   btn.addEventListener('click', () => {
     const html = document.documentElement;
-    const next = html.dataset.theme === 'dark' ? 'light' : 'dark';
-    html.dataset.theme = next;
+    const theme = html.dataset.theme === 'dark' ? 'light' : 'dark';
+    html.dataset.theme = theme;
+    btn.setAttribute('aria-pressed', String(theme === 'dark'));
     try {
-      localStorage.setItem('theme', next);
+      localStorage.setItem('theme', theme);
     } catch (e) {}
   });
 </script>

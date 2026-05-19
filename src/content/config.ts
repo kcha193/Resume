@@ -15,7 +15,6 @@ const profile = defineCollection({
       platform: socialPlatform,
       url: z.string().url(),
       handle: z.string().min(1),
-      icon: socialPlatform,
     })).min(1),
     languages: z.array(z.object({ name: z.string().min(1), level: z.string().min(1) })),
     interests: z.array(z.string().min(1)),
@@ -30,7 +29,6 @@ const experience = defineCollection({
     location: z.string().min(1),
     startDate: z.coerce.date(),
     endDate: z.coerce.date().nullable(),
-    order: z.number().int().nonnegative(),
     tags: z.array(z.string().min(1)),
     highlights: z.array(z.string().min(1)).min(1),
   }).refine((data) => !data.endDate || data.startDate <= data.endDate, {

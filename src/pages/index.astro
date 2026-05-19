@@ -15,7 +15,7 @@ const profileEntry = await getEntry('profile', 'profile');
 const profile = profileEntry!.data;
 
 const experience = (await getCollection('experience')).sort(
-  (a, b) => a.data.order - b.data.order
+  (a, b) => b.data.startDate.getTime() - a.data.startDate.getTime()
 );
 const projects = await getCollection('projects');
 const skillsEntry = await getEntry('skills', 'skills');

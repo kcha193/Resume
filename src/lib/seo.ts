@@ -1,3 +1,8 @@
+interface PersonSchemaOptions {
+  worksFor?: string;
+  alumniOf?: string;
+}
+
 export function buildPersonSchema(
   profile: {
     name: string;
@@ -11,8 +16,11 @@ export function buildPersonSchema(
   },
   siteUrl: string,
   imageUrl: string,
+  options?: PersonSchemaOptions,
 ) {
   const description = profile.seoDescription ?? profile.summary.replace(/\*\*/g, '');
+  const worksFor = options?.worksFor ?? 'ASB Bank';
+  const alumniOf = options?.alumniOf ?? 'University of Auckland';
 
   return {
     '@context': 'https://schema.org',
@@ -25,13 +33,13 @@ export function buildPersonSchema(
     url: siteUrl,
     worksFor: {
       '@type': 'Organization',
-      name: 'ASB Bank',
-      url: 'https://www.asb.co.nz/',
+      name: worksFor,
+      ...(worksFor === 'ASB Bank' ? { url: 'https://www.asb.co.nz/' } : {}),
     },
     alumniOf: {
       '@type': 'CollegeOrUniversity',
-      name: 'University of Auckland',
-      url: 'https://www.auckland.ac.nz/',
+      name: alumniOf,
+      ...(alumniOf === 'University of Auckland' ? { url: 'https://www.auckland.ac.nz/' } : {}),
     },
     address: {
       '@type': 'PostalAddress',

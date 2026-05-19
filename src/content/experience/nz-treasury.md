@@ -4,7 +4,6 @@ company: "The New Zealand Treasury"
 location: "Wellington, New Zealand"
 startDate: 2019-01-01
 endDate: 2021-01-01
-order: 4
 tags: ["Microsimulation", "Policy", "R Shiny", "Government"]
 highlights:
   - "**Policy Impact Modelling**: Built and maintained microsimulation models to analyse tax and welfare policy impacts, directly informing Budget decisions and Ministerial recommendations."

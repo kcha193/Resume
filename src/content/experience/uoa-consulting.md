@@ -4,7 +4,6 @@ company: "Statistical Consulting Centre, University of Auckland"
 location: "Auckland, New Zealand"
 startDate: 2014-01-01
 endDate: 2019-01-01
-order: 5
 tags: ["Consulting", "R", "Statistics", "Training"]
 highlights:
   - "Provided statistical expertise to 60+ clients across academic, government, and commercial sectors, translating business questions into rigorous analytical approaches."
