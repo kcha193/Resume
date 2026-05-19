@@ -41,10 +41,10 @@ const projects = defineCollection({
   type: 'content',
   schema: z.object({
     title: z.string().min(1),
-    blurb: z.string().min(20),
+    blurb: z.string().min(20).max(280),
     url: z.string().url().optional(),
     stack: z.array(z.string().min(1)).min(1),
-    category: z.enum(['shiny', 'dashboard', 'research', 'tool', 'policy']),
+    category: z.enum(['app', 'dashboard', 'research', 'tool', 'policy']),
     featured: z.boolean().default(false),
     year: z.number().int().min(1990).max(2100),
   }),
@@ -56,7 +56,7 @@ const publications = defineCollection({
     items: z.array(z.object({
       year: z.number().int().min(1900).max(2100),
       citation: z.string().min(8),
-      doi: z.string().url().optional(),
+      url: z.string().url().optional(),
     })).min(1),
   }),
 });

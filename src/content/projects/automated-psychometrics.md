@@ -3,7 +3,7 @@ title: "Automated Psychometrics"
 blurb: "R Shiny application enabling 60+ educational institutions to conduct reproducible psychometric analyses without coding knowledge. Published in PLoS ONE (1200+ citations) and adopted by major NZ assessment organisations."
 url: "https://autopsych.shinyapps.io/version_1_0_0/"
 stack: ["R", "Shiny", "Rasch Analysis", "Psychometrics"]
-category: "shiny"
+category: "app"
 featured: true
 year: 2021
 ---
