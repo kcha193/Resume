@@ -30,6 +30,15 @@ function assertSourceExcludes(path, forbidden) {
   assert(!source.includes(forbidden), `${path} must not include: ${forbidden}`);
 }
 
+function assertFileAbsent(path) {
+  try {
+    statSync(new URL(`../${path}`, import.meta.url));
+    throw new Error(`${path} must not be present`);
+  } catch (error) {
+    if (error.code !== 'ENOENT') throw error;
+  }
+}
+
 assertPng('public/og-image.png', 1200, 630);
 assertSourceIncludes('src/components/layout/Header.astro', 'aria-label="KC — Kevin Chang home"');
 assertSourceExcludes('src/components/sections/ContactFooter.astro', 'text-zinc-500');
@@ -56,5 +65,25 @@ try {
     throw error;
   }
 }
+
+// Guard: stale macOS/R artefacts must not be tracked
+assertFileAbsent('src/content/.DS_Store');
+assertFileAbsent('src/content/projects/.Rhistory');
+
+// Guard: print.css must hide the button by id (not stale class selector)
+assertSourceIncludes('src/styles/print.css', '#theme-toggle');
+assertSourceExcludes('src/styles/print.css', '.theme-toggle');
+
+// Guard: OG image dimensions must be declared for social parsers
+assertSourceIncludes('src/layouts/BaseLayout.astro', 'og:image:width');
+assertSourceIncludes('src/layouts/BaseLayout.astro', 'og:image:height');
+
+// Guard: resume.html must not be indexed (avoids SEO dilution)
+assertSourceIncludes('public/resume.html', 'noindex');
+
+// Guard: dead components must not reappear
+assertFileAbsent('src/components/sections/About.astro');
+assertFileAbsent('src/components/sections/ImpactBanner.astro');
+assertFileAbsent('src/components/sections/Specializations.astro');
 
 console.log('Site validation checks passed.');
