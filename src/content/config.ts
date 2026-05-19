@@ -56,7 +56,7 @@ const publications = defineCollection({
     items: z.array(z.object({
       year: z.number().int().min(1900).max(2100),
       citation: z.string().min(8),
-      doi: z.string().url().optional(),
+      url: z.string().url().optional(),
     })).min(1),
   }),
 });

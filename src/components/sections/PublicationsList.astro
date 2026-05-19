@@ -5,7 +5,7 @@ interface Props {
   items: Array<{
     year: number;
     citation: string;
-    doi?: string;
+    url?: string;
   }>;
 }
 
@@ -56,12 +56,12 @@ const years = Object.keys(byYear)
             {byYear[year].map(item => (
               <li class="text-sm leading-6 text-zinc-700 dark:text-zinc-300">
                 <span set:html={renderInlineMarkdown(item.citation)} />
-                {item.doi && (
+                {item.url && (
                   <a
-                    href={item.doi}
+                    href={item.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label={`View publication ${item.doi} (opens in new tab)`}
+                    aria-label={`View publication ${item.url} (opens in new tab)`}
                     class="ml-2 inline-flex items-center gap-1 text-xs font-mono font-semibold text-zinc-800 underline decoration-[var(--brand)] underline-offset-4 hover:text-zinc-950 dark:text-zinc-100 dark:hover:text-white"
                   >
                     DOI ↗
