@@ -1,7 +1,14 @@
+# OS artefacts
+.DS_Store
+**/.DS_Store
+
+# R artefacts
+.Rhistory
+**/.Rhistory
+.RData
+
 # R / Hugo (legacy)
 .Rproj.user
-.Rhistory
-.RData
 .Ruserdata
 resources/
 
@@ -11,9 +18,6 @@ dist/
 .astro/
 
 # Misc
-**/.DS_Store
-**/.Rhistory
-.DS_Store
 .env
 .env.local
 
