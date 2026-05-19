@@ -61,7 +61,7 @@ const years = Object.keys(byYear)
                     href={item.doi}
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label="View publication (opens in new tab)"
+                    aria-label={`View publication ${item.doi} (opens in new tab)`}
                     class="ml-2 inline-flex items-center gap-1 text-xs font-mono font-semibold text-zinc-800 underline decoration-[var(--brand)] underline-offset-4 hover:text-zinc-950 dark:text-zinc-100 dark:hover:text-white"
                   >
                     DOI ↗
