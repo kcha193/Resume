@@ -13,7 +13,7 @@ interface Props {
     email: string;
     location: string;
     languages: Array<{ name: string; level: string }>;
-    social: Array<{ platform: string; url: string; handle: string; icon: string }>;
+    social: Array<{ platform: string; url: string; handle: string }>;
   };
   title?: string;
   description?: string;
@@ -28,7 +28,10 @@ const {
 const siteUrl = Astro.site!.href;
 const socialCardImage = new URL('/og-image.png', siteUrl).href;
 const profileImage = new URL(avatarImg.src, siteUrl).href;
-const jsonLd = buildPersonSchema(profile, siteUrl, profileImage);
+const jsonLd = buildPersonSchema(profile, siteUrl, profileImage, {
+  worksFor: 'ASB Bank',
+  alumniOf: 'University of Auckland',
+});
 ---
 
 <!doctype html>

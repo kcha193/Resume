@@ -4,7 +4,6 @@ company: "ASB Bank"
 location: "Auckland, New Zealand"
 startDate: 2026-01-01
 endDate: null
-order: 1
 tags: ["Pricing", "Analytics", "Revenue Optimisation"]
 highlights:
   - "Drive continuous improvement of pricing strategies, models, and processes to enhance customer experience and business performance."

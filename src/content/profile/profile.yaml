@@ -8,11 +8,9 @@ social:
   - platform: "linkedin"
     url: "https://linkedin.com/in/kevin-ct-chang"
     handle: "kevin-ct-chang"
-    icon: "linkedin"
   - platform: "github"
     url: "https://github.com/kcha193"
     handle: "kcha193"
-    icon: "github"
 languages:
   - name: "English"
     level: "Fluent"
