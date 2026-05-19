@@ -44,7 +44,7 @@ const projects = defineCollection({
     blurb: z.string().min(20),
     url: z.string().url().optional(),
     stack: z.array(z.string().min(1)).min(1),
-    category: z.enum(['shiny', 'dashboard', 'research', 'tool', 'policy']),
+    category: z.enum(['app', 'dashboard', 'research', 'tool', 'policy']),
     featured: z.boolean().default(false),
     year: z.number().int().min(1990).max(2100),
   }),
