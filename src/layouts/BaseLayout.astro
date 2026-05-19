@@ -65,6 +65,9 @@ const jsonLd = buildPersonSchema(profile, siteUrl, profileImage, {
     <!-- Sitemap -->
     <link rel="sitemap" href="/sitemap-index.xml" />
 
+    <!-- Font preload: Inter Variable latin subset (critical render path) -->
+    <link rel="preload" href="/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
