@@ -21,8 +21,8 @@ dist/
 .env
 .env.local
 
-# Git worktrees
-.worktrees/
+# Claude Code local state (worktrees, settings)
+.claude/
 
 # Brainstorm sessions
 .superpowers/
