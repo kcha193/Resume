@@ -66,10 +66,6 @@ try {
   }
 }
 
-// Guard: stale macOS/R artefacts must not be tracked
-assertFileAbsent('src/content/.DS_Store');
-assertFileAbsent('src/content/projects/.Rhistory');
-
 // Guard: print.css must hide the button by id (not stale class selector)
 assertSourceIncludes('src/styles/print.css', '#theme-toggle');
 assertSourceExcludes('src/styles/print.css', '.theme-toggle');

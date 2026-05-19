@@ -21,13 +21,14 @@ const projects = await getCollection('projects');
 const skillsEntry = await getEntry('skills', 'skills');
 const publicationsEntry = await getEntry('publications', 'publications');
 const educationEntry = await getEntry('education', 'education');
+const snapshotEntry = await getEntry('snapshot', 'snapshot');
 ---
 
 <BaseLayout profile={profile}>
   <Header />
   <main id="main-content">
     <Hero profile={profile} />
-    <ProfessionalSnapshot summary={profile.summary} experience={experience} />
+    <ProfessionalSnapshot summary={profile.summary} experience={experience} cards={snapshotEntry!.data.cards} />
     <ExperienceTimeline items={experience} />
     <ProjectsGrid items={projects} />
     <SkillsMatrix tiers={skillsEntry!.data.tiers} />

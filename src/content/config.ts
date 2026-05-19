@@ -82,4 +82,15 @@ const skills = defineCollection({
   }),
 });
 
-export const collections = { profile, experience, projects, publications, education, skills };
+const snapshot = defineCollection({
+  type: 'data',
+  schema: z.object({
+    cards: z.array(z.object({
+      label: z.string().min(1),
+      title: z.string().min(1),
+      detail: z.string().min(1),
+    })).min(1).max(8),
+  }),
+});
+
+export const collections = { profile, experience, projects, publications, education, skills, snapshot };

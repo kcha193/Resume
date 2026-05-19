@@ -5,44 +5,12 @@ import type { CollectionEntry } from 'astro:content';
 interface Props {
   summary: string;
   experience: CollectionEntry<'experience'>[];
+  cards: { label: string; title: string; detail: string }[];
 }
 
-const { summary, experience } = Astro.props;
+const { summary, experience, cards } = Astro.props;
 const html = renderInlineMarkdown(summary);
 const currentRole = experience.find(entry => entry.data.endDate === null) ?? experience[0];
-
-const snapshotCards = [
-  {
-    label: 'Experience',
-    title: '12+ years in applied analytics',
-    detail: 'Financial services, government policy, consulting, and research delivery.',
-  },
-  {
-    label: 'Banking focus',
-    title: 'Retail banking pricing strategy',
-    detail: 'Current ASB focus on pricing models, P&L performance, customer outcomes, and conduct risk.',
-  },
-  {
-    label: 'Customer intelligence',
-    title: 'Growth and retention modelling',
-    detail: 'Customer lifetime value, segmentation, churn prediction, and product recommendation systems.',
-  },
-  {
-    label: 'AI capability',
-    title: 'Machine learning and GenAI',
-    detail: 'Predictive analytics plus LLM analysis of open-ended survey responses and customer sentiment.',
-  },
-  {
-    label: 'Risk discipline',
-    title: 'Model assurance background',
-    detail: 'Validation experience across risk, credit, and operational models with regulatory expectations.',
-  },
-  {
-    label: 'Leadership',
-    title: 'Executive-ready communication',
-    detail: 'Translates complex models into clear insights for senior stakeholders and analytics teams.',
-  },
-];
 ---
 
 <section
@@ -75,7 +43,7 @@ const snapshotCards = [
       </div>
 
       <div class="grid gap-4 sm:grid-cols-2">
-        {snapshotCards.map((card, index) => (
+        {cards.map((card, index) => (
           <article class:list={[
             'premium-card rounded-lg p-5',
             index === 1 && 'border-[var(--brand)]/45',
