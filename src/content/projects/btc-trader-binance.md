@@ -1,6 +1,6 @@
 ---
 title: "Multi-Asset LLM Trading Bot"
-blurb: "Autonomous bot running a 3-stage LLM pipeline (DeepSeek → Gemini → GPT-5.4) to trade BTC, ETH, and SOL on Binance Spot. Quant stack: LightGBM classifier, GARCH(1,1) volatility, HMM regime detection. Deployed on a Synology NAS via Docker with CI/CD auto-deploy and a read-only web dashboard."
+blurb: "Autonomous bot running a 3-stage LLM pipeline (DeepSeek → Gemini → GPT-5.4) to trade BTC, ETH, and SOL on Binance Spot. Quant stack: LightGBM classifier, GARCH(1,1) volatility, HMM regime detection. Deployed on a NAS via Docker with CI/CD auto-deploy and a read-only dashboard."
 stack: ["Python", "LightGBM", "GARCH", "HMM", "Docker", "OpenRouter", "Binance API", "FastAPI", "Telegram"]
 category: "agent"
 featured: true

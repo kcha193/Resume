@@ -9,7 +9,7 @@ interface Props {
 const { items } = Astro.props;
 const sorted = [...items].sort((a, b) => b.data.year - a.data.year);
 
-const featured = sorted.filter(p => p.data.featured).slice(0, 3);
+const featured = sorted.filter(p => p.data.featured).slice(0, 4);
 const featuredIds = new Set(featured.map(p => p.id));
 const rest = sorted.filter(p => !featuredIds.has(p.id));
 ---
@@ -33,7 +33,7 @@ const rest = sorted.filter(p => !featuredIds.has(p.id));
     </div>
 
     {featured.length > 0 && (
-      <div class="mb-6 grid gap-5 lg:grid-cols-3">
+      <div class="mb-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-2">
         {featured.map(entry => <ProjectCard entry={entry} featured />)}
       </div>
     )}
