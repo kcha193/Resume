@@ -66,7 +66,7 @@ To update resume content, edit the relevant file in **`src/content/`** and push.
 |---|---|
 | Profile, contact, social | `src/content/profile/profile.yaml` |
 | Work experience | `src/content/experience/<role>.md` |
-| Projects | `src/content/projects/<project>.md` — set `featured: true` on up to 3 projects for visual highlight |
+| Projects | `src/content/projects/<project>.md` — set `featured: true` on up to 4 projects for visual highlight |
 | Publications | `src/content/publications/publications.yaml` |
 | Education | `src/content/education/education.yaml` |
 | Skills | `src/content/skills/skills.yaml` |
@@ -86,7 +86,7 @@ To update resume content, edit the relevant file in **`src/content/`** and push.
 
 ## Featured Projects
 
-Projects with `featured: true` in their frontmatter receive visual distinction (gold border, star badge) and are rendered above non-featured projects in `ProjectsGrid`. Keep featured to **3 or fewer** projects — more than that dilutes the signal.
+Projects with `featured: true` in their frontmatter receive visual distinction (gold border, star badge) and are rendered above non-featured projects in `ProjectsGrid`. Keep featured to **4 or fewer** projects — more than that dilutes the signal.
 
 ## Deployment
 

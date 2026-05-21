@@ -4,7 +4,7 @@ blurb: "Census-based microsimulation enabling policy teams to test 100+ socioeco
 url: "https://compassnz.shinyapps.io/SociaLabShiny/"
 stack: ["R", "Shiny", "Microsimulation", "Census Data"]
 category: "policy"
-featured: true
+featured: false
 year: 2017
 ---
 
