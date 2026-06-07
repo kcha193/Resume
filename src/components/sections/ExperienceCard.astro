@@ -15,10 +15,12 @@ const { entry, summary: Summary, isLast } = Astro.props;
 const { title, company, location, startDate, endDate, tags, highlights } = entry.data;
 ---
 
-<article class:list={[
-  'group relative rounded-lg border border-zinc-950/10 bg-[var(--paper)]/70 p-5 shadow-sm transition-colors hover:border-[var(--brand)]/60 dark:border-white/10 dark:bg-white/[0.035] sm:p-6',
-  isLast && 'mb-0',
-]}>
+<article
+  data-reveal
+  class:list={[
+    'group relative rounded-lg border border-zinc-950/10 bg-[var(--paper)]/70 p-5 shadow-sm transition-colors hover:border-[var(--brand)]/60 dark:border-white/10 dark:bg-white/[0.035] sm:p-6',
+    isLast && 'mb-0',
+  ]}>
   {!isLast && (
     <div
       class="absolute left-6 top-full hidden h-5 w-px bg-zinc-950/10 dark:bg-white/10 sm:block"
