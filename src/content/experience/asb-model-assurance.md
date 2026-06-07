@@ -4,7 +4,7 @@ company: "ASB Bank"
 location: "Auckland, New Zealand"
 startDate: 2021-01-01
 endDate: 2023-01-01
-tags: ["Model Validation", "Risk", "Regulatory Compliance"]
+tags: ["Model Validation", "Risk", "Regulatory Compliance", "Advanced Statistical Modelling"]
 highlights:
   - "Conducted comprehensive end-to-end validations of risk, credit, and operational models, assessing methodology, data quality, implementation, and ongoing performance monitoring."
   - "Challenged model assumptions and methodologies through rigorous statistical analysis, identifying limitations and recommending enhancements that strengthened model reliability."
