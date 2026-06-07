@@ -102,3 +102,22 @@ Push to `main` → Netlify runs `npm run build`, publishes `dist/`.
 - `scripts/validate-site.mjs` enforces invariants (1200×630 PNG OG image, header aria-label, no `text-zinc-500` in `ContactFooter`, no `public/.DS_Store`); run via `npm test` and re-run after touching those areas
 - `public/og-image.svg` is the source of truth; `public/og-image.png` is the rasterised social card referenced in meta tags
 - The `renv/` R environment, `themes/` Hugo theme, `config.toml`, and all R files were removed in the Astro migration
+
+## Context Navigation (Graphify)
+
+### 3-Layer Query Rule
+1. **First:** query `graphify-out/graph.json` or `graphify-out/wiki/index.md`
+   to understand code structure and connections
+2. **Second:** query the Obsidian vault for decisions, progress, and project context
+3. **Third:** only read raw code files when editing
+   or when the first two layers don't have the answer
+
+### When to rebuild the graph
+- After structural changes (new modules, major refactors)
+- Headless: `graphify update .` (only processes modified files)
+- Skill: `/graphify . --update` (same behavior, runs through the skill — also accepts `--obsidian` to refresh the vault)
+- The graph is persistent — NO need to rebuild every session
+
+### Do NOT
+- Don't manually modify files inside `graphify-out/`
+- Don't re-read the entire codebase if the graph already has the information
