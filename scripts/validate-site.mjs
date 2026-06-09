@@ -93,6 +93,13 @@ assertSourceIncludes('src/layouts/BaseLayout.astro', 'rel="preload"');
 // and reduced-motion users must never have content hidden behind the reveal
 assertSourceIncludes('src/layouts/BaseLayout.astro', "'IntersectionObserver' in window");
 assertSourceIncludes('src/styles/global.css', '.js [data-reveal] {\n    opacity: 1;\n    transform: none;\n  }');
+const globalCss = read('src/styles/global.css').toString('utf8');
+const hiddenRevealRuleIndex = globalCss.indexOf('.js [data-reveal] {\n  opacity: 0;\n  transform: translateY(20px);');
+const reducedMotionRevealOverrideIndex = globalCss.indexOf('.js [data-reveal] {\n    opacity: 1;\n    transform: none;\n  }');
+assert(
+  reducedMotionRevealOverrideIndex > hiddenRevealRuleIndex,
+  'Reduced-motion reveal override must appear after the base hidden reveal rule so it wins in the cascade',
+);
 
 // Guard: Hero must not hardcode CV stats — they live in profile.yaml hero block
 assertSourceExcludes('src/components/sections/Hero.astro', 'publications');
