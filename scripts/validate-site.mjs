@@ -53,6 +53,7 @@ assertSourceIncludes('src/components/layout/NavMenu.astro', "event.key !== 'Tab'
 assertSourceIncludes('src/components/layout/NavMenu.astro', 'firstFocusable.focus();');
 assertSourceIncludes('src/components/layout/NavMenu.astro', 'lastFocusable.focus();');
 assertSourceIncludes('src/components/layout/NavMenu.astro', 'toggle.focus();');
+assertSourceExcludes('src/components/layout/NavMenu.astro', 'Download Resume');
 assertSourceIncludes('netlify.toml', '# TODO: Tighten script-src and style-src to hashes once Astro CSP nonce support stabilises.');
 assertSourceIncludes('netlify.toml', 'for = "/*"');
 assertSourceIncludes('netlify.toml', 'Content-Security-Policy = "default-src \'self\'; script-src \'self\' \'unsafe-inline\'; style-src \'self\' \'unsafe-inline\'; font-src \'self\'; img-src \'self\' data:; connect-src \'none\'; frame-ancestors \'none\'; base-uri \'self\'; form-action \'self\'"');
