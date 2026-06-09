@@ -89,6 +89,11 @@ assertSourceIncludes('src/styles/global.css', '/fonts/inter-latin-wght-normal.wo
 // Guard: BaseLayout must preload the Inter Variable latin font
 assertSourceIncludes('src/layouts/BaseLayout.astro', 'rel="preload"');
 
+// Guard: scroll reveal must fail open — js class only when IntersectionObserver exists,
+// and reduced-motion users must never have content hidden behind the reveal
+assertSourceIncludes('src/layouts/BaseLayout.astro', "'IntersectionObserver' in window");
+assertSourceIncludes('src/styles/global.css', '.js [data-reveal] {\n    opacity: 1;\n    transform: none;\n  }');
+
 // Guard: ProjectsGrid silently truncates featured projects to 4 — fail loudly instead
 const projectFiles = readdirSync(new URL('../src/content/projects/', import.meta.url))
   .filter((file) => file.endsWith('.md'));

@@ -76,8 +76,8 @@ const jsonLd = buildPersonSchema(profile, siteUrl, profileImage, {
       <link rel="me" href={s.url} />
     ))}
 
-    <!-- JS feature flag: enables scroll-reveal CSS -->
-    <script is:inline>document.documentElement.classList.add('js');</script>
+    <!-- JS feature flag: enables scroll-reveal CSS only when the observer API exists -->
+    <script is:inline>if ('IntersectionObserver' in window) document.documentElement.classList.add('js');</script>
 
     <!-- Dark mode: set before paint to avoid FOUC -->
     <script is:inline>
@@ -101,6 +101,7 @@ const jsonLd = buildPersonSchema(profile, siteUrl, profileImage, {
     <!-- Scroll reveal -->
     <script is:inline>
       (function () {
+        if (!('IntersectionObserver' in window)) return;
         var observer = new IntersectionObserver(
           function (entries) {
             entries.forEach(function (entry) {

@@ -198,6 +198,11 @@ body {
   .animate-bounce {
     animation: none;
   }
+
+  .js [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 /* ─── Scrollbar ──────────────────────────────────────────────────────────────── */
