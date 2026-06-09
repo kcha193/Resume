@@ -1,4 +1,4 @@
-import { readFileSync, statSync } from 'node:fs';
+import { readFileSync, readdirSync, statSync } from 'node:fs';
 
 function assert(condition, message) {
   if (!condition) {
@@ -87,5 +87,16 @@ assertSourceIncludes('src/styles/global.css', '/fonts/inter-latin-wght-normal.wo
 
 // Guard: BaseLayout must preload the Inter Variable latin font
 assertSourceIncludes('src/layouts/BaseLayout.astro', 'rel="preload"');
+
+// Guard: ProjectsGrid silently truncates featured projects to 4 — fail loudly instead
+const projectFiles = readdirSync(new URL('../src/content/projects/', import.meta.url))
+  .filter((file) => file.endsWith('.md'));
+const featuredCount = projectFiles
+  .filter((file) => read(`src/content/projects/${file}`).toString('utf8').includes('featured: true'))
+  .length;
+assert(
+  featuredCount <= 4,
+  `At most 4 projects may be featured (ProjectsGrid truncates the rest); found ${featuredCount}`,
+);
 
 console.log('Site validation checks passed.');
