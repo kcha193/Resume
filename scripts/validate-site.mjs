@@ -94,6 +94,10 @@ assertSourceIncludes('src/layouts/BaseLayout.astro', 'rel="preload"');
 assertSourceIncludes('src/layouts/BaseLayout.astro', "'IntersectionObserver' in window");
 assertSourceIncludes('src/styles/global.css', '.js [data-reveal] {\n    opacity: 1;\n    transform: none;\n  }');
 
+// Guard: Hero must not hardcode CV stats — they live in profile.yaml hero block
+assertSourceExcludes('src/components/sections/Hero.astro', 'publications');
+assertSourceIncludes('src/content/profile/profile.yaml', 'hero:');
+
 // Guard: ProjectsGrid silently truncates featured projects to 4 — fail loudly instead
 const projectFiles = readdirSync(new URL('../src/content/projects/', import.meta.url))
   .filter((file) => file.endsWith('.md'));
