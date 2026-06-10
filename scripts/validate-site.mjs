@@ -1,4 +1,4 @@
-import { readFileSync, statSync } from 'node:fs';
+import { readFileSync, readdirSync, statSync } from 'node:fs';
 
 function assert(condition, message) {
   if (!condition) {
@@ -53,6 +53,7 @@ assertSourceIncludes('src/components/layout/NavMenu.astro', "event.key !== 'Tab'
 assertSourceIncludes('src/components/layout/NavMenu.astro', 'firstFocusable.focus();');
 assertSourceIncludes('src/components/layout/NavMenu.astro', 'lastFocusable.focus();');
 assertSourceIncludes('src/components/layout/NavMenu.astro', 'toggle.focus();');
+assertSourceExcludes('src/components/layout/NavMenu.astro', 'Download Resume');
 assertSourceIncludes('netlify.toml', '# TODO: Tighten script-src and style-src to hashes once Astro CSP nonce support stabilises.');
 assertSourceIncludes('netlify.toml', 'for = "/*"');
 assertSourceIncludes('netlify.toml', 'Content-Security-Policy = "default-src \'self\'; script-src \'self\' \'unsafe-inline\'; style-src \'self\' \'unsafe-inline\'; font-src \'self\'; img-src \'self\' data:; connect-src \'none\'; frame-ancestors \'none\'; base-uri \'self\'; form-action \'self\'"');
@@ -87,5 +88,32 @@ assertSourceIncludes('src/styles/global.css', '/fonts/inter-latin-wght-normal.wo
 
 // Guard: BaseLayout must preload the Inter Variable latin font
 assertSourceIncludes('src/layouts/BaseLayout.astro', 'rel="preload"');
+
+// Guard: scroll reveal must fail open — js class only when IntersectionObserver exists,
+// and reduced-motion users must never have content hidden behind the reveal
+assertSourceIncludes('src/layouts/BaseLayout.astro', "'IntersectionObserver' in window");
+assertSourceIncludes('src/styles/global.css', '.js [data-reveal] {\n    opacity: 1;\n    transform: none;\n  }');
+const globalCss = read('src/styles/global.css').toString('utf8');
+const hiddenRevealRuleIndex = globalCss.indexOf('.js [data-reveal] {\n  opacity: 0;\n  transform: translateY(20px);');
+const reducedMotionRevealOverrideIndex = globalCss.indexOf('.js [data-reveal] {\n    opacity: 1;\n    transform: none;\n  }');
+assert(
+  reducedMotionRevealOverrideIndex > hiddenRevealRuleIndex,
+  'Reduced-motion reveal override must appear after the base hidden reveal rule so it wins in the cascade',
+);
+
+// Guard: Hero must not hardcode CV stats — they live in profile.yaml hero block
+assertSourceExcludes('src/components/sections/Hero.astro', 'publications');
+assertSourceIncludes('src/content/profile/profile.yaml', 'hero:');
+
+// Guard: ProjectsGrid silently truncates featured projects to 4 — fail loudly instead
+const projectFiles = readdirSync(new URL('../src/content/projects/', import.meta.url))
+  .filter((file) => file.endsWith('.md'));
+const featuredCount = projectFiles
+  .filter((file) => read(`src/content/projects/${file}`).toString('utf8').includes('featured: true'))
+  .length;
+assert(
+  featuredCount <= 4,
+  `At most 4 projects may be featured (ProjectsGrid truncates the rest); found ${featuredCount}`,
+);
 
 console.log('Site validation checks passed.');

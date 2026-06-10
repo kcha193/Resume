@@ -20,3 +20,27 @@ interests:
   - "Running"
   - "Photography"
   - "Travelling"
+hero:
+  eyebrow: "Senior Data Scientist"
+  heading: "Banking analytics leader for pricing, AI, and customer growth."
+  subheading: "Kevin Chang is a senior data scientist translating machine learning, pricing strategy, and customer intelligence into clear commercial decisions for financial services leaders."
+  stats:
+    - "12+ years"
+    - "8 publications"
+    - "1,200+ citations"
+    - "60+ institutions"
+  badges:
+    - "Data Science"
+    - "Retail Banking"
+    - "Pricing Strategy"
+    - "Machine Learning"
+    - "AI / GenAI"
+    - "Customer Analytics"
+  highlights:
+    - value: "12+ years"
+      label: "Advanced analytics, ML, and data products"
+    - value: "ASB Bank"
+      label: "Retail banking, pricing, and customer intelligence"
+    - value: "Ph.D."
+      label: "Statistics and Biological Sciences"
+  positioning: "Retail banking pricing, customer lifetime value, predictive analytics, model assurance, and stakeholder-ready insight."

@@ -18,6 +18,18 @@ const profile = defineCollection({
     })).min(1),
     languages: z.array(z.object({ name: z.string().min(1), level: z.string().min(1) })),
     interests: z.array(z.string().min(1)),
+    hero: z.object({
+      eyebrow: z.string().min(1),
+      heading: z.string().min(1),
+      subheading: z.string().min(1),
+      stats: z.array(z.string().min(1)).min(1),
+      badges: z.array(z.string().min(1)).min(1),
+      highlights: z.array(z.object({
+        value: z.string().min(1),
+        label: z.string().min(1),
+      })).min(1).max(3),
+      positioning: z.string().min(1),
+    }),
   }),
 });
 

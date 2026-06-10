@@ -44,7 +44,7 @@ The main page is `src/pages/index.astro`. It pulls from all collections via `get
 | `src/components/layout/ThemeToggle.astro` | Pure Astro — icon toggled via CSS `dark:` utilities, click handled by inline script |
 | `src/lib/seo.ts` | Builds JSON-LD `Person` schema from profile data + site URL |
 | `src/lib/utils.ts` | `formatDate`, `renderInlineMarkdown` helpers |
-| `public/resume.html` | Printable resume (hand-maintained HTML) |
+| `src/pages/resume.astro` | Printable resume page at `/resume` — data-driven from content collections, `noindex`; `/resume.html` 301-redirects to it (see `netlify.toml`) |
 | `netlify.toml` | Build command + immutable cache headers |
 
 ## Key Commands

@@ -10,34 +10,22 @@ interface Props {
     location: string;
     email: string;
     social: Array<{ platform: string; url: string; handle: string }>;
+    hero: {
+      eyebrow: string;
+      heading: string;
+      subheading: string;
+      stats: string[];
+      badges: string[];
+      highlights: Array<{ value: string; label: string }>;
+      positioning: string;
+    };
   };
 }
 const { profile } = Astro.props;
+const { hero } = profile;
 
 const linkedin = profile.social.find(s => s.platform === 'linkedin');
 const github   = profile.social.find(s => s.platform === 'github');
-
-const credibilityBadges = [
-  'Data Science',
-  'Retail Banking',
-  'Pricing Strategy',
-  'Machine Learning',
-  'AI / GenAI',
-  'Customer Analytics',
-];
-
-const highlights = [
-  { value: '12+ years', label: 'Advanced analytics, ML, and data products' },
-  { value: 'ASB Bank', label: 'Retail banking, pricing, and customer intelligence' },
-  { value: 'Ph.D.', label: 'Statistics and Biological Sciences' },
-];
-
-const stats = [
-  '12+ years',
-  '8 publications',
-  '1,200+ citations',
-  '60+ institutions',
-];
 ---
 
 <section
@@ -55,29 +43,29 @@ const stats = [
 
     <div>
       <p class="eyebrow mb-5">
-        Senior Data Scientist · {profile.location}
+        {hero.eyebrow} · {profile.location}
       </p>
       <h1
         id="hero-heading"
         class="max-w-3xl text-5xl font-black leading-[0.98] text-zinc-950 dark:text-zinc-50 sm:text-6xl lg:text-7xl"
       >
-        Banking analytics leader for pricing, AI, and customer growth.
+        {hero.heading}
       </h1>
       <p class="mt-6 max-w-2xl text-lg leading-8 text-zinc-700 dark:text-zinc-300">
-        {profile.name} is a senior data scientist translating machine learning, pricing strategy, and customer intelligence into clear commercial decisions for financial services leaders.
+        {hero.subheading}
       </p>
 
       <div class="mt-6 inline-flex max-w-full flex-wrap items-center gap-x-3 gap-y-2 rounded-md border border-zinc-950/10 bg-white/60 px-4 py-2.5 text-sm font-semibold text-zinc-700 shadow-sm dark:border-white/10 dark:bg-white/[0.04] dark:text-zinc-300" aria-label="Career impact stats">
-        {stats.map((stat, index) => (
+        {hero.stats.map((stat, index) => (
           <>
             <span>{stat}</span>
-            {index < stats.length - 1 && <span class="text-[var(--brand)]" aria-hidden="true">·</span>}
+            {index < hero.stats.length - 1 && <span class="text-[var(--brand)]" aria-hidden="true">·</span>}
           </>
         ))}
       </div>
 
       <div class="mt-7 flex flex-wrap gap-2.5" aria-label="Core expertise">
-        {credibilityBadges.map(badge => (
+        {hero.badges.map(badge => (
           <span class="rounded-full border border-zinc-950/10 bg-white/70 px-3 py-1.5 text-sm font-semibold text-zinc-700 shadow-sm dark:border-white/10 dark:bg-white/5 dark:text-zinc-200">
             {badge}
           </span>
@@ -141,7 +129,7 @@ const stats = [
       </div>
 
       <div class="mt-5 grid gap-3 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
-        {highlights.map(item => (
+        {hero.highlights.map(item => (
           <div class="rounded-md border border-zinc-950/10 bg-zinc-50/80 p-4 dark:border-white/10 dark:bg-white/[0.03]">
             <p class="text-2xl font-black text-zinc-950 dark:text-zinc-50">{item.value}</p>
             <p class="mt-2 text-xs leading-5 text-zinc-600 dark:text-zinc-400">{item.label}</p>
@@ -154,7 +142,7 @@ const stats = [
           Positioning
         </p>
         <p class="mt-2 text-sm leading-6 text-zinc-700 dark:text-zinc-300">
-          Retail banking pricing, customer lifetime value, predictive analytics, model assurance, and stakeholder-ready insight.
+          {hero.positioning}
         </p>
       </div>
 

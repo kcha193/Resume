@@ -222,3 +222,10 @@ body {
   opacity: 1;
   transform: none;
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .js [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+}
