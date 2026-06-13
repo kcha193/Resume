@@ -78,6 +78,17 @@ assertSourceIncludes('src/layouts/BaseLayout.astro', 'og:image:height');
 // Guard: /resume page must not be indexed (avoids SEO dilution)
 assertSourceIncludes('src/pages/resume.astro', 'noindex');
 
+// Guard: printable resume must carry the full story (not just experience + skills)
+assertSourceIncludes('src/pages/resume.astro', 'Selected Projects');
+assertSourceIncludes('src/pages/resume.astro', 'Selected Publications');
+assertSourceIncludes('src/pages/resume.astro', 'profile.location');
+
+// Guard: featured project cards render the Problem → Approach → Impact case study
+assertSourceIncludes('src/components/sections/ProjectCard.astro', 'caseStudy');
+
+// Guard: og:image must declare alt text for social/accessibility parsers
+assertSourceIncludes('src/layouts/BaseLayout.astro', 'og:image:alt');
+
 // Guard: dead components must not reappear
 assertFileAbsent('src/components/sections/About.astro');
 assertFileAbsent('src/components/sections/ImpactBanner.astro');

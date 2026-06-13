@@ -26,6 +26,19 @@ const { hero } = profile;
 
 const linkedin = profile.social.find(s => s.platform === 'linkedin');
 const github   = profile.social.find(s => s.platform === 'github');
+
+const statLabels = ['Experience', 'Commercial focus', 'Research reach', 'Adoption'];
+const heroStats = hero.stats.map((stat, index) => ({
+  value: stat,
+  label: statLabels[index] ?? 'Signal',
+}));
+
+const decisionSignals = [
+  'Pricing strategy',
+  'Customer outcomes',
+  'Model risk',
+  'Executive decisions',
+];
 ---
 
 <section
@@ -38,8 +51,9 @@ const github   = profile.social.find(s => s.platform === 'github');
     aria-hidden="true"
   />
   <div class="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-[var(--brand)]/16 to-transparent dark:from-[var(--brand)]/10" aria-hidden="true" />
+  <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--brand)]/70 to-transparent" aria-hidden="true" />
 
-  <div class="relative mx-auto grid min-h-[calc(100vh-4rem)] max-w-6xl items-center gap-10 px-4 py-14 sm:px-6 sm:py-20 lg:grid-cols-[1.08fr_0.92fr] lg:gap-14">
+  <div class="relative mx-auto grid max-w-6xl items-center gap-10 px-4 py-12 sm:px-6 sm:py-16 lg:min-h-[calc(100vh-4rem)] lg:grid-cols-[1.08fr_0.92fr] lg:gap-14 lg:py-20">
 
     <div>
       <p class="eyebrow mb-5">
@@ -55,12 +69,20 @@ const github   = profile.social.find(s => s.platform === 'github');
         {hero.subheading}
       </p>
 
-      <div class="mt-6 inline-flex max-w-full flex-wrap items-center gap-x-3 gap-y-2 rounded-md border border-zinc-950/10 bg-white/60 px-4 py-2.5 text-sm font-semibold text-zinc-700 shadow-sm dark:border-white/10 dark:bg-white/[0.04] dark:text-zinc-300" aria-label="Career impact stats">
-        {hero.stats.map((stat, index) => (
-          <>
-            <span>{stat}</span>
-            {index < hero.stats.length - 1 && <span class="text-[var(--brand)]" aria-hidden="true">·</span>}
-          </>
+      <div class="mt-7 grid max-w-2xl grid-cols-2 overflow-hidden rounded-lg border border-zinc-950/10 bg-white/70 shadow-sm dark:border-white/10 dark:bg-white/[0.045] sm:grid-cols-4" aria-label="Career evidence summary">
+        {heroStats.map(stat => (
+          <div class="hero-stat-card px-3 py-3">
+            <p class="text-base font-black leading-tight text-zinc-950 dark:text-zinc-50">{stat.value}</p>
+            <p class="mt-1 font-mono text-[0.64rem] font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">{stat.label}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="mt-5 flex max-w-2xl flex-wrap gap-2" aria-label="Decision context">
+        {decisionSignals.map(signal => (
+          <span class="rounded-md border border-[var(--brand)]/35 bg-[color-mix(in_srgb,var(--brand)_11%,transparent)] px-3 py-1.5 text-xs font-bold uppercase tracking-wide text-zinc-800 dark:text-zinc-100">
+            {signal}
+          </span>
         ))}
       </div>
 
@@ -77,14 +99,14 @@ const github   = profile.social.find(s => s.platform === 'github');
           href="#experience"
           class="inline-flex items-center gap-2 rounded-md bg-[var(--brand)] px-5 py-3 text-sm font-bold text-zinc-950 shadow-lg shadow-[var(--brand-glow)] transition-transform hover:-translate-y-0.5 no-underline"
         >
-          View Experience
+          Experience evidence
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
         </a>
         <a
           href="#projects"
           class="inline-flex items-center gap-2 rounded-md border border-zinc-950/15 bg-white/70 px-5 py-3 text-sm font-bold text-zinc-800 shadow-sm transition-colors hover:border-[var(--brand)] hover:text-zinc-950 dark:border-white/15 dark:bg-white/5 dark:text-zinc-100 dark:hover:text-white no-underline"
         >
-          View Projects
+          Project proof
         </a>
         <a
           href="/resume"
@@ -92,7 +114,7 @@ const github   = profile.social.find(s => s.platform === 'github');
           rel="noopener noreferrer"
           class="inline-flex items-center gap-2 rounded-md border border-zinc-950/15 bg-white/70 px-5 py-3 text-sm font-bold text-zinc-800 shadow-sm transition-colors hover:border-[var(--brand)] hover:text-zinc-950 dark:border-white/15 dark:bg-white/5 dark:text-zinc-100 dark:hover:text-white no-underline"
         >
-          Resume
+          Printable resume
         </a>
         {linkedin && (
           <a
@@ -120,7 +142,7 @@ const github   = profile.social.find(s => s.platform === 'github');
         />
         <div>
           <p class="text-sm font-mono uppercase text-zinc-500 dark:text-zinc-400">
-            Current profile
+            Executive signal
           </p>
           <p class="mt-2 text-xl font-black leading-tight text-zinc-950 dark:text-zinc-50">
             {profile.tagline}
@@ -139,7 +161,7 @@ const github   = profile.social.find(s => s.platform === 'github');
 
       <div class="mt-5 rounded-md border border-[var(--brand)]/40 bg-[color-mix(in_srgb,var(--brand)_12%,transparent)] p-4">
         <p class="text-xs font-mono uppercase text-zinc-500 dark:text-zinc-400">
-          Positioning
+          Hiring narrative
         </p>
         <p class="mt-2 text-sm leading-6 text-zinc-700 dark:text-zinc-300">
           {hero.positioning}
