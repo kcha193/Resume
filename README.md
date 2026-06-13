@@ -86,12 +86,12 @@ All CV content lives in `src/content/`. Edit the relevant file and push — Netl
 |---|---|
 | Name, contact, social links, languages, interests | `src/content/profile/profile.yaml` |
 | Work experience | `src/content/experience/<role>.md` — one file per role |
-| Projects | `src/content/projects/<project>.md` — set `featured: true` on up to 3 for visual highlight |
+| Projects | `src/content/projects/<project>.md` — set `featured: true` on up to 4 for visual highlight; add optional `problem` / `approach` / `impact` to render a case-study block on featured cards |
 | Publications | `src/content/publications/publications.yaml` |
 | Education | `src/content/education/education.yaml` |
-| Skills | `src/content/skills/skills.yaml` |
+| Skills | `src/content/skills/skills.yaml` — grouped by capability domain (AI/ML, Pricing/Banking, Data Eng, Programming, Communication) |
 | Brand colour | `--brand` CSS var in `src/styles/global.css` — currently `#FCBD1A` (ASB yellow) |
-| Printable resume | `public/resume.html` |
+| Printable resume | `src/pages/resume.astro` — data-driven from content collections, served at `/resume` |
 
 ---
 
@@ -100,7 +100,9 @@ All CV content lives in `src/content/`. Edit the relevant file and push — Netl
 - **Dark mode default** — dark on first visit, togglable, persisted to localStorage, no FOUC
 - **Zero JS framework** — theme toggle and mobile nav use vanilla JS; no React in the bundle
 - **Mobile-friendly** — hamburger nav, responsive layouts at every breakpoint
-- **SEO** — `<title>`, meta description, Open Graph, JSON-LD `Person` schema (with `worksFor`, `alumniOf`, `image`), canonical URL, `sitemap.xml`
+- **Featured projects as case studies** — featured cards render a Problem → Approach → Impact block from the project frontmatter
+- **Printable resume** — brand-aligned `/resume` page generated from the same content collections (projects, publications, skills, education); print/save-to-PDF ready, `noindex`
+- **SEO** — `<title>`, meta description, Open Graph (with `og:image:alt` + per-scheme `theme-color`), JSON-LD `Person` schema (with `worksFor`, `alumniOf`, `image`), canonical URL, `sitemap.xml`
 - **Performance** — self-hosted variable fonts, ~0KB JS framework overhead, immutable cache headers on `/_astro/*`
 - **Accessibility** — semantic landmarks, skip-to-content link (WCAG AA contrast), focus-visible rings, aria labels, `prefers-reduced-motion` guard
 

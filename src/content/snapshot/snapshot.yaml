@@ -1,24 +1,24 @@
 cards:
   - label: "Experience"
-    title: "12+ years in applied analytics"
-    detail: "Financial services, government policy, consulting, and research delivery."
+    title: "12+ years turning models into decisions"
+    detail: "Financial services, government policy, consulting, and research delivery with a consistent focus on usable decision support."
 
   - label: "Banking focus"
-    title: "Retail banking pricing strategy"
-    detail: "Current ASB focus on pricing models, P&L performance, customer outcomes, and conduct risk."
+    title: "Pricing work connected to P&L, customer outcomes, and risk"
+    detail: "Current ASB focus spans pricing models, product performance, conduct considerations, and post-launch optimisation."
 
   - label: "Customer intelligence"
-    title: "Growth and retention modelling"
-    detail: "Customer lifetime value, segmentation, churn prediction, and product recommendation systems."
+    title: "Customer growth and retention modelling"
+    detail: "Customer lifetime value, segmentation, churn prediction, and recommendation systems translated into business planning."
 
   - label: "AI capability"
-    title: "Machine learning and GenAI"
-    detail: "Predictive analytics plus LLM analysis of open-ended survey responses and customer sentiment."
+    title: "ML and GenAI with practical guardrails"
+    detail: "Predictive analytics plus LLM analysis of open-ended survey responses, customer sentiment, and signal extraction."
 
   - label: "Risk discipline"
     title: "Model assurance background"
     detail: "Validation experience across risk, credit, and operational models with regulatory expectations."
 
   - label: "Leadership"
-    title: "Executive-ready communication"
-    detail: "Translates complex models into clear insights for senior stakeholders and analytics teams."
+    title: "Executive-ready communication and mentoring"
+    detail: "Turns technical complexity into clear recommendations for senior stakeholders while building analytics capability in teams."

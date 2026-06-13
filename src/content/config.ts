@@ -59,6 +59,11 @@ const projects = defineCollection({
     category: z.enum(['app', 'dashboard', 'research', 'tool', 'policy', 'agent']),
     featured: z.boolean().default(false),
     year: z.number().int().min(1990).max(2100),
+    // Optional case-study fields — rendered as a Problem → Approach → Impact
+    // block on featured project cards. Keep to one tight sentence each.
+    problem: z.string().min(1).optional(),
+    approach: z.string().min(1).optional(),
+    impact: z.string().min(1).optional(),
   }),
 });
 

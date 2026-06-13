@@ -14,8 +14,25 @@ const education = educationEntry!.data.items;
 const skillsEntry = await getEntry('skills', 'skills');
 const skills = skillsEntry!.data.tiers;
 
+const projects = (await getCollection('projects'))
+  .filter(p => p.data.featured)
+  .sort((a, b) => b.data.year - a.data.year)
+  .slice(0, 4);
+
+const publicationsEntry = await getEntry('publications', 'publications');
+const allPublications = [...publicationsEntry!.data.items].sort((a, b) => b.year - a.year);
+const publications = allPublications.slice(0, 4);
+
 const linkedin = profile.social.find(s => s.platform === 'linkedin');
 const github = profile.social.find(s => s.platform === 'github');
+
+const resumeSignals = [
+  'Banking pricing',
+  'AI / ML',
+  'Customer intelligence',
+  'Model risk',
+  'Executive insight',
+];
 ---
 
 <!doctype html>
@@ -24,149 +41,294 @@ const github = profile.social.find(s => s.platform === 'github');
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="noindex, follow" />
-  <title>{profile.name} - Resume</title>
+  <title>{profile.name} — Resume</title>
   <style is:global>
+    @font-face {
+      font-family: 'Inter Variable';
+      font-style: normal;
+      font-display: swap;
+      font-weight: 100 900;
+      src: url('/fonts/inter-latin-wght-normal.woff2') format('woff2-variations');
+    }
+
+    :root {
+      --accent: #FCBD1A;
+      --ink: #18181b;
+      --muted: #52525b;
+      --line: #e4e4e7;
+      --mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, monospace;
+    }
+
     * { margin: 0; padding: 0; box-sizing: border-box; }
+
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      line-height: 1.6;
-      color: #333;
-      background: #f5f5f5;
-      padding: 20px;
+      font-family: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+      line-height: 1.55;
+      color: var(--ink);
+      background: #e9e8e3;
+      padding: 24px 16px;
+      -webkit-font-smoothing: antialiased;
     }
-    .container {
-      max-width: 8.5in;
-      background: white;
+
+    .sheet {
+      max-width: 8.27in;
+      background: #fff;
       margin: 0 auto;
-      padding: 40px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      line-height: 1.4;
+      padding: 44px 48px;
+      box-shadow: 0 10px 40px rgba(24, 24, 27, 0.12);
     }
-    header {
-      text-align: center;
-      margin-bottom: 20px;
-      border-bottom: 3px solid #FCBD1A;
-      padding-bottom: 15px;
+
+    .toolbar {
+      max-width: 8.27in;
+      margin: 0 auto 16px;
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
     }
-    h1 { font-size: 28px; color: #1a1a1a; margin-bottom: 5px; }
-    .tagline { font-size: 14px; color: #666; margin-bottom: 8px; }
-    .contact-info { font-size: 12px; color: #666; }
-    .contact-info a { color: #1a1a1a; text-decoration: underline; }
-    .summary {
-      background: #f9f9f9;
-      padding: 12px;
-      margin: 20px 0;
-      border-left: 4px solid #FCBD1A;
+    .toolbar a, .toolbar button {
+      font: inherit;
       font-size: 13px;
-      line-height: 1.5;
+      font-weight: 600;
+      cursor: pointer;
+      border: 1px solid var(--ink);
+      background: #fff;
+      color: var(--ink);
+      padding: 8px 14px;
+      border-radius: 6px;
+      text-decoration: none;
     }
-    .section { margin-bottom: 18px; }
+    .toolbar .primary { background: var(--accent); border-color: var(--accent); }
+
+    /* ── Header ────────────────────────────────────────── */
+    header {
+      border-bottom: 3px solid var(--accent);
+      padding-bottom: 16px;
+      margin-bottom: 20px;
+    }
+    h1 {
+      font-size: 30px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.05;
+    }
+    .tagline { font-size: 14px; font-weight: 600; color: var(--muted); margin-top: 4px; }
+    .contact {
+      margin-top: 10px;
+      font-family: var(--mono);
+      font-size: 11.5px;
+      color: var(--muted);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 12px;
+    }
+    .contact a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--accent); }
+
+    /* ── Sections ──────────────────────────────────────── */
+    .summary {
+      font-size: 12.5px;
+      line-height: 1.6;
+      color: #3f3f46;
+      margin-bottom: 14px;
+    }
+    .summary strong { color: var(--ink); }
+
+    .signal-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 22px;
+    }
+    .signal-strip span {
+      border: 1px solid var(--line);
+      border-left: 3px solid var(--accent);
+      border-radius: 4px;
+      padding: 4px 8px;
+      font-size: 10.5px;
+      font-weight: 700;
+      color: var(--ink);
+      background: #fffaf0;
+    }
+
+    section { margin-bottom: 20px; }
     .section-title {
-      font-size: 14px;
-      font-weight: bold;
-      color: #1a1a1a;
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      border-bottom: 2px solid #FCBD1A;
+      color: var(--ink);
       padding-bottom: 6px;
       margin-bottom: 12px;
+      border-bottom: 1px solid var(--line);
     }
-    .entry { margin-bottom: 14px; }
-    .entry-header {
+
+    .entry { margin-bottom: 13px; break-inside: avoid; }
+    .entry:last-child { margin-bottom: 0; }
+    .entry-head {
       display: flex;
       justify-content: space-between;
       align-items: baseline;
-      margin-bottom: 3px;
+      gap: 12px;
     }
-    .entry-title { font-weight: bold; font-size: 13px; }
-    .entry-company { font-size: 12px; color: #555; }
-    .entry-dates { font-size: 12px; color: #888; font-style: italic; }
-    .highlights { margin-left: 20px; margin-top: 4px; }
-    .highlights li { margin-bottom: 3px; font-size: 11px; color: #444; }
+    .entry-title { font-weight: 700; font-size: 13.5px; }
+    .entry-org { font-size: 12.5px; color: var(--muted); }
+    .entry-dates {
+      font-family: var(--mono);
+      font-size: 10.5px;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .highlights { list-style: none; margin-top: 6px; }
+    .highlights li {
+      position: relative;
+      padding-left: 14px;
+      margin-bottom: 4px;
+      font-size: 11.5px;
+      line-height: 1.5;
+      color: #3f3f46;
+    }
+    .highlights li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 7px;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+    .highlights strong { color: var(--ink); }
+
+    /* ── Projects ──────────────────────────────────────── */
+    .project { margin-bottom: 11px; break-inside: avoid; }
+    .project-title { font-weight: 700; font-size: 12.5px; }
+    .project-title a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--accent); }
+    .project-blurb { font-size: 11.5px; color: #3f3f46; margin-top: 2px; }
+    .project-stack {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--muted);
+      margin-top: 3px;
+    }
+
+    /* ── Skills ────────────────────────────────────────── */
     .skills-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-      gap: 15px;
-      font-size: 12px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px 28px;
     }
-    .skill-category h4 {
-      font-weight: bold;
-      color: #1a1a1a;
-      margin-bottom: 6px;
+    .skill-group h4 {
       font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 3px;
     }
-    .skill-category ul { list-style: none; padding-left: 12px; }
-    .skill-category li { margin-bottom: 3px; font-size: 11px; }
+    .skill-group p { font-size: 11px; color: #3f3f46; line-height: 1.5; }
+
+    /* ── Publications ──────────────────────────────────── */
+    .pub { font-size: 11px; line-height: 1.5; color: #3f3f46; margin-bottom: 7px; }
+    .pub-year { font-family: var(--mono); font-weight: 700; color: var(--ink); }
+    .pub-more { font-size: 10.5px; color: var(--muted); font-style: italic; margin-top: 4px; }
+
+    .edu { display: flex; justify-content: space-between; gap: 12px; margin-bottom: 6px; font-size: 12px; }
+    .edu-year { font-family: var(--mono); font-size: 11px; color: var(--muted); white-space: nowrap; }
+
+    /* ── Print ─────────────────────────────────────────── */
     @media print {
-      body { background: white; padding: 0; }
-      .container { box-shadow: none; padding: 0; max-width: 100%; }
+      body { background: #fff; padding: 0; }
+      .sheet { box-shadow: none; max-width: 100%; padding: 0; }
+      .toolbar { display: none; }
+      a { color: var(--ink) !important; }
+      @page { margin: 14mm; }
     }
   </style>
 </head>
 <body>
-  <div class="container">
+  <div class="toolbar">
+    <a href="/">← Back to site</a>
+    <button type="button" onclick="window.print()" class="primary">Print / Save PDF</button>
+  </div>
+
+  <div class="sheet">
     <header>
       <h1>{profile.name}</h1>
-      <div class="tagline">{profile.tagline}</div>
-      <div class="contact-info">
+      <p class="tagline">{profile.tagline}</p>
+      <div class="contact">
+        <span>{profile.location}</span>
         <a href={`mailto:${profile.email}`}>{profile.email}</a>
-        {linkedin && (
-          <span> | <a href={linkedin.url} target="_blank" rel="noopener noreferrer">LinkedIn</a></span>
-        )}
-        {github && (
-          <span> | <a href={github.url} target="_blank" rel="noopener noreferrer">GitHub</a></span>
-        )}
+        {linkedin && <a href={linkedin.url} target="_blank" rel="noopener noreferrer">linkedin.com/in/{linkedin.handle}</a>}
+        {github && <a href={github.url} target="_blank" rel="noopener noreferrer">github.com/{github.handle}</a>}
       </div>
     </header>
 
-    <div class="summary" set:html={renderInlineMarkdown(profile.summary)} />
+    <p class="summary" set:html={renderInlineMarkdown(profile.summary)} />
+    <div class="signal-strip" aria-label="Resume focus areas">
+      {resumeSignals.map(signal => <span>{signal}</span>)}
+    </div>
 
-    <section class="section">
+    <section>
       <div class="section-title">Professional Experience</div>
-      {experiences.map((exp) => (
+      {experiences.map(exp => (
         <div class="entry">
-          <div class="entry-header">
+          <div class="entry-head">
             <span>
               <span class="entry-title">{exp.data.title}</span>
-              {' - '}
-              <span class="entry-company">{exp.data.company}</span>
+              <span class="entry-org"> — {exp.data.company}, {exp.data.location}</span>
             </span>
-            <span class="entry-dates">
-              {formatDate(exp.data.startDate)} - {formatDate(exp.data.endDate)}
-            </span>
+            <span class="entry-dates">{formatDate(exp.data.startDate)} – {formatDate(exp.data.endDate)}</span>
           </div>
           <ul class="highlights">
-            {exp.data.highlights.map((h) => <li set:html={renderInlineMarkdown(h)} />)}
+            {exp.data.highlights.map(h => <li set:html={renderInlineMarkdown(h)} />)}
           </ul>
         </div>
       ))}
     </section>
 
-    <section class="section">
-      <div class="section-title">Technical Skills</div>
+    <section>
+      <div class="section-title">Selected Projects</div>
+      {projects.map(p => (
+        <div class="project">
+          <p class="project-title">
+            {p.data.url
+              ? <a href={p.data.url} target="_blank" rel="noopener noreferrer">{p.data.title}</a>
+              : p.data.title}
+          </p>
+          <p class="project-blurb">{p.data.impact ?? p.data.blurb}</p>
+          <p class="project-stack">{p.data.stack.join(' · ')}</p>
+        </div>
+      ))}
+    </section>
+
+    <section>
+      <div class="section-title">Core Skills</div>
       <div class="skills-grid">
-        {skills.map((tier) => (
-          <div class="skill-category">
-            <h4>{tier.title}</h4>
-            <ul>
-              {tier.items.map((item) => <li>{item}</li>)}
-            </ul>
+        {skills.map(group => (
+          <div class="skill-group">
+            <h4>{group.title}</h4>
+            <p>{group.items.join(', ')}</p>
           </div>
         ))}
       </div>
     </section>
 
-    <section class="section">
+    <section>
+      <div class="section-title">Selected Publications</div>
+      {publications.map(item => (
+        <p class="pub">
+          <span class="pub-year">{item.year}.</span>{' '}
+          <span set:html={renderInlineMarkdown(item.citation)} />
+        </p>
+      ))}
+      {allPublications.length > publications.length && (
+        <p class="pub-more">+ {allPublications.length - publications.length} further peer-reviewed publications — full list at kevin-cv.netlify.app/#publications</p>
+      )}
+    </section>
+
+    <section>
       <div class="section-title">Education</div>
-      {education.map((edu) => (
-        <div class="entry">
-          <div class="entry-header">
-            <span>
-              <span class="entry-title">{edu.degree}</span>
-              {' - '}
-              <span class="entry-company">{edu.university}</span>
-            </span>
-            <span class="entry-dates">{edu.year}</span>
-          </div>
+      {education.map(edu => (
+        <div class="edu">
+          <span><strong>{edu.degree}</strong> — {edu.university}</span>
+          <span class="edu-year">{edu.year}</span>
         </div>
       ))}
     </section>

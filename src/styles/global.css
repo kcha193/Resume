@@ -86,6 +86,15 @@ body {
     padding-block: clamp(4rem, 7vw, 7rem);
   }
 
+  .section-shell::before {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    top: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--line), transparent);
+  }
+
   .section-inner {
     width: min(100% - 2rem, 72rem);
     margin-inline: auto;
@@ -156,6 +165,34 @@ body {
       linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.025)),
       var(--panel);
     box-shadow: 0 24px 70px rgba(0, 0, 0, 0.32);
+  }
+
+  .hero-stat-card {
+    border-color: var(--line);
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+  }
+
+  .hero-stat-card:nth-child(even) {
+    border-right-width: 0;
+  }
+
+  .hero-stat-card:nth-last-child(-n + 2) {
+    border-bottom-width: 0;
+  }
+
+  @media (min-width: 640px) {
+    .hero-stat-card {
+      border-bottom-width: 0;
+    }
+
+    .hero-stat-card:nth-child(even) {
+      border-right-width: 1px;
+    }
+
+    .hero-stat-card:last-child {
+      border-right-width: 0;
+    }
   }
 }
 

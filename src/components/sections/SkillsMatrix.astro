@@ -13,6 +13,14 @@ const tierStyles = [
   'border-zinc-950/10 bg-[var(--paper)]/70 dark:border-white/10 dark:bg-white/[0.035]',
   'border-zinc-950/10 bg-white/70 dark:border-white/10 dark:bg-zinc-950/35',
 ];
+
+const tierSummaries: Record<string, string> = {
+  'AI / ML / GenAI': 'Prediction, language-model analysis, and customer intelligence use cases.',
+  'Pricing / Banking / Optimisation': 'Commercial analytics connected to revenue, margin, customer outcomes, and governance.',
+  'Data Engineering / Analytics Platforms': 'Reusable data products and analytics surfaces that business teams can actually use.',
+  'Programming / Modelling': 'Statistical depth for simulation, experimentation, and reproducible analysis.',
+  'Communication / Stakeholder Impact': 'Clear recommendations for senior stakeholders, technical peers, and delivery teams.',
+};
 ---
 
 <section
@@ -33,16 +41,27 @@ const tierStyles = [
       </p>
     </div>
 
-    <div class="grid gap-5 lg:grid-cols-3">
+    <div class="grid gap-5 lg:grid-cols-6">
       {tiers.map((tier, index) => (
         <article class:list={[
           'rounded-lg border p-5 shadow-sm',
           tierStyles[index] ?? tierStyles[1],
+          index < 2 ? 'lg:col-span-3' : 'lg:col-span-2',
         ]}>
           <h3 class="text-base font-black text-zinc-950 dark:text-zinc-50">{tier.title}</h3>
+          {tierSummaries[tier.title] && (
+            <p class="mt-2 text-sm leading-6 text-zinc-600 dark:text-zinc-400">
+              {tierSummaries[tier.title]}
+            </p>
+          )}
           <div class="mt-4 flex flex-wrap gap-2">
-            {tier.items.map(item => (
-              <span class="rounded-full border border-zinc-950/10 bg-white/75 px-3 py-1.5 text-sm font-medium text-zinc-700 transition-colors hover:border-[var(--brand)] dark:border-white/10 dark:bg-zinc-950/35 dark:text-zinc-300">
+            {tier.items.map((item, itemIndex) => (
+              <span class:list={[
+                'rounded-full border px-3 py-1.5 text-sm transition-colors hover:border-[var(--brand)]',
+                itemIndex < 3
+                  ? 'border-[var(--brand)]/45 bg-white/90 font-bold text-zinc-900 dark:bg-zinc-950/55 dark:text-zinc-100'
+                  : 'border-zinc-950/10 bg-white/75 font-medium text-zinc-700 dark:border-white/10 dark:bg-zinc-950/35 dark:text-zinc-300',
+              ]}>
                 {item}
               </span>
             ))}

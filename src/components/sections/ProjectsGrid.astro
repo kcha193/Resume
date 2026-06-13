@@ -28,20 +28,36 @@ const rest = sorted.filter(p => !featuredIds.has(p.id));
         </h2>
       </div>
       <p class="section-copy max-w-2xl lg:justify-self-end">
-        Selected public work showing Kevin’s ability to turn modelling, research, and data engineering into tools that help teams make decisions.
+        Public work selected for one reason: it shows end-to-end delivery from problem framing and modelling through to usable tools, adoption, and decision impact.
       </p>
     </div>
 
     {featured.length > 0 && (
-      <div class="mb-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-2">
-        {featured.map(entry => <ProjectCard entry={entry} featured />)}
-      </div>
+      <>
+        <div class="mb-4 flex items-center justify-between gap-4">
+          <p class="font-mono text-xs font-bold uppercase tracking-[0.18em] text-zinc-500 dark:text-zinc-400">
+            Featured case studies
+          </p>
+          <span class="hidden h-px flex-1 bg-zinc-950/10 dark:bg-white/10 sm:block" aria-hidden="true" />
+        </div>
+        <div class="mb-7 grid gap-5 sm:grid-cols-2 lg:grid-cols-2">
+          {featured.map(entry => <ProjectCard entry={entry} featured />)}
+        </div>
+      </>
     )}
 
     {rest.length > 0 && (
-      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {rest.map(entry => <ProjectCard entry={entry} featured={false} />)}
-      </div>
+      <>
+        <div class="mb-4 flex items-center justify-between gap-4">
+          <p class="font-mono text-xs font-bold uppercase tracking-[0.18em] text-zinc-500 dark:text-zinc-400">
+            Additional public work
+          </p>
+          <span class="hidden h-px flex-1 bg-zinc-950/10 dark:bg-white/10 sm:block" aria-hidden="true" />
+        </div>
+        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {rest.map(entry => <ProjectCard entry={entry} featured={false} />)}
+        </div>
+      </>
     )}
   </div>
 </section>

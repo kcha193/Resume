@@ -46,12 +46,16 @@ const currentRole = experience.find(entry => entry.data.endDate === null) ?? exp
         {cards.map((card, index) => (
           <article class:list={[
             'premium-card rounded-lg p-5',
-            index === 1 && 'border-[var(--brand)]/45',
+            index < 2 && 'border-[var(--brand)]/45 bg-[color-mix(in_srgb,var(--brand)_7%,var(--panel))] dark:bg-[color-mix(in_srgb,var(--brand)_8%,var(--panel))]',
+            index === 1 && 'sm:translate-y-5',
           ]}>
             <p class="text-xs font-mono uppercase text-[var(--link)] dark:text-[var(--brand)]">
               {card.label}
             </p>
-            <h3 class="mt-3 text-lg font-black leading-snug text-zinc-950 dark:text-zinc-50">
+            <h3 class:list={[
+              'mt-3 font-black leading-snug text-zinc-950 dark:text-zinc-50',
+              index < 2 ? 'text-xl' : 'text-lg',
+            ]}>
               {card.title}
             </h3>
             <p class="mt-3 text-sm leading-6 text-zinc-600 dark:text-zinc-400">
