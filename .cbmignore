@@ -1,0 +1,3 @@
+# Secrets — proactive, no real .env exists on disk as of this writing
+.env
+.env.*
