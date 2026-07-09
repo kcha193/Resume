@@ -135,4 +135,4 @@ Push to `main` → Netlify runs `npm run build`, publishes `dist/`.
 
 ## Session wrap-up
 
-If this session changed the project's status, milestone, or current focus, add or update a "Resume / CV site" entry in `~/ai-context/kevin/current-projects.md` (status, current focus, last-updated date) before ending the session. Skip this if nothing status-relevant changed.
+If this session changed the project's status, milestone, or current focus, add or update a "Resume / CV site" entry in `~/vault/AI_Context/Memory/Durable_Facts/Kevin/current-projects.md` (status, current focus, last-updated date) before ending the session. Skip this if nothing status-relevant changed.
