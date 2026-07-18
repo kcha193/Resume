@@ -1,0 +1,12 @@
+# Secrets — proactive, no real .env exists on disk as of this writing
+.env
+.env.*
+.runner.env
+*.pem
+*.key
+*.p12
+*.token
+credentials/
+secrets/
+logs/
+*.log
