@@ -2,76 +2,64 @@
 import { renderInlineMarkdown } from '../../lib/utils';
 
 interface Props {
-  items: Array<{
-    year: number;
-    citation: string;
-    url?: string;
-  }>;
+  items: Array<{ year: number; citation: string; url?: string }>;
+  /** Headline figures from profile.hero.stats; only citation / institution counts are used. */
+  stats: string[];
 }
 
-const { items } = Astro.props;
-
-// Sort by year descending
+const { items, stats } = Astro.props;
 const sorted = [...items].sort((a, b) => b.year - a.year);
 
-// Group by year
-const byYear = sorted.reduce<Record<number, typeof sorted>>((acc, item) => {
-  acc[item.year] = acc[item.year] || [];
-  acc[item.year].push(item);
-  return acc;
-}, {});
-
-const years = Object.keys(byYear)
-  .map(Number)
-  .sort((a, b) => b - a);
-
+const captions: Record<string, string> = {
+  citations: 'autopsych, PLoS ONE (2021)',
+  institutions: 'using the open-source autopsych Rasch analysis tool',
+};
+const figures = stats
+  .map(stat => stat.match(/^([\d,.]+\+?)\s+(citations|institutions)$/))
+  .filter((m): m is RegExpMatchArray => m !== null)
+  .map(m => ({ value: m[1], label: m[2], caption: captions[m[2]] }));
 ---
 
-<section
-  id="publications"
-  class="section-shell bg-[var(--paper)] dark:bg-zinc-950"
-  aria-labelledby="publications-heading"
->
-  <div class="section-inner">
-    <div class="mb-10 grid gap-6 lg:grid-cols-[0.75fr_1fr] lg:items-end">
-      <div>
-        <p class="eyebrow">Credibility Proof</p>
-        <h2 id="publications-heading" class="section-title" data-reveal>
-          Research, publications, and analytical rigour.
-        </h2>
+<section id="publications" class="section section--tint" aria-labelledby="publications-heading">
+  <div class="wrap grid gap-12 lg:grid-cols-12 lg:gap-x-10">
+    <div class="lg:col-span-5">
+      <div class="lg:sticky lg:top-28" data-reveal>
+        <h2 id="publications-heading" class="h-section">Research</h2>
+        <p class="copy mt-5 max-w-[40ch] text-[0.95rem]">
+          Peer-reviewed statistics, modelling and open-source tools. The technical depth behind the commercial work.
+        </p>
+
+        {figures.length > 0 && (
+          <dl class="mt-10 grid grid-cols-2 gap-x-6 border-t border-line pt-6">
+            {figures.map(f => (
+              <div>
+                <dt class="sr-only">{f.label}</dt>
+                <dd>
+                  <span class="num block text-[clamp(2.4rem,5vw,3.5rem)] font-semibold leading-none tracking-[-0.05em]">{f.value}</span>
+                  <span class="mt-2 block text-[0.95rem] font-semibold capitalize">{f.label}</span>
+                  <span class="label mt-1 block">{f.caption}</span>
+                </dd>
+              </div>
+            ))}
+          </dl>
+        )}
       </div>
-      <p class="section-copy max-w-2xl lg:justify-self-end">
-        Peer-reviewed and thesis work that supports Kevin’s technical credibility without overwhelming the main career story.
-      </p>
     </div>
 
-    <div class="grid gap-4 lg:grid-cols-2">
-      {years.map(year => (
-        <article class="rounded-lg border border-zinc-950/10 bg-white/70 p-5 shadow-sm dark:border-white/10 dark:bg-white/[0.035]">
-          <div class="mb-4 flex items-center gap-4">
-            <span class="rounded bg-[var(--brand)] px-2.5 py-1 font-mono text-sm font-black text-zinc-950">{year}</span>
-            <div class="h-px flex-1 bg-zinc-950/10 dark:bg-white/10" aria-hidden="true" />
+    <ol class="ruled border-t border-line lg:col-span-7">
+      {sorted.map((pub, i) => (
+        <li class="grid grid-cols-[3.25rem_1fr] gap-x-5 py-5 sm:grid-cols-[4rem_1fr]" data-reveal style={`--i:${i % 3}`}>
+          <span class="label num pt-0.5">{pub.year}</span>
+          <div>
+            <p class="text-[0.95rem] leading-relaxed text-muted [&_strong]:font-semibold [&_strong]:text-ink [&_em]:text-ink" set:html={renderInlineMarkdown(pub.citation)} />
+            {pub.url && (
+              <a href={pub.url} target="_blank" rel="noopener noreferrer" class="link-u mt-2 inline-block text-[0.88rem] font-semibold">
+                View record<span class="sr-only"> (opens in new tab)</span>
+              </a>
+            )}
           </div>
-          <ul class="space-y-4">
-            {byYear[year].map(item => (
-              <li class="text-sm leading-6 text-zinc-700 dark:text-zinc-300">
-                <span set:html={renderInlineMarkdown(item.citation)} />
-                {item.url && (
-                  <a
-                    href={item.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`View: ${item.citation.replace(/\*\*/g, '').trim()} (opens in new tab)`}
-                    class="ml-2 inline-flex items-center gap-1 text-xs font-mono font-semibold text-zinc-800 underline decoration-[var(--brand)] underline-offset-4 hover:text-zinc-950 dark:text-zinc-100 dark:hover:text-white"
-                  >
-                    View ↗
-                  </a>
-                )}
-              </li>
-            ))}
-          </ul>
-        </article>
+        </li>
       ))}
-    </div>
+    </ol>
   </div>
 </section>

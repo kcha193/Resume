@@ -1,4 +1,8 @@
 @media print {
+  body::before {
+    display: none !important;
+  }
+
   /* Hide interactive elements */
   header nav,
   #theme-toggle,

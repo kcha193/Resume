@@ -6,186 +6,83 @@ interface Props {
   profile: {
     name: string;
     tagline: string;
-    summary: string;
     location: string;
-    email: string;
     social: Array<{ platform: string; url: string; handle: string }>;
     hero: {
       eyebrow: string;
       heading: string;
       subheading: string;
-      stats: string[];
-      badges: string[];
-      highlights: Array<{ value: string; label: string }>;
-      positioning: string;
     };
   };
+  /** Current role, shown as a quiet caption under the portrait. */
+  current?: { title: string; company: string };
 }
-const { profile } = Astro.props;
+const { profile, current } = Astro.props;
 const { hero } = profile;
 
 const linkedin = profile.social.find(s => s.platform === 'linkedin');
-const github   = profile.social.find(s => s.platform === 'github');
 
-const statLabels = ['Experience', 'Commercial focus', 'Research reach', 'Adoption'];
-const heroStats = hero.stats.map((stat, index) => ({
-  value: stat,
-  label: statLabels[index] ?? 'Signal',
-}));
-
-const decisionSignals = [
-  'Pricing strategy',
-  'Customer outcomes',
-  'Model risk',
-  'Executive decisions',
-];
+// Highlight the closing phrase of the headline (last two words).
+const words = hero.heading.split(' ');
+const lead = words.slice(0, -2).join(' ');
+const accent = words.slice(-2).join(' ');
 ---
 
-<section
-  class="relative overflow-hidden border-b border-zinc-950/10 bg-[var(--paper)] dark:border-white/10 dark:bg-zinc-950"
-  aria-labelledby="hero-heading"
->
-  <div
-    class="absolute inset-0 opacity-[0.08] dark:opacity-[0.12]"
-    style="background-image: linear-gradient(rgba(24,24,27,.38) 1px, transparent 1px), linear-gradient(90deg, rgba(24,24,27,.38) 1px, transparent 1px); background-size: 56px 56px;"
-    aria-hidden="true"
-  />
-  <div class="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-[var(--brand)]/16 to-transparent dark:from-[var(--brand)]/10" aria-hidden="true" />
-  <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--brand)]/70 to-transparent" aria-hidden="true" />
+<section class="relative overflow-hidden" aria-labelledby="hero-heading">
+  <div class="guides pointer-events-none absolute inset-0" aria-hidden="true"></div>
 
-  <div class="relative mx-auto grid max-w-6xl items-center gap-10 px-4 py-12 sm:px-6 sm:py-16 lg:min-h-[calc(100vh-4rem)] lg:grid-cols-[1.08fr_0.92fr] lg:gap-14 lg:py-20">
+  <div class="wrap relative pb-16 pt-12 sm:pb-20 sm:pt-16 lg:pb-24 lg:pt-20">
+    <p class="rise mb-6 flex flex-wrap items-baseline gap-x-3 gap-y-1" style="--d:0">
+      <span class="text-lg font-semibold tracking-tight">{profile.name}</span>
+      <span class="label">{hero.eyebrow} · {profile.location}</span>
+    </p>
 
-    <div>
-      <p class="eyebrow mb-5">
-        {hero.eyebrow} · {profile.location}
-      </p>
-      <h1
-        id="hero-heading"
-        class="max-w-3xl text-5xl font-black leading-[0.98] text-zinc-950 dark:text-zinc-50 sm:text-6xl lg:text-7xl"
-      >
-        {hero.heading}
-      </h1>
-      <p class="mt-6 max-w-2xl text-lg leading-8 text-zinc-700 dark:text-zinc-300">
-        {hero.subheading}
-      </p>
+    <h1 id="hero-heading" class="display rise max-w-[19ch] sm:max-w-[24ch] lg:max-w-[26ch]" style="--d:1">
+      {lead} <span class="mark">{accent}</span>
+    </h1>
 
-      <div class="mt-7 grid max-w-2xl grid-cols-2 overflow-hidden rounded-lg border border-zinc-950/10 bg-white/70 shadow-sm dark:border-white/10 dark:bg-white/[0.045] sm:grid-cols-4" aria-label="Career evidence summary">
-        {heroStats.map(stat => (
-          <div class="hero-stat-card px-3 py-3">
-            <p class="text-base font-black leading-tight text-zinc-950 dark:text-zinc-50">{stat.value}</p>
-            <p class="mt-1 font-mono text-[0.64rem] font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">{stat.label}</p>
-          </div>
-        ))}
-      </div>
+    <div class="mt-10 grid items-center gap-10 lg:mt-14 lg:grid-cols-12 lg:gap-8">
+      <div class="lg:col-span-7">
+        <p class="lede rise" style="--d:2">{hero.subheading}</p>
 
-      <div class="mt-5 flex max-w-2xl flex-wrap gap-2" aria-label="Decision context">
-        {decisionSignals.map(signal => (
-          <span class="rounded-md border border-[var(--brand)]/35 bg-[color-mix(in_srgb,var(--brand)_11%,transparent)] px-3 py-1.5 text-xs font-bold uppercase tracking-wide text-zinc-800 dark:text-zinc-100">
-            {signal}
-          </span>
-        ))}
-      </div>
-
-      <div class="mt-7 flex flex-wrap gap-2.5" aria-label="Core expertise">
-        {hero.badges.map(badge => (
-          <span class="rounded-full border border-zinc-950/10 bg-white/70 px-3 py-1.5 text-sm font-semibold text-zinc-700 shadow-sm dark:border-white/10 dark:bg-white/5 dark:text-zinc-200">
-            {badge}
-          </span>
-        ))}
-      </div>
-
-      <div class="mt-9 flex flex-wrap gap-3">
-        <a
-          href="#experience"
-          class="inline-flex items-center gap-2 rounded-md bg-[var(--brand)] px-5 py-3 text-sm font-bold text-zinc-950 shadow-lg shadow-[var(--brand-glow)] transition-transform hover:-translate-y-0.5 no-underline"
-        >
-          Experience evidence
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-        </a>
-        <a
-          href="#projects"
-          class="inline-flex items-center gap-2 rounded-md border border-zinc-950/15 bg-white/70 px-5 py-3 text-sm font-bold text-zinc-800 shadow-sm transition-colors hover:border-[var(--brand)] hover:text-zinc-950 dark:border-white/15 dark:bg-white/5 dark:text-zinc-100 dark:hover:text-white no-underline"
-        >
-          Project proof
-        </a>
-        <a
-          href="/resume"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-flex items-center gap-2 rounded-md border border-zinc-950/15 bg-white/70 px-5 py-3 text-sm font-bold text-zinc-800 shadow-sm transition-colors hover:border-[var(--brand)] hover:text-zinc-950 dark:border-white/15 dark:bg-white/5 dark:text-zinc-100 dark:hover:text-white no-underline"
-        >
-          Printable resume
-        </a>
-        {linkedin && (
-          <a
-            href={linkedin.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex items-center gap-2 rounded-md border border-zinc-950/15 bg-white/70 px-5 py-3 text-sm font-bold text-zinc-800 shadow-sm transition-colors hover:border-[var(--brand)] hover:text-zinc-950 dark:border-white/15 dark:bg-white/5 dark:text-zinc-100 dark:hover:text-white no-underline"
-          >
-            LinkedIn
+        <div class="rise mt-9 flex flex-wrap items-center gap-x-6 gap-y-4" style="--d:3">
+          <a href="#experience" class="btn btn-primary">
+            Explore experience
+            <svg class="arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
           </a>
-        )}
-      </div>
-    </div>
-
-    <aside class="premium-card rounded-lg p-5 sm:p-6" aria-label="Profile highlights">
-      <div class="flex items-center gap-4 border-b border-zinc-950/10 pb-5 dark:border-white/10">
-        <Image
-          src={avatarSrc}
-          alt={`${profile.name} profile photo`}
-          width={320}
-          height={320}
-          loading="eager"
-          fetchpriority="high"
-          class="h-32 w-32 rounded-md object-cover ring-1 ring-zinc-950/10 dark:ring-white/10 sm:h-40 sm:w-40"
-        />
-        <div>
-          <p class="text-sm font-mono uppercase text-zinc-500 dark:text-zinc-400">
-            Executive signal
-          </p>
-          <p class="mt-2 text-xl font-black leading-tight text-zinc-950 dark:text-zinc-50">
-            {profile.tagline}
-          </p>
+          <a href="/resume" target="_blank" rel="noopener noreferrer" class="btn">Resume</a>
+          {linkedin && (
+            <a href={linkedin.url} target="_blank" rel="noopener noreferrer" class="link-u inline-flex min-h-11 items-center text-[0.94rem] font-semibold">
+              LinkedIn
+            </a>
+          )}
         </div>
       </div>
 
-      <div class="mt-5 grid gap-3 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
-        {hero.highlights.map(item => (
-          <div class="rounded-md border border-zinc-950/10 bg-zinc-50/80 p-4 dark:border-white/10 dark:bg-white/[0.03]">
-            <p class="text-2xl font-black text-zinc-950 dark:text-zinc-50">{item.value}</p>
-            <p class="mt-2 text-xs leading-5 text-zinc-600 dark:text-zinc-400">{item.label}</p>
-          </div>
-        ))}
-      </div>
-
-      <div class="mt-5 rounded-md border border-[var(--brand)]/40 bg-[color-mix(in_srgb,var(--brand)_12%,transparent)] p-4">
-        <p class="text-xs font-mono uppercase text-zinc-500 dark:text-zinc-400">
-          Hiring narrative
-        </p>
-        <p class="mt-2 text-sm leading-6 text-zinc-700 dark:text-zinc-300">
-          {hero.positioning}
-        </p>
-      </div>
-
-      <div class="mt-5 flex flex-wrap gap-3">
-        <a
-          href={`mailto:${profile.email}`}
-          class="inline-flex items-center gap-2 rounded-md bg-zinc-950 px-4 py-2.5 text-sm font-bold text-white transition-colors hover:bg-zinc-800 dark:bg-white dark:text-zinc-950 dark:hover:bg-zinc-200 no-underline"
-        >
-          Contact Kevin
-        </a>
-        {github && (
-          <a
-            href={github.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex items-center gap-2 rounded-md border border-zinc-950/15 px-4 py-2.5 text-sm font-bold text-zinc-800 transition-colors hover:border-[var(--brand)] dark:border-white/15 dark:text-zinc-100 no-underline"
-          >
-            GitHub
-          </a>
+      <figure class="rise group relative mx-0 w-full max-w-[17rem] lg:col-span-4 lg:col-start-9 lg:max-w-none" style="--d:3">
+        <div class="relative">
+        <div
+          class="absolute inset-0 translate-x-3 translate-y-3 rounded-[var(--radius-md)] bg-brand transition-transform duration-500 [transition-timing-function:var(--ease)] group-hover:translate-x-4 group-hover:translate-y-4"
+          aria-hidden="true"
+        ></div>
+        <Image
+          src={avatarSrc}
+          alt={`${profile.name}, ${profile.tagline.split('|')[0].trim()}`}
+          width={640}
+          height={640}
+          widths={[320, 480, 640]}
+          sizes="(min-width: 1024px) 24rem, 17rem"
+          loading="eager"
+          fetchpriority="high"
+          class="relative aspect-square w-full rounded-[var(--radius-md)] object-cover object-top grayscale-[0.15] contrast-[1.03]"
+        />
+        </div>
+        {current && (
+          <figcaption class="label mt-7">
+            Now · {current.title}, {current.company}
+          </figcaption>
         )}
-      </div>
-    </aside>
+      </figure>
+    </div>
   </div>
 </section>

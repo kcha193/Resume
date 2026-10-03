@@ -12,65 +12,35 @@ interface Props {
 const { items, languages, interests } = Astro.props;
 ---
 
-<section
-  id="education"
-  class="section-shell bg-white dark:bg-zinc-900/55"
-  aria-labelledby="education-heading"
->
-  <div class="section-inner">
-    <div class="grid gap-6 lg:grid-cols-[1.25fr_0.75fr]">
-      <div class="rounded-lg border border-zinc-950/10 bg-[var(--paper)]/70 p-6 shadow-sm dark:border-white/10 dark:bg-white/[0.035]">
-        <p class="eyebrow">Academic Foundation</p>
-        <h2 id="education-heading" class="section-title !text-3xl" data-reveal>
-          Education
-        </h2>
-        <ul class="mt-8 space-y-5">
-          {items.map(item => (
-            <li class="flex gap-4 rounded-md border border-zinc-950/10 bg-white/65 p-4 dark:border-white/10 dark:bg-zinc-950/35">
-              <span class="min-w-[3.5rem] pt-0.5 font-mono text-sm font-black text-[var(--link)] dark:text-[var(--brand)]">
-                {item.year}
-              </span>
-              <div>
-                <p class="text-sm font-black text-zinc-950 dark:text-zinc-50">
-                  {item.degree}
-                </p>
-                <p class="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
-                  {item.university}
-                </p>
-              </div>
-            </li>
+<section id="education" class="section" aria-labelledby="education-heading">
+  <div class="wrap grid gap-10 md:grid-cols-12 md:gap-x-10">
+    <h2 id="education-heading" class="text-xl font-semibold tracking-tight md:col-span-3" data-reveal>Education</h2>
+
+    <div class="grid gap-10 md:col-span-9 md:grid-cols-[1.6fr_1fr_1fr]" data-reveal>
+      <ul class="ruled border-t border-line">
+        {items.map(item => (
+          <li class="grid grid-cols-[3.25rem_1fr] gap-x-4 py-3">
+            <span class="label num pt-0.5">{item.year}</span>
+            <p class="text-[0.95rem] leading-snug">
+              <span class="font-medium">{item.degree}</span>
+              <span class="copy block text-[0.88rem]">{item.university}</span>
+            </p>
+          </li>
+        ))}
+      </ul>
+
+      <div class="border-t border-line pt-3">
+        <h3 class="label">Languages</h3>
+        <ul class="mt-2 grid gap-1 text-[0.95rem]">
+          {languages.map(l => (
+            <li>{l.name} <span class="copy text-[0.88rem]">· {l.level}</span></li>
           ))}
         </ul>
       </div>
 
-      <div class="rounded-lg border border-zinc-950/10 bg-[var(--paper)]/70 p-6 shadow-sm dark:border-white/10 dark:bg-white/[0.035]">
-        <p class="eyebrow">Personal Context</p>
-        <div class="mt-8">
-          <h3 class="mb-3 text-xs font-mono uppercase text-zinc-500 dark:text-zinc-400">
-            Languages
-          </h3>
-          <ul class="space-y-2">
-            {languages.map(lang => (
-              <li class="flex items-center justify-between rounded-md border border-zinc-950/10 bg-white/65 px-3 py-2 text-sm dark:border-white/10 dark:bg-zinc-950/35">
-                <span class="font-semibold text-zinc-800 dark:text-zinc-200">{lang.name}</span>
-                <span class="font-mono text-xs text-zinc-500 dark:text-zinc-400">{lang.level}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div class="mt-8">
-          <h3 class="mb-3 text-xs font-mono uppercase text-zinc-500 dark:text-zinc-400">
-            Interests
-          </h3>
-          <div class="flex flex-wrap gap-2">
-            {interests.map(interest => (
-              <span class="rounded-full border border-zinc-950/10 bg-white/65 px-3 py-1.5 text-xs font-semibold text-zinc-600 dark:border-white/10 dark:bg-zinc-950/35 dark:text-zinc-300">
-                {interest}
-              </span>
-            ))}
-          </div>
-        </div>
+      <div class="border-t border-line pt-3">
+        <h3 class="label">Outside work</h3>
+        <p class="mt-2 text-[0.95rem]">{interests.join(', ')}</p>
       </div>
     </div>
   </div>

@@ -17,6 +17,7 @@ const profile = profileEntry!.data;
 const experience = (await getCollection('experience')).sort(
   (a, b) => b.data.startDate.getTime() - a.data.startDate.getTime()
 );
+const current = experience.find(e => e.data.endDate === null)?.data;
 const projects = await getCollection('projects');
 const skillsEntry = await getEntry('skills', 'skills');
 const publicationsEntry = await getEntry('publications', 'publications');
@@ -27,12 +28,16 @@ const snapshotEntry = await getEntry('snapshot', 'snapshot');
 <BaseLayout profile={profile}>
   <Header />
   <main id="main-content">
-    <Hero profile={profile} />
-    <ProfessionalSnapshot summary={profile.summary} experience={experience} cards={snapshotEntry!.data.cards} />
+    <Hero profile={profile} current={current} />
+    <ProfessionalSnapshot
+      summary={profile.summary}
+      cards={snapshotEntry!.data.cards}
+      highlights={profile.hero.highlights}
+    />
     <ExperienceTimeline items={experience} />
     <ProjectsGrid items={projects} />
     <SkillsMatrix tiers={skillsEntry!.data.tiers} />
-    <PublicationsList items={publicationsEntry!.data.items} />
+    <PublicationsList items={publicationsEntry!.data.items} stats={profile.hero.stats} />
     <EducationList
       items={educationEntry!.data.items}
       languages={profile.languages}

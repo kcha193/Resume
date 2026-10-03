@@ -1,69 +1,58 @@
 ---
 import { renderInlineMarkdown } from '../../lib/utils';
-import type { CollectionEntry } from 'astro:content';
 
 interface Props {
   summary: string;
-  experience: CollectionEntry<'experience'>[];
-  cards: { label: string; title: string; detail: string }[];
+  cards: Array<{ label: string; title: string; detail: string }>;
+  highlights: Array<{ value: string; label: string }>;
 }
 
-const { summary, experience, cards } = Astro.props;
-const html = renderInlineMarkdown(summary);
-const currentRole = experience.find(entry => entry.data.endDate === null) ?? experience[0];
+const { summary, cards, highlights } = Astro.props;
+
+// The summary opens with a bold lead statement ("**Lead**: rest…"): the lead
+// becomes the section heading, the remainder the supporting paragraph.
+const match = summary.match(/^\*\*(.+?)\*\*[:\s]*([\s\S]*)$/);
+const lead = match ? match[1] : summary;
+const rest = match ? match[2] : '';
+
+const [primary, ...secondary] = highlights;
+const [figure, ...unit] = primary.value.split(' ');
 ---
 
-<section
-  id="about"
-  class="section-shell bg-[var(--paper)] dark:bg-zinc-950"
-  aria-labelledby="snapshot-heading"
->
-  <div class="section-inner">
-    <div class="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
-      <div class="lg:sticky lg:top-24">
-        <p class="eyebrow">Professional Snapshot</p>
-        <h2 id="snapshot-heading" class="section-title">
-          What recruiters should know first.
-        </h2>
-        <p class="section-copy mt-6" set:html={html} />
+<section id="about" class="section" aria-labelledby="snapshot-heading">
+  <div class="wrap grid gap-12 lg:grid-cols-12 lg:gap-x-10">
+    <div class="lg:col-span-4" data-reveal>
+      <p class="num text-[clamp(4.5rem,11vw,8rem)] font-semibold leading-[0.85] tracking-[-0.06em]">{figure}</p>
+      <p class="mt-2 text-2xl font-semibold tracking-tight">{unit.join(' ')}</p>
+      <p class="copy mt-3 max-w-[30ch] text-[0.95rem]">{primary.label}</p>
 
-        {currentRole && (
-          <div class="premium-card mt-8 rounded-lg p-5">
-            <p class="text-xs font-mono uppercase text-zinc-500 dark:text-zinc-400">
-              Current role
-            </p>
-            <p class="mt-3 text-lg font-black text-zinc-950 dark:text-zinc-50">
-              {currentRole.data.title}
-            </p>
-            <p class="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
-              {currentRole.data.company} · {currentRole.data.location}
-            </p>
+      <dl class="ruled mt-10 border-t border-line">
+        {secondary.map(item => (
+          <div class="py-4">
+            <dt class="text-lg font-semibold tracking-tight">{item.value}</dt>
+            <dd class="copy mt-1 text-[0.92rem]">{item.label}</dd>
           </div>
-        )}
-      </div>
-
-      <div class="grid gap-4 sm:grid-cols-2">
-        {cards.map((card, index) => (
-          <article class:list={[
-            'premium-card rounded-lg p-5',
-            index < 2 && 'border-[var(--brand)]/45 bg-[color-mix(in_srgb,var(--brand)_7%,var(--panel))] dark:bg-[color-mix(in_srgb,var(--brand)_8%,var(--panel))]',
-            index === 1 && 'sm:translate-y-5',
-          ]}>
-            <p class="text-xs font-mono uppercase text-[var(--link)] dark:text-[var(--brand)]">
-              {card.label}
-            </p>
-            <h3 class:list={[
-              'mt-3 font-black leading-snug text-zinc-950 dark:text-zinc-50',
-              index < 2 ? 'text-xl' : 'text-lg',
-            ]}>
-              {card.title}
-            </h3>
-            <p class="mt-3 text-sm leading-6 text-zinc-600 dark:text-zinc-400">
-              {card.detail}
-            </p>
-          </article>
         ))}
-      </div>
+      </dl>
+    </div>
+
+    <div class="lg:col-span-8">
+      <h2 id="snapshot-heading" class="h-section max-w-[22ch]" data-reveal>{lead}</h2>
+      {rest && (
+        <p class="lede mt-6" data-reveal set:html={renderInlineMarkdown(rest)} />
+      )}
+
+      <dl class="mt-14 grid gap-x-10 border-t border-line sm:grid-cols-2">
+        {cards.map((card, i) => (
+          <div class="border-b border-line py-6" data-reveal style={`--i:${i % 2}`}>
+            <dt class="label">{card.label}</dt>
+            <dd class="mt-2">
+              <span class="block text-[1.08rem] font-semibold leading-snug tracking-tight">{card.title}</span>
+              <span class="copy mt-2 block text-[0.94rem] leading-relaxed">{card.detail}</span>
+            </dd>
+          </div>
+        ))}
+      </dl>
     </div>
   </div>
 </section>

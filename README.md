@@ -14,7 +14,7 @@ Kevin Chang's personal CV website, built with **Astro 5** and **Tailwind CSS 4**
 |---|---|
 | **Framework** | [Astro 5](https://astro.build/) — static site generator, zero client-side framework |
 | **Styling** | [Tailwind CSS 4](https://tailwindcss.com/) via `@tailwindcss/vite` + CSS custom properties |
-| **Fonts** | Self-hosted Inter Variable (body) + JetBrains Mono Variable (dates/code) |
+| **Fonts** | Self-hosted Geist Variable (display + body) + Geist Mono Variable (dates/labels) |
 | **Interactivity** | Vanilla JS only — theme toggle and mobile nav are pure Astro components |
 | **Content** | Astro content collections — YAML for structured data, Markdown for prose |
 | **Deployment** | [Netlify](https://netlify.com/) — auto-deploys on push to `main` |
@@ -121,3 +121,11 @@ The `v1-hugo` git tag preserves the original Hugo/R site if you ever need to ref
 - **Email:** kevin.ct.chang@gmail.com
 - **GitHub:** [@kcha193](https://github.com/kcha193)
 - **LinkedIn:** [kevin-ct-chang](https://linkedin.com/in/kevin-ct-chang)
+
+## Design system (editorial redesign)
+
+- **Concept:** editorial intelligence. One accent (`--brand` #FCBD1A), one neutral family, hairline rules instead of cards, two radii (`--radius-sm` 4px, `--radius-md` 12px), one easing curve (`--ease`).
+- **Tokens** live in `src/styles/global.css` (`:root` / `[data-theme="dark"]`) and are exposed to Tailwind via `@theme inline` (`text-muted`, `bg-surface`, `border-line`, …). Layout/type primitives: `.wrap`, `.section`, `.display`, `.h-section`, `.lede`, `.label`, `.mark`, `.link-u`, `.btn`, `.ruled`.
+- **Fonts:** `@fontsource-variable/geist` and `@fontsource-variable/geist-mono` replace Inter and JetBrains Mono. The Latin subset is copied to `public/fonts/geist-latin-wght-normal.woff2` (stable URL, preloaded in `BaseLayout.astro`, also used by `/resume`).
+- **Skills:** `skills.yaml` items are ordered by depth of expertise. The first `core` items per tier (default 3, optional `core:` field) render prominently; the rest as supporting tools.
+- **Motion:** CSS only. Hero `.rise` load animation, `data-reveal` scroll reveal (staggered via `--i`), nav scroll-spy. All disabled under `prefers-reduced-motion`.
