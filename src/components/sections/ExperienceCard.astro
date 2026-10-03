@@ -1,5 +1,4 @@
 ---
-import Badge from '../ui/Badge.astro';
 import { formatDate, renderInlineMarkdown } from '../../lib/utils';
 import type { CollectionEntry, RenderResult } from 'astro:content';
 
@@ -13,70 +12,75 @@ interface Props {
 
 const { entry, summary: Summary, isLast } = Astro.props;
 const { title, company, location, startDate, endDate, tags, highlights } = entry.data;
+
+const isCurrent = endDate === null;
+const VISIBLE = 3;
+const lead = highlights.slice(0, VISIBLE);
+const more = highlights.slice(VISIBLE);
 ---
 
 <article
   data-reveal
-  class:list={[
-    'group relative rounded-lg border border-zinc-950/10 bg-[var(--paper)]/70 p-5 shadow-sm transition-colors hover:border-[var(--brand)]/60 dark:border-white/10 dark:bg-white/[0.035] sm:p-6',
-    isLast && 'mb-0',
-  ]}>
-  {!isLast && (
-    <div
-      class="absolute left-6 top-full hidden h-5 w-px bg-zinc-950/10 dark:bg-white/10 sm:block"
-      aria-hidden="true"
-    />
-  )}
+  class:list={['grid gap-6 py-10 lg:grid-cols-12 lg:gap-x-10 lg:py-14', !isLast && 'border-b border-line']}
+>
+  <header class="lg:col-span-4">
+    <div class="lg:sticky lg:top-24">
+      <p class="label flex items-center gap-2.5">
+        <span
+          class:list={[
+            'h-2.5 w-2.5 shrink-0 rounded-full border',
+            isCurrent ? 'border-brand bg-brand' : 'bg-transparent',
+          ]}
+          style={isCurrent ? '' : 'border-color: var(--line-strong)'}
+          aria-hidden="true"
+        ></span>
+        <span>{formatDate(startDate)} – {formatDate(endDate)}</span>
+      </p>
+      <p class:list={['mt-4 font-semibold tracking-tight', isCurrent ? 'text-3xl' : 'text-2xl']}>{company}</p>
+      <p class="copy mt-1 text-[0.92rem]">{location}</p>
+    </div>
+  </header>
 
-  <div class="grid gap-6 lg:grid-cols-[0.34fr_1fr]">
-    <div>
-      <div class="flex items-center gap-3">
-        <span class="h-3 w-3 rounded-full bg-[var(--brand)] shadow-sm shadow-[var(--brand-glow)]" aria-hidden="true" />
-        <span class="font-mono text-xs font-semibold uppercase text-zinc-500 dark:text-zinc-400">
-          {formatDate(startDate)} — {formatDate(endDate)}
-        </span>
-      </div>
-      <h3 class="mt-4 text-xl font-black leading-tight text-zinc-950 dark:text-zinc-50">
-        {title}
-      </h3>
-      <p class="mt-2 text-sm font-semibold text-zinc-700 dark:text-zinc-300">
-        {company}
-      </p>
-      <p class="mt-1 text-sm text-zinc-500 dark:text-zinc-400">
-        {location}
-      </p>
+  <div class="lg:col-span-8">
+    <h3 class:list={['font-semibold leading-tight tracking-tight', isCurrent ? 'text-2xl sm:text-[1.7rem]' : 'text-xl']}>
+      {title}
+    </h3>
+
+    <div class="lede mt-3 text-[1.02rem]">
+      <Summary />
     </div>
 
-    <div>
-      <p class="mb-2 font-mono text-[0.68rem] font-bold uppercase tracking-[0.16em] text-zinc-500 dark:text-zinc-400">
-        Role brief
-      </p>
-      <div class="mb-5 border-l-2 border-[var(--brand)] pl-4 text-sm font-medium leading-6 text-zinc-700 dark:text-zinc-300">
-        <Summary />
-      </div>
+    <ul class="mt-7 grid gap-4">
+      {lead.map((h, i) => (
+        <li
+          class:list={[
+            'relative pl-5 leading-relaxed before:absolute before:left-0 before:top-[0.7em] before:h-px before:w-3 before:bg-brand',
+            i === 0 ? 'text-ink font-medium' : 'text-muted',
+          ]}
+          set:html={renderInlineMarkdown(h)}
+        />
+      ))}
+    </ul>
 
-      {tags.length > 0 && (
-        <div class="mb-5 flex flex-wrap gap-2">
-          {tags.map(t => <Badge>{t}</Badge>)}
-        </div>
-      )}
+    {more.length > 0 && (
+      <details class="group mt-4">
+        <summary class="link-u inline-flex min-h-11 cursor-pointer list-none items-center gap-2 text-[0.92rem] font-semibold [&::-webkit-details-marker]:hidden">
+          <span class="group-open:hidden">Show {more.length} more</span>
+          <span class="hidden group-open:inline">Show less</span>
+        </summary>
+        <ul class="mt-3 grid gap-4">
+          {more.map(h => (
+            <li
+              class="relative pl-5 leading-relaxed text-muted before:absolute before:left-0 before:top-[0.7em] before:h-px before:w-3 before:bg-brand"
+              set:html={renderInlineMarkdown(h)}
+            />
+          ))}
+        </ul>
+      </details>
+    )}
 
-      <p class="mb-3 font-mono text-[0.68rem] font-bold uppercase tracking-[0.16em] text-zinc-500 dark:text-zinc-400">
-        Evidence
-      </p>
-      <ul class="grid gap-3">
-        {highlights.map((h, index) => (
-          <li
-            class:list={[
-              'relative rounded-md border py-3 pl-9 pr-4 text-sm leading-6 before:absolute before:left-4 before:top-5 before:h-1.5 before:w-1.5 before:rounded-full before:bg-[var(--brand)]',
-              index === 0
-                ? 'border-[var(--brand)]/45 bg-[color-mix(in_srgb,var(--brand)_9%,white)] font-medium text-zinc-800 dark:bg-[color-mix(in_srgb,var(--brand)_10%,#09090b)] dark:text-zinc-200'
-                : 'border-zinc-950/10 bg-white/65 text-zinc-700 dark:border-white/10 dark:bg-zinc-950/35 dark:text-zinc-300',
-            ]}
-            set:html={renderInlineMarkdown(h)}
-          />
-        ))}
-      </ul>
-    </div>
+    {tags.length > 0 && (
+      <p class="label mt-7">{tags.join('  ·  ')}</p>
+    )}
   </div>
 </article>

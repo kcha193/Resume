@@ -94,6 +94,9 @@ const skills = defineCollection({
   schema: z.object({
     tiers: z.array(z.object({
       title: z.string().min(1),
+      // Items are ordered by depth of expertise: the first `core` items are
+      // shown prominently, the rest as supporting tools. Defaults to 3.
+      core: z.number().int().min(1).optional(),
       items: z.array(z.string().min(1)).min(1),
     })).min(1),
   }),

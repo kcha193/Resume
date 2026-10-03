@@ -20,25 +20,16 @@ const renderedItems = await Promise.all(
 );
 ---
 
-<section
-  id="experience"
-  class="section-shell bg-white dark:bg-zinc-900/55"
-  aria-labelledby="experience-heading"
->
-  <div class="section-inner">
-    <div class="mb-12 grid gap-6 lg:grid-cols-[0.75fr_1fr] lg:items-end">
-      <div>
-        <p class="eyebrow">Career Evidence</p>
-        <h2 id="experience-heading" class="section-title" data-reveal>
-          Senior analytics work, made easy to scan.
-        </h2>
-      </div>
-      <p class="section-copy max-w-2xl lg:justify-self-end">
-        A progression across ASB Bank, New Zealand Treasury, and statistical consulting, with a through-line of rigorous modelling, stakeholder clarity, and practical data products.
+<section id="experience" class="section" aria-labelledby="experience-heading">
+  <div class="wrap">
+    <div class="flex flex-wrap items-end justify-between gap-x-10 gap-y-4 pb-4" data-reveal>
+      <h2 id="experience-heading" class="h-section">Experience</h2>
+      <p class="copy max-w-[44ch] text-[0.95rem]">
+        From statistical consulting and government policy modelling to banking pricing and model assurance at ASB.
       </p>
     </div>
 
-    <div class="space-y-5">
+    <div class="mt-8 border-t border-line">
       {renderedItems.map((item, i) => (
         <ExperienceCard
           entry={item.entry}

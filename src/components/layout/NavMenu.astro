@@ -1,21 +1,19 @@
 ---
 const navItems = [
-  { label: 'Snapshot',     href: '#about' },
   { label: 'Experience',   href: '#experience' },
   { label: 'Projects',     href: '#projects' },
   { label: 'Skills',       href: '#skills' },
   { label: 'Publications', href: '#publications' },
-  { label: 'Education',    href: '#education' },
   { label: 'Contact',      href: '#contact' },
 ];
 ---
 
-<!-- Desktop nav: fully static, zero JS -->
+<!-- Desktop nav: static markup; the inline script only sets aria-current -->
 <nav aria-label="Site navigation" class="hidden md:block">
-  <ul class="flex items-center gap-1 rounded-full border border-zinc-950/10 bg-white/55 p-1 text-sm text-zinc-600 shadow-sm dark:border-white/10 dark:bg-white/5 dark:text-zinc-300">
+  <ul class="flex items-center gap-7 text-[0.92rem] font-medium text-muted">
     {navItems.map(({ label, href }) => (
       <li>
-        <a href={href} class="rounded-full px-3 py-1.5 transition-colors hover:bg-zinc-950/5 hover:text-zinc-950 dark:hover:bg-white/10 dark:hover:text-zinc-50 no-underline">
+        <a href={href} data-nav class="nav-link block py-2 transition-colors hover:text-ink">
           {label}
         </a>
       </li>
@@ -29,16 +27,13 @@ const navItems = [
   aria-label="Open menu"
   aria-expanded="false"
   aria-controls="mobile-nav"
-  class="md:hidden rounded-md border border-zinc-950/10 bg-white/65 p-2 text-zinc-600 shadow-sm transition-colors hover:text-zinc-950 dark:border-white/10 dark:bg-white/5 dark:text-zinc-300 dark:hover:text-zinc-50"
+  class="md:hidden inline-flex h-11 w-11 items-center justify-center rounded-[var(--radius-sm)] border border-line text-muted transition-colors hover:text-ink"
 >
-  <!-- Hamburger icon (shown when closed) -->
-  <svg id="nav-icon-open" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-    <line x1="3" y1="6"  x2="21" y2="6" />
-    <line x1="3" y1="12" x2="21" y2="12" />
-    <line x1="3" y1="18" x2="21" y2="18" />
+  <svg id="nav-icon-open" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <line x1="4" y1="8"  x2="20" y2="8" />
+    <line x1="4" y1="16" x2="20" y2="16" />
   </svg>
-  <!-- Close icon (shown when open) -->
-  <svg id="nav-icon-close" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="hidden">
+  <svg id="nav-icon-close" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="hidden">
     <line x1="18" y1="6"  x2="6"  y2="18" />
     <line x1="6"  y1="6"  x2="18" y2="18" />
   </svg>
@@ -48,31 +43,55 @@ const navItems = [
 <nav
   id="mobile-nav"
   aria-label="Mobile navigation"
-  class="md:hidden hidden absolute left-0 right-0 top-16 z-50 border-b border-zinc-950/10 bg-[var(--paper)]/96 backdrop-blur-xl dark:border-white/10 dark:bg-zinc-950/96"
+  class="md:hidden hidden absolute left-0 right-0 top-full z-[var(--z-header)] border-b border-line bg-paper"
 >
-  <ul class="max-w-6xl mx-auto px-4 py-4 space-y-1">
+  <ul class="wrap py-3">
     {navItems.map(({ label, href }) => (
-      <li>
+      <li class="border-b border-line last:border-0">
         <a
           href={href}
-          class="block rounded-md px-3 py-2.5 text-sm font-semibold text-zinc-700 transition-colors hover:bg-zinc-950/5 hover:text-zinc-950 dark:text-zinc-300 dark:hover:bg-white/10 dark:hover:text-zinc-50 no-underline"
+          class="flex min-h-12 items-center text-lg font-medium tracking-tight text-ink"
         >
           {label}
         </a>
       </li>
     ))}
-    <li class="pt-2 pb-1">
+    <li class="pb-2 pt-4">
       <a
         href="/resume"
         target="_blank"
         rel="noopener noreferrer"
-        class="flex items-center gap-2 rounded-md bg-[var(--brand)] px-3 py-2.5 text-sm font-semibold text-zinc-950 transition-opacity hover:opacity-95 no-underline"
+        class="btn btn-primary w-full"
       >
-        View Resume
+        Resume
       </a>
     </li>
   </ul>
 </nav>
+
+<style>
+  .nav-link {
+    position: relative;
+  }
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    bottom: 0.25rem;
+    height: 2px;
+    background: var(--brand);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--dur-fast) var(--ease);
+  }
+  .nav-link:hover::after,
+  .nav-link[aria-current="true"]::after {
+    transform: scaleX(1);
+  }
+  .nav-link[aria-current="true"] {
+    color: var(--ink);
+  }
+</style>
 
 <script>
   const toggle = document.getElementById('nav-toggle')!;
@@ -148,4 +167,29 @@ const navItems = [
   // Close when a nav link is clicked
   nav.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
   document.addEventListener('keydown', trapFocus);
+</script>
+
+<script>
+  // Scroll-spy: mark the nav link for the section currently in view.
+  const links = Array.from(document.querySelectorAll<HTMLAnchorElement>('a[data-nav]'));
+  const targets = links
+    .map((a) => document.querySelector<HTMLElement>(a.getAttribute('href')!))
+    .filter((el): el is HTMLElement => el !== null);
+
+  if ('IntersectionObserver' in window && targets.length) {
+    const spy = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          links.forEach((a) =>
+            a.toggleAttribute('aria-current', false),
+          );
+          const active = links.find((a) => a.getAttribute('href') === `#${entry.target.id}`);
+          active?.setAttribute('aria-current', 'true');
+        });
+      },
+      { rootMargin: '-45% 0px -50% 0px' },
+    );
+    targets.forEach((el) => spy.observe(el));
+  }
 </script>

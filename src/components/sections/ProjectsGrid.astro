@@ -12,52 +12,32 @@ const sorted = [...items].sort((a, b) => b.data.year - a.data.year);
 const featured = sorted.filter(p => p.data.featured).slice(0, 4);
 const featuredIds = new Set(featured.map(p => p.id));
 const rest = sorted.filter(p => !featuredIds.has(p.id));
+const [lead, ...cases] = featured;
 ---
 
-<section
-  id="projects"
-  class="section-shell bg-[var(--paper)] dark:bg-zinc-950"
-  aria-labelledby="projects-heading"
->
-  <div class="section-inner">
-    <div class="mb-12 grid gap-6 lg:grid-cols-[0.75fr_1fr] lg:items-end">
-      <div>
-        <p class="eyebrow">Portfolio Proof</p>
-        <h2 id="projects-heading" class="section-title" data-reveal>
-          Data products with policy and business weight.
-        </h2>
-      </div>
-      <p class="section-copy max-w-2xl lg:justify-self-end">
-        Public work selected for one reason: it shows end-to-end delivery from problem framing and modelling through to usable tools, adoption, and decision impact.
+<section id="projects" class="section section--tint" aria-labelledby="projects-heading">
+  <div class="wrap">
+    <div class="flex flex-wrap items-end justify-between gap-x-10 gap-y-4 pb-12" data-reveal>
+      <h2 id="projects-heading" class="h-section">Selected work</h2>
+      <p class="copy max-w-[46ch] text-[0.95rem]">
+        End-to-end delivery: problem framing, modelling, and a usable tool at the end of it.
       </p>
     </div>
 
-    {featured.length > 0 && (
-      <>
-        <div class="mb-4 flex items-center justify-between gap-4">
-          <p class="font-mono text-xs font-bold uppercase tracking-[0.18em] text-zinc-500 dark:text-zinc-400">
-            Featured case studies
-          </p>
-          <span class="hidden h-px flex-1 bg-zinc-950/10 dark:bg-white/10 sm:block" aria-hidden="true" />
-        </div>
-        <div class="mb-7 grid gap-5 sm:grid-cols-2 lg:grid-cols-2">
-          {featured.map(entry => <ProjectCard entry={entry} featured />)}
-        </div>
-      </>
+    {lead && <ProjectCard entry={lead} variant="lead" />}
+    {cases.length > 0 && (
+      <div>
+        {cases.map((entry, i) => <ProjectCard entry={entry} variant="case" index={i} />)}
+      </div>
     )}
 
     {rest.length > 0 && (
-      <>
-        <div class="mb-4 flex items-center justify-between gap-4">
-          <p class="font-mono text-xs font-bold uppercase tracking-[0.18em] text-zinc-500 dark:text-zinc-400">
-            Additional public work
-          </p>
-          <span class="hidden h-px flex-1 bg-zinc-950/10 dark:bg-white/10 sm:block" aria-hidden="true" />
-        </div>
-        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {rest.map(entry => <ProjectCard entry={entry} featured={false} />)}
-        </div>
-      </>
+      <div class="mt-16 border-t border-line-strong pt-6" style="border-top-color: var(--line-strong)">
+        <h3 class="label" data-reveal>More public work</h3>
+        <ul class="ruled mt-2">
+          {rest.map(entry => <ProjectCard entry={entry} variant="row" />)}
+        </ul>
+      </div>
     )}
   </div>
 </section>

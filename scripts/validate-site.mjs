@@ -94,11 +94,13 @@ assertFileAbsent('src/components/sections/About.astro');
 assertFileAbsent('src/components/sections/ImpactBanner.astro');
 assertFileAbsent('src/components/sections/Specializations.astro');
 
-// Guard: Inter Variable must be served from /fonts/ (stable URL for preload)
-assertSourceIncludes('src/styles/global.css', '/fonts/inter-latin-wght-normal.woff2');
+// Guard: Geist Variable must be served from /fonts/ (stable URL for preload)
+assertSourceIncludes('src/styles/global.css', '/fonts/geist-latin-wght-normal.woff2');
+assertSourceIncludes('src/pages/resume.astro', '/fonts/geist-latin-wght-normal.woff2');
 
-// Guard: BaseLayout must preload the Inter Variable latin font
+// Guard: BaseLayout must preload the Geist Variable latin font
 assertSourceIncludes('src/layouts/BaseLayout.astro', 'rel="preload"');
+assertSourceIncludes('src/layouts/BaseLayout.astro', '/fonts/geist-latin-wght-normal.woff2');
 
 // Guard: scroll reveal must fail open — js class only when IntersectionObserver exists,
 // and reduced-motion users must never have content hidden behind the reveal

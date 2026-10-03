@@ -1,72 +1,43 @@
 ---
 interface Props {
-  tiers: Array<{
-    title: string;
-    items: string[];
-  }>;
+  tiers: Array<{ title: string; core?: number; items: string[] }>;
 }
 
 const { tiers } = Astro.props;
+const DEFAULT_CORE = 3;
 
-const tierStyles = [
-  'border-[var(--brand)] bg-[color-mix(in_srgb,var(--brand)_10%,transparent)]',
-  'border-zinc-950/10 bg-[var(--paper)]/70 dark:border-white/10 dark:bg-white/[0.035]',
-  'border-zinc-950/10 bg-white/70 dark:border-white/10 dark:bg-zinc-950/35',
-];
-
-const tierSummaries: Record<string, string> = {
-  'AI / ML / GenAI': 'Prediction, language-model analysis, and customer intelligence use cases.',
-  'Pricing / Banking / Optimisation': 'Commercial analytics connected to revenue, margin, customer outcomes, and governance.',
-  'Data Engineering / Analytics Platforms': 'Reusable data products and analytics surfaces that business teams can actually use.',
-  'Programming / Modelling': 'Statistical depth for simulation, experimentation, and reproducible analysis.',
-  'Communication / Stakeholder Impact': 'Clear recommendations for senior stakeholders, technical peers, and delivery teams.',
-};
+const domains = tiers.map(tier => {
+  const n = tier.core ?? DEFAULT_CORE;
+  return { title: tier.title, core: tier.items.slice(0, n), support: tier.items.slice(n) };
+});
 ---
 
-<section
-  id="skills"
-  class="section-shell bg-white dark:bg-zinc-900/55"
-  aria-labelledby="skills-heading"
->
-  <div class="section-inner">
-    <div class="mb-12 grid gap-6 lg:grid-cols-[0.75fr_1fr] lg:items-end">
-      <div>
-        <p class="eyebrow">Capability Map</p>
-        <h2 id="skills-heading" class="section-title" data-reveal>
-          Technical depth with commercial context.
-        </h2>
+<section id="skills" class="section" aria-labelledby="skills-heading">
+  <div class="wrap grid gap-10 lg:grid-cols-12 lg:gap-x-10">
+    <div class="lg:col-span-4">
+      <div class="lg:sticky lg:top-28" data-reveal>
+        <h2 id="skills-heading" class="h-section">Skills</h2>
+        <p class="copy mt-5 max-w-[34ch] text-[0.95rem]">
+          Grouped by capability. Deeper expertise first; supporting tools beneath.
+        </p>
       </div>
-      <p class="section-copy max-w-2xl lg:justify-self-end">
-        Skill groups are organised for recruiters and hiring leaders: what Kevin can do, where it applies, and how it shows up in banking, pricing, analytics, and AI work.
-      </p>
     </div>
 
-    <div class="grid gap-5 lg:grid-cols-6">
-      {tiers.map((tier, index) => (
-        <article class:list={[
-          'rounded-lg border p-5 shadow-sm',
-          tierStyles[index] ?? tierStyles[1],
-          index < 2 ? 'lg:col-span-3' : 'lg:col-span-2',
-        ]}>
-          <h3 class="text-base font-black text-zinc-950 dark:text-zinc-50">{tier.title}</h3>
-          {tierSummaries[tier.title] && (
-            <p class="mt-2 text-sm leading-6 text-zinc-600 dark:text-zinc-400">
-              {tierSummaries[tier.title]}
-            </p>
-          )}
-          <div class="mt-4 flex flex-wrap gap-2">
-            {tier.items.map((item, itemIndex) => (
-              <span class:list={[
-                'rounded-full border px-3 py-1.5 text-sm transition-colors hover:border-[var(--brand)]',
-                itemIndex < 3
-                  ? 'border-[var(--brand)]/45 bg-white/90 font-bold text-zinc-900 dark:bg-zinc-950/55 dark:text-zinc-100'
-                  : 'border-zinc-950/10 bg-white/75 font-medium text-zinc-700 dark:border-white/10 dark:bg-zinc-950/35 dark:text-zinc-300',
-              ]}>
-                {item}
-              </span>
-            ))}
+    <div class="ruled border-t border-line lg:col-span-8">
+      {domains.map((domain, i) => (
+        <div class="grid gap-3 py-7 sm:grid-cols-[11rem_1fr] sm:gap-8" data-reveal style={`--i:${i % 3}`}>
+          <h3 class="text-[0.95rem] font-semibold leading-snug tracking-tight sm:pt-1">{domain.title}</h3>
+          <div>
+            <ul class="flex flex-wrap gap-x-6 gap-y-1 text-xl font-medium tracking-tight sm:text-[1.4rem]">
+              {domain.core.map(item => <li class="before:mr-2.5 before:inline-block before:h-1.5 before:w-1.5 before:bg-brand before:align-middle">{item}</li>)}
+            </ul>
+            {domain.support.length > 0 && (
+              <p class="copy mt-3 text-[0.92rem] leading-relaxed">
+                {domain.support.join('  ·  ')}
+              </p>
+            )}
           </div>
-        </article>
+        </div>
       ))}
     </div>
   </div>
