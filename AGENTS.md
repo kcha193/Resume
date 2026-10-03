@@ -12,7 +12,7 @@ Kevin Chang's personal resume/CV website, built with **Astro 5** and **Tailwind 
 - **Astro 5** — static site generator; no client-side framework in use
 - **Tailwind CSS 4** — utility-first CSS via `@tailwindcss/vite` Vite plugin (no `tailwind.config.js` needed)
 - **Vanilla JS only** — theme toggle and mobile nav are pure Astro components with minimal inline scripts; React has been removed
-- **Self-hosted variable fonts** — Inter Variable (body), JetBrains Mono Variable (mono/dates)
+- **Self-hosted variable fonts** — Geist Variable (display/body), Geist Mono Variable (dates/labels)
 - **Astro content collections** — Zod-validated YAML + Markdown files
 - **`@astrojs/sitemap`** — auto-generates `sitemap-index.xml` at build time
 - **Netlify** — CI/CD and hosting (auto-deploys on push to `main`)
@@ -76,20 +76,23 @@ To update resume content, edit the relevant file in **`src/content/`** and push.
 
 ## Theme / Styling
 
-- Brand colour: `--brand` CSS custom property in `src/styles/global.css` (currently `#FCBD1A` — ASB yellow; dark mode `#FFD04D`)
-- Buttons with `bg-[var(--brand)]` use `text-zinc-900` (not `text-white`) because yellow requires dark text for WCAG contrast
+- Design concept: editorial intelligence — one yellow accent, one neutral family, hairline rules instead of cards, two radii (`--radius-sm: 4px`, `--radius-md: 12px`), and one easing curve (`--ease`)
+- Design tokens live in `src/styles/global.css` under `:root` / `[data-theme="dark"]` and are exposed to Tailwind through `@theme inline` (`text-muted`, `bg-surface`, `border-line`, etc.)
+- Brand colour: `--brand` is `#FCBD1A` (ASB yellow) in light mode and `#FFCB3D` in dark mode; use `--brand-text` when the accent must be text on the light background
+- Buttons with a yellow background use dark ink (`#141416`), not white, because yellow requires dark text for WCAG contrast
 - Skip link uses `color: #1a1a1a` (not white) — white on yellow fails WCAG AA contrast
-- Hero background gradient: `from-zinc-50 via-yellow-50/40 to-amber-50/20` (light) / zinc scale (dark)
+- The page uses flat `--paper` / `--surface` backgrounds, a subtle fixed grain, and hairline column guides rather than the previous hero gradient
+- Shared layout/type primitives are `.wrap`, `.section`, `.display`, `.h-section`, `.lede`, `.label`, `.mark`, `.link-u`, `.btn`, and `.ruled`
 - **Dark mode is the default** for new visitors — `stored || 'dark'` in the boot script in `BaseLayout.astro`
 - Dark mode: `data-theme="dark"` on `<html>`, set before paint by an `is:inline` script to avoid FOUC; toggled by ThemeToggle via a click listener; persisted to `localStorage`
 - Tailwind dark variant: `@variant dark (&:where([data-theme=dark], [data-theme=dark] *))` in `global.css` — `dark:` utilities work against the `data-theme` attribute, not the `dark` class
 - ThemeToggle icons are shown/hidden with `block dark:hidden` / `hidden dark:block` — no JS state, no flicker
 - Base link colour is set inside `@layer base` so Tailwind utility classes like `text-white` always override it
-- `prefers-reduced-motion` guard in `global.css` disables all animations/transitions for users who prefer reduced motion
+- Motion is CSS-only (`.rise` for the hero and `data-reveal` for scroll reveals); the `prefers-reduced-motion` guard in `global.css` disables animations and transitions
 
 ## Featured Projects
 
-Projects with `featured: true` in their frontmatter receive visual distinction (gold border, star badge) and are rendered above non-featured projects in `ProjectsGrid`. Keep featured to **4 or fewer** projects — more than that dilutes the signal.
+`ProjectsGrid` renders up to four projects with `featured: true` as editorial case studies: the first is the lead treatment and the remaining featured projects use the compact case-study treatment. All other projects appear below as a ruled “More public work” index. Keep featured to **4 or fewer** projects — more than that dilutes the signal and any extras fall back to the index.
 
 ## Deployment
 
