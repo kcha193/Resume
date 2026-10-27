@@ -51,8 +51,8 @@ Files: docs/portfolio, README, AGENTS instructions where architecture needs upda
 - [x] Write LinkedIn recommendations with three public-source post drafts and a 30-day relationship/posting plan.
 - [x] Check responsive layout, keyboard menu, reduced motion and print output; capture screenshots where feasible.
 - [x] Obtain a fresh review of the branch, resolve material findings and inspect the final diff.
-- [ ] Commit/push feature branch and create PR as authorised by the brief; do not merge. Report verification and deployment implications.
-- [ ] Update the Resume project status in canonical current-projects.md.
+- [x] Commit/push feature branch and create PR as authorised by the brief; do not merge. Report verification and deployment implications. PR #20 is open and unmerged.
+- [x] Update the Resume project status in canonical current-projects.md.
 
 ## Execution record
 

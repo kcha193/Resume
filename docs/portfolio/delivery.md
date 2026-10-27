@@ -2,6 +2,8 @@
 
 27 October 2026. Feature branch: `feat/evidence-led-portfolio`; base: `51fed77`.
 
+[PR #20](https://github.com/kcha193/Resume/pull/20) is open and unmerged. The production site remains on `main` until the PR is merged and Netlify finishes deploying it.
+
 ## What changed
 
 The site now leads with banking pricing and statistical judgement, with customer intelligence, model assurance and policy modelling as the distinguishing background. Unsupported adoption, citation and numerical impact claims have been removed. Career titles and dates remain as supplied in the existing content.
