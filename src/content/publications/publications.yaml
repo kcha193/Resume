@@ -1,15 +1,17 @@
 items:
   - year: 2017
     citation: "**Chang, K.** (2017). Computer generation of designs for two-phase experiments with applications to multiplex experiments in proteomics [Doctoral thesis, The University of Auckland]. *Statistical design methodology with applications in high-dimensional biology.*"
-    url: "http://hdl.handle.net/2292/37016"
+    url: "https://hdl.handle.net/2292/37016"
   - year: 2021
-    citation: "Courtney, M. G. R., **Chang, K.**, Mei, E., Meissel, K., Rowe, L., & Issayeva, L. (2021). autopsych: An R Shiny Tool for the Reproducible Rasch Analysis, Differential Item Functioning, Equating, and Examination of Group Effects. *PLoS ONE.* Open-source tool adopted by 60+ educational institutions globally; 1200+ citations."
+    citation: "Courtney, M. G. R., **Chang, K.**, Mei, B., Meissel, K., Rowe, L. I., & Issayeva, L. B. (2021). autopsych: An R Shiny Tool for the Reproducible Rasch Analysis, Differential Item Functioning, Equating, and Examination of Group Effects. *PLOS ONE*, 16(10), e0257682."
+    url: "https://doi.org/10.1371/journal.pone.0257682"
   - year: 2019
-    citation: "Shackleton, N., **Chang, K.**, Lay-yee, R., D'Souza, S., Davis, P., & Milne, B. (2019). Microsimulation model of child and adolescent overweight: making use of what we already know. *International Journal of Obesity.* Policy modelling supporting NZ child health intervention strategies."
+    citation: "Shackleton, N., **Chang, K.**, Lay-yee, R., D'Souza, S., Davis, P., & Milne, B. (2019). Microsimulation model of child and adolescent overweight: making use of what we already know. *International Journal of Obesity.*"
   - year: 2018
-    citation: "Lay-Yee, R., Milne, B., Shackleton, N., **Chang, K.** & Davis P. (2018). Preventing youth depression: Simulating the impact of parenting interventions. *Advances in Life Course Research.* Microsimulation informing evidence-based youth mental health policy."
+    citation: "Lay-Yee, R., Milne, B., Shackleton, N., **Chang, K.** & Davis P. (2018). Preventing youth depression: Simulating the impact of parenting interventions. *Advances in Life Course Research.*"
   - year: 2018
-    citation: "Courtney, M. G. R. & **Chang, K. C.** (2018). Dealing with non-normality: An introduction and step-by-step guide using R. *Test Journal.* Practical statistical guidance for 500+ academic practitioners."
+    citation: "Courtney, M. G. R. & **Chang, K. C.** (2018). Dealing with non-normality: An introduction and step-by-step guide using R. *Teaching Statistics*, 40(2), 51–59."
+    url: "https://doi.org/10.1111/test.12154"
   - year: 2019
     citation: "Zhao, J., Mackay, L., **Chang, K.**, Mavoa, S., Stewart, T., Ikeda, E., ... & Smith, M. (2019). Visualising combined time use patterns of children's activities and their association with weight status and neighborhood context. *International Journal of Environmental Research & Public Health.*"
   - year: 2019

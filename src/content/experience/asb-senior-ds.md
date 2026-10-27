@@ -6,12 +6,10 @@ startDate: 2026-01-01
 endDate: null
 tags: ["Pricing", "Analytics", "Revenue Optimisation", "Advanced Statistical Modelling"]
 highlights:
-  - "Drive continuous improvement of pricing strategies, models, and processes to enhance customer experience and business performance."
-  - "Develop and implement pricing models and analytical frameworks to support new product features or enhancements aligned with customer and market needs."
-  - "Monitor product performance, including pricing impact on revenue, profitability, and customer outcomes, and provide actionable insights to optimise P&L performance."
-  - "Apply simulation-based analytical frameworks—drawing on a background in large-scale policy microsimulation—to model the distributional impact of pricing changes across customer segments before deployment."
-  - "Evaluate post-launch performance using advanced analytics, recommending adjustments to pricing, product features, and customer strategies to improve outcomes."
-  - "Identify, assess, and proactively manage risks associated with pricing decisions, including regulatory, conduct, and model risks."
+  - "Develop pricing models and analytical frameworks to support product and commercial decisions."
+  - "Assess product performance across revenue, profitability and customer outcomes."
+  - "Evaluate pricing performance and communicate recommendations and limitations to senior stakeholders."
+  - "Bring model-risk and conduct-risk considerations into pricing analysis."
 ---
 
-Lead pricing strategy by integrating market intelligence, competitor dynamics, and advanced analytics to drive revenue growth and competitive positioning.
+Support retail banking pricing decisions through statistical modelling, commercial analysis and clear communication.

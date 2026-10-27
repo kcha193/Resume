@@ -1,10 +1,30 @@
 @media print {
+  :root,
+  [data-theme="dark"] {
+    --paper: #fff;
+    --surface: #fff;
+    --surface-2: #f3f3f0;
+    --ink: #141416;
+    --muted: #4d4f55;
+    --faint: #686a70;
+    --line: rgba(20, 20, 22, 0.13);
+    --line-strong: rgba(20, 20, 22, 0.34);
+    --brand-text: #6f4c00;
+  }
+
+  .js [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+
   body::before {
     display: none !important;
   }
 
   /* Hide interactive elements */
   header nav,
+  body > header,
+  #nav-toggle,
   #theme-toggle,
   .skip-link,
   footer {
@@ -20,6 +40,23 @@
   /* Avoid page breaks inside cards */
   article,
   section {
+    break-inside: avoid;
+  }
+
+  main.section,
+  .reading {
+    break-inside: auto;
+    padding-block: 0;
+    border-top: 0;
+  }
+
+  .prose h2,
+  .prose h3 {
+    break-after: avoid;
+  }
+
+  .prose ul,
+  .prose li {
     break-inside: avoid;
   }
 

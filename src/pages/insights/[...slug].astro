@@ -1,0 +1,24 @@
+---
+import { getCollection, getEntry, render, type CollectionEntry } from 'astro:content';
+import ReadingLayout from '../../layouts/ReadingLayout.astro';
+
+export async function getStaticPaths() {
+  return (await getCollection('insights', ({ data }) => data.status !== 'draft'))
+    .map(entry => ({ params: { slug: entry.slug }, props: { entry } }));
+}
+interface Props { entry: CollectionEntry<'insights'> }
+const { entry } = Astro.props;
+const article = entry.data;
+const profile = (await getEntry('profile', 'profile'))!.data;
+const { Content } = await render(entry);
+---
+
+<ReadingLayout profile={profile} title={article.title} description={article.summary} label={`${article.topic} · ${article.status === 'outline' ? 'Article outline' : 'Article'}`} backHref="/insights/" backLabel="All insights" canonicalUrl={article.canonicalUrl} article={article}>
+  <div slot="metadata" class="mt-6">
+    <p class="label">By {profile.name} · <time datetime={article.date.toISOString()}>{article.date.toLocaleDateString('en-NZ', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' })}</time></p>
+    {article.status === 'outline' && <p class="copy mt-5 border-l-2 border-brand pl-4 text-sm">Article outline: proposed arguments and examples for a future article. This is not a completed study or a description of ASB practices.</p>}
+    {article.canonicalUrl && <p class="copy mt-4 text-sm">Also available at the <a class="link-u" href={article.canonicalUrl}>canonical source</a>.</p>}
+  </div>
+  <Content />
+  <p><a href="/#contact">Share a question or suggest a source</a>.</p>
+</ReadingLayout>

@@ -48,6 +48,9 @@ The main page is `src/pages/index.astro`. It pulls from all collections via `get
 | `src/lib/seo.ts` | Builds JSON-LD `Person` schema from profile data + site URL |
 | `src/lib/utils.ts` | `formatDate`, `renderInlineMarkdown` helpers |
 | `src/pages/resume.astro` | Printable resume page at `/resume` — data-driven from content collections, `noindex`; `/resume.html` 301-redirects to it (see `netlify.toml`) |
+| `src/pages/work/[...slug].astro` | Six-part evidence case studies for featured projects |
+| `src/pages/insights/` | Index and Markdown reading routes; entries with `status: draft` generate no route |
+| `src/layouts/ReadingLayout.astro` | Shared reading layout for case studies and Insights |
 | `netlify.toml` | Build command + immutable cache headers |
 
 ## Key Commands
@@ -92,7 +95,13 @@ To update resume content, edit the relevant file in **`src/content/`** and push.
 
 ## Featured Projects
 
-`ProjectsGrid` renders up to four projects with `featured: true` as editorial case studies: the first is the lead treatment and the remaining featured projects use the compact case-study treatment. All other projects appear below as a ruled “More public work” index. Keep featured to **4 or fewer** projects — more than that dilutes the signal and any extras fall back to the index.
+`ProjectsGrid` renders up to four projects with `featured: true` as editorial case studies: the first is the lead treatment and the remaining featured projects use the compact case-study treatment. All other projects appear below as a ruled “Earlier projects and explorations” index. Keep featured to **4 or fewer** projects — more than that dilutes the signal and any extras fall back to the index.
+
+Featured projects require `scope`, `problem`, `approach`, `tradeoffs`, `evidence` (label/URL pairs), `outcome` and `lessons`. Their `/work/<slug>/` pages render the full case study; homepage cards show a short version. Distinguish collaborative research, professional work and independent personal projects. Keep unverifiable metrics out of public copy; see `docs/portfolio/audit-and-evidence.md`.
+
+Insights live in `src/content/insights/*.md`, with `title`, `topic`, `date`, `summary`, optional HTTPS `canonicalUrl`, and `status: draft | outline | published` (default `draft`). Outlines are public and visibly labelled. Drafts are excluded from index, homepage and generated routes. Use external canonical URLs only for intentional republication; canonical, Open Graph URL and Article metadata must agree. RSS is deferred until there are completed articles.
+
+`npm test` runs source guardrails and generated-page regression tests. Tests build to an isolated temporary directory, use temporary draft/canonical fixtures, and remove those fixtures afterwards. Do not run a development watcher concurrently with these tests. Run `npm run build` afterwards for clean deployable output.
 
 ## Deployment
 

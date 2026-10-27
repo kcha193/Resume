@@ -1,19 +1,21 @@
 ---
+const home = Astro.url.pathname === '/' ? '' : '/';
 const navItems = [
-  { label: 'Experience',   href: '#experience' },
-  { label: 'Projects',     href: '#projects' },
-  { label: 'Skills',       href: '#skills' },
-  { label: 'Publications', href: '#publications' },
-  { label: 'Contact',      href: '#contact' },
+  { label: 'Experience',   href: `${home}#experience` },
+  { label: 'Projects',     href: `${home}#projects` },
+  { label: 'Skills',       href: `${home}#skills` },
+  { label: 'Publications', href: `${home}#publications` },
+  { label: 'Insights',     href: '/insights/' },
+  { label: 'Contact',      href: `${home}#contact` },
 ];
 ---
 
 <!-- Desktop nav: static markup; the inline script only sets aria-current -->
-<nav aria-label="Site navigation" class="hidden md:block">
-  <ul class="flex items-center gap-7 text-[0.92rem] font-medium text-muted">
+<nav aria-label="Site navigation" class="hidden lg:block">
+  <ul class="flex items-center gap-5 text-[0.92rem] font-medium text-muted">
     {navItems.map(({ label, href }) => (
       <li>
-        <a href={href} data-nav class="nav-link block py-2 transition-colors hover:text-ink">
+        <a href={href} data-nav={href.includes('#') ? '' : undefined} aria-current={href === '/insights/' && Astro.url.pathname.startsWith('/insights/') ? 'page' : undefined} class="nav-link block py-2 transition-colors hover:text-ink">
           {label}
         </a>
       </li>
@@ -27,7 +29,7 @@ const navItems = [
   aria-label="Open menu"
   aria-expanded="false"
   aria-controls="mobile-nav"
-  class="md:hidden inline-flex h-11 w-11 items-center justify-center rounded-[var(--radius-sm)] border border-line text-muted transition-colors hover:text-ink"
+  class="lg:hidden inline-flex h-11 w-11 items-center justify-center rounded-[var(--radius-sm)] border border-line text-muted transition-colors hover:text-ink"
 >
   <svg id="nav-icon-open" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
     <line x1="4" y1="8"  x2="20" y2="8" />
@@ -43,7 +45,7 @@ const navItems = [
 <nav
   id="mobile-nav"
   aria-label="Mobile navigation"
-  class="md:hidden hidden absolute left-0 right-0 top-full z-[var(--z-header)] border-b border-line bg-paper"
+  class="lg:hidden hidden absolute left-0 right-0 top-full z-[var(--z-header)] border-b border-line bg-paper"
 >
   <ul class="wrap py-3">
     {navItems.map(({ label, href }) => (
@@ -85,10 +87,10 @@ const navItems = [
     transition: transform var(--dur-fast) var(--ease);
   }
   .nav-link:hover::after,
-  .nav-link[aria-current="true"]::after {
+  .nav-link[aria-current]::after {
     transform: scaleX(1);
   }
-  .nav-link[aria-current="true"] {
+  .nav-link[aria-current] {
     color: var(--ink);
   }
 </style>
@@ -173,7 +175,7 @@ const navItems = [
   // Scroll-spy: mark the nav link for the section currently in view.
   const links = Array.from(document.querySelectorAll<HTMLAnchorElement>('a[data-nav]'));
   const targets = links
-    .map((a) => document.querySelector<HTMLElement>(a.getAttribute('href')!))
+    .map((a) => document.querySelector<HTMLElement>(new URL(a.href).hash))
     .filter((el): el is HTMLElement => el !== null);
 
   if ('IntersectionObserver' in window && targets.length) {
@@ -184,7 +186,7 @@ const navItems = [
           links.forEach((a) =>
             a.toggleAttribute('aria-current', false),
           );
-          const active = links.find((a) => a.getAttribute('href') === `#${entry.target.id}`);
+          const active = links.find((a) => a.hash === `#${entry.target.id}`);
           active?.setAttribute('aria-current', 'true');
         });
       },

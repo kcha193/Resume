@@ -25,8 +25,9 @@ export function buildPersonSchema(
   return {
     '@context': 'https://schema.org',
     '@type': 'Person',
+    '@id': new URL('/#person', siteUrl).href,
     name: profile.name,
-    jobTitle: profile.tagline,
+    jobTitle: profile.tagline.split('|')[0].trim(),
     description,
     email: profile.email,
     image: imageUrl,
@@ -66,5 +67,31 @@ export function buildPersonSchema(
       'Python',
       'SQL',
     ],
+  };
+}
+
+export interface ArticleMetadata {
+  title: string;
+  summary: string;
+  topic: string;
+  date: Date;
+  status: 'draft' | 'outline' | 'published';
+}
+
+export function buildArticleSchema(article: ArticleMetadata, canonicalUrl: string, siteUrl: string, authorName: string) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    '@id': `${canonicalUrl}#article`,
+    headline: article.title,
+    description: article.summary,
+    articleSection: article.topic,
+    datePublished: article.date.toISOString(),
+    creativeWorkStatus: article.status === 'outline' ? 'Outline' : 'Published',
+    mainEntityOfPage: canonicalUrl,
+    url: canonicalUrl,
+    image: new URL('/og-image.png', siteUrl).href,
+    author: { '@type': 'Person', '@id': new URL('/#person', siteUrl).href, name: authorName, url: siteUrl },
+    inLanguage: 'en-NZ',
   };
 }

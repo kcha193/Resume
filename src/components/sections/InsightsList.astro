@@ -1,0 +1,21 @@
+---
+import type { CollectionEntry } from 'astro:content';
+interface Props { items: CollectionEntry<'insights'>[] }
+const { items } = Astro.props;
+---
+
+<ol class="ruled border-t border-line">
+  {items.map(entry => (
+    <li class="grid gap-4 py-7 sm:grid-cols-[10rem_1fr]">
+      <div>
+        <p class="label">{entry.data.topic}</p>
+        <p class="label mt-2">{entry.data.status === 'outline' ? 'Article outline' : 'Article'}</p>
+        <time class="label mt-2 block" datetime={entry.data.date.toISOString()}>{entry.data.date.toLocaleDateString('en-NZ', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' })}</time>
+      </div>
+      <div>
+        <h2 class="text-xl font-semibold tracking-tight"><a href={`/insights/${entry.slug}/`} class="link-u">{entry.data.title}</a></h2>
+        <p class="copy mt-3">{entry.data.summary}</p>
+      </div>
+    </li>
+  ))}
+</ol>

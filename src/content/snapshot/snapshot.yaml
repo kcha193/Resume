@@ -1,24 +1,13 @@
 cards:
-  - label: "Experience"
-    title: "12+ years turning models into decisions"
-    detail: "Financial services, government policy, consulting, and research delivery with a consistent focus on usable decision support."
-
-  - label: "Banking focus"
-    title: "Pricing work connected to P&L, customer outcomes, and risk"
-    detail: "Current ASB focus spans pricing models, product performance, conduct considerations, and post-launch optimisation."
-
+  - label: "Pricing"
+    title: "Make the commercial trade-offs explicit"
+    detail: "Connect pricing analysis with product performance, customer outcomes and the risks around a decision."
   - label: "Customer intelligence"
-    title: "Customer growth and retention modelling"
-    detail: "Customer lifetime value, segmentation, churn prediction, and recommendation systems translated into business planning."
-
-  - label: "AI capability"
-    title: "ML and GenAI with practical guardrails"
-    detail: "Predictive analytics plus LLM analysis of open-ended survey responses, customer sentiment, and signal extraction."
-
-  - label: "Risk discipline"
-    title: "Model assurance background"
-    detail: "Validation experience across risk, credit, and operational models with regulatory expectations."
-
-  - label: "Leadership"
-    title: "Executive-ready communication and mentoring"
-    detail: "Turns technical complexity into clear recommendations for senior stakeholders while building analytics capability in teams."
+    title: "Model behaviour to support business choices"
+    detail: "Experience with customer lifetime value, segmentation, churn and product recommendation."
+  - label: "Model assurance"
+    title: "Challenge the assumptions behind the output"
+    detail: "A validation background informs how I assess limitations, evidence and the appropriate use of a model."
+  - label: "Communication"
+    title: "Give stakeholders a decision they can assess"
+    detail: "Explain the question, analytical approach and limitations in language suited to business and technical audiences."

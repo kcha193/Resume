@@ -1,0 +1,13 @@
+---
+import { getCollection, getEntry } from 'astro:content';
+import ReadingLayout from '../../layouts/ReadingLayout.astro';
+import InsightsList from '../../components/sections/InsightsList.astro';
+const profile = (await getEntry('profile', 'profile'))!.data;
+const insights = (await getCollection('insights', ({ data }) => data.status !== 'draft'))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime() || a.slug.localeCompare(b.slug));
+---
+
+<ReadingLayout profile={profile} title="Insights" description="Questions worth working through in banking pricing, applied AI and analytical decision-making." label="Writing and ideas" backHref="/" backLabel="Home">
+  <p>These article outlines set out questions, proposed examples and evidence to develop. They are writing plans, rather than completed studies or accounts of employer work.</p>
+  <InsightsList items={insights} />
+</ReadingLayout>

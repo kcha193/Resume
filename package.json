@@ -9,7 +9,7 @@
     "preview": "astro preview",
     "astro": "astro",
     "check": "astro check",
-    "test": "node scripts/validate-site.mjs"
+    "test": "node scripts/validate-site.mjs && node --test tests/portfolio.test.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.2.1",

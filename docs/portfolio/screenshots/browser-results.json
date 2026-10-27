@@ -1,0 +1,31 @@
+{
+  "viewports": [
+    375,
+    390,
+    768,
+    1024,
+    1440
+  ],
+  "routes": [
+    "/",
+    "/insights/",
+    "/insights/banking-pricing-trade-offs/",
+    "/work/automated-psychometrics/",
+    "/resume/"
+  ],
+  "keyboard": [
+    "skip link",
+    "menu focus",
+    "Tab/Shift+Tab trap",
+    "Escape restores focus",
+    "mobile Insights navigation",
+    "detail-to-home anchor"
+  ],
+  "theme": [
+    "dark default",
+    "toggle",
+    "persistence"
+  ],
+  "reducedMotion": true,
+  "pageErrors": []
+}

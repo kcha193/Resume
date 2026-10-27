@@ -1,11 +1,12 @@
 ---
 title: "Income Explorer"
-blurb: "The Income Explorer is an interactive app that models the relationship between wages and disposable income, assessing the impact of the New Zealand tax and welfare system on family incomes and work incentive indicators like effective marginal tax rates."
 url: "https://kcha193.shinyapps.io/IncomeExplorer/"
 stack: ["R", "Shiny", "NZ Treasury"]
 category: "policy"
-featured: false
 year: 2021
+blurb: "Historical interactive tool exploring wages, disposable income and work incentives under New Zealand tax and welfare settings."
+scope: "Professional work"
+featured: false
 ---
 
-NZ Treasury
+Historical tax-and-welfare modelling work. The linked app is an earlier version; current policy settings should be checked against official Treasury resources.

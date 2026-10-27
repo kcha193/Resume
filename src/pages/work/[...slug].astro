@@ -1,0 +1,34 @@
+---
+import { getCollection, getEntry, render, type CollectionEntry } from 'astro:content';
+import ReadingLayout from '../../layouts/ReadingLayout.astro';
+
+export async function getStaticPaths() {
+  return (await getCollection('projects', ({ data }) => data.featured))
+    .map(entry => ({ params: { slug: entry.slug }, props: { entry } }));
+}
+interface Props { entry: CollectionEntry<'projects'> }
+const { entry } = Astro.props;
+const project = entry.data;
+const profile = (await getEntry('profile', 'profile'))!.data;
+const { Content } = await render(entry);
+---
+
+<ReadingLayout profile={profile} title={project.title} description={project.blurb} label={`${project.scope} · ${project.year}`} backHref="/#projects" backLabel="Selected work">
+  <p slot="metadata" class="label mt-6">{project.stack.join(' · ')}</p>
+  <h2>Problem</h2>
+  <p>{project.problem}</p>
+  <h2>Approach</h2>
+  <p>{project.approach}</p>
+  <Content />
+  <h2>Trade-offs</h2>
+  <p>{project.tradeoffs}</p>
+  <h2>Evidence</h2>
+  <ul>
+    {project.evidence.map(item => <li><a href={item.url}>{item.label}</a></li>)}
+  </ul>
+  <h2>Outcome</h2>
+  <p>{project.outcome}</p>
+  <h2>Lessons</h2>
+  <p>{project.lessons}</p>
+  <p><a href="/#publications">Explore the research record</a> or <a href="/#contact">discuss the work</a>.</p>
+</ReadingLayout>

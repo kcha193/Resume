@@ -59,11 +59,31 @@ const projects = defineCollection({
     category: z.enum(['app', 'dashboard', 'research', 'tool', 'policy', 'agent']),
     featured: z.boolean().default(false),
     year: z.number().int().min(1990).max(2100),
-    // Optional case-study fields — rendered as a Problem → Approach → Impact
-    // block on featured project cards. Keep to one tight sentence each.
+    scope: z.enum(['Collaborative research', 'Professional work', 'Independent personal project']),
     problem: z.string().min(1).optional(),
     approach: z.string().min(1).optional(),
-    impact: z.string().min(1).optional(),
+    tradeoffs: z.string().min(1).optional(),
+    outcome: z.string().min(1).optional(),
+    lessons: z.string().min(1).optional(),
+    evidence: z.array(z.object({ label: z.string().min(1), url: z.string().url() })).default([]),
+  }).superRefine((data, ctx) => {
+    if (!data.featured) return;
+    for (const field of ['problem', 'approach', 'tradeoffs', 'outcome', 'lessons'] as const) {
+      if (!data[field]) ctx.addIssue({ code: z.ZodIssueCode.custom, path: [field], message: 'Featured projects need a complete case study' });
+    }
+    if (!data.evidence.length) ctx.addIssue({ code: z.ZodIssueCode.custom, path: ['evidence'], message: 'Featured projects need public evidence' });
+  }),
+});
+
+const insights = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string().min(1),
+    topic: z.enum(['Banking pricing', 'Applied AI', 'Decision-making']),
+    date: z.coerce.date(),
+    summary: z.string().min(20).max(280),
+    canonicalUrl: z.string().url().refine(url => url.startsWith('https://'), 'Canonical URLs must use HTTPS').optional(),
+    status: z.enum(['draft', 'outline', 'published']).default('draft'),
   }),
 });
 
@@ -113,4 +133,4 @@ const snapshot = defineCollection({
   }),
 });
 
-export const collections = { profile, experience, projects, publications, education, skills, snapshot };
+export const collections = { profile, experience, projects, publications, education, skills, snapshot, insights };
