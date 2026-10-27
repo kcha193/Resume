@@ -1,0 +1,52 @@
+[
+  {
+    "theme": "dark",
+    "route": "/",
+    "violations": []
+  },
+  {
+    "theme": "dark",
+    "route": "/insights/",
+    "violations": []
+  },
+  {
+    "theme": "dark",
+    "route": "/insights/banking-pricing-trade-offs/",
+    "violations": []
+  },
+  {
+    "theme": "dark",
+    "route": "/work/automated-psychometrics/",
+    "violations": []
+  },
+  {
+    "theme": "dark",
+    "route": "/resume/",
+    "violations": []
+  },
+  {
+    "theme": "light",
+    "route": "/",
+    "violations": []
+  },
+  {
+    "theme": "light",
+    "route": "/insights/",
+    "violations": []
+  },
+  {
+    "theme": "light",
+    "route": "/insights/banking-pricing-trade-offs/",
+    "violations": []
+  },
+  {
+    "theme": "light",
+    "route": "/work/automated-psychometrics/",
+    "violations": []
+  },
+  {
+    "theme": "light",
+    "route": "/resume/",
+    "violations": []
+  }
+]

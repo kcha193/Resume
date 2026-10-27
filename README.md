@@ -74,6 +74,7 @@ npm run dev        # dev server at http://localhost:4321
 npm run build      # production build → dist/
 npm run preview    # preview built site locally
 npm run check      # TypeScript/Astro type check
+npm test           # source guardrails + fresh generated-page regression tests
 ```
 
 ---
@@ -86,7 +87,8 @@ All CV content lives in `src/content/`. Edit the relevant file and push — Netl
 |---|---|
 | Name, contact, social links, languages, interests | `src/content/profile/profile.yaml` |
 | Work experience | `src/content/experience/<role>.md` — one file per role |
-| Projects | `src/content/projects/<project>.md` — set `featured: true` on up to 4 for visual highlight; add optional `problem` / `approach` / `impact` to render a case-study block on featured cards |
+| Projects | `src/content/projects/<project>.md` — set `featured: true` on up to 4 for visual highlight; include `scope`, `problem`, `approach`, `tradeoffs`, `evidence`, `outcome` and `lessons` for each featured case study |
+| Insights | `src/content/insights/<slug>.md` — topic, date, summary, optional HTTPS canonical URL and `status: draft`, `outline` or `published` |
 | Publications | `src/content/publications/publications.yaml` |
 | Education | `src/content/education/education.yaml` |
 | Skills | `src/content/skills/skills.yaml` — grouped by capability domain (AI/ML, Pricing/Banking, Data Eng, Programming, Communication) |
@@ -100,9 +102,10 @@ All CV content lives in `src/content/`. Edit the relevant file and push — Netl
 - **Dark mode default** — dark on first visit, togglable, persisted to localStorage, no FOUC
 - **Zero JS framework** — theme toggle and mobile nav use vanilla JS; no React in the bundle
 - **Mobile-friendly** — hamburger nav, responsive layouts at every breakpoint
-- **Featured projects as case studies** — featured cards render a Problem → Approach → Impact block from the project frontmatter
+- **Featured projects as case studies** — short homepage treatments link to `/work/<slug>/`, with Problem → Approach → Trade-offs → Evidence → Outcome → Lessons
 - **Printable resume** — brand-aligned `/resume` page generated from the same content collections (projects, publications, skills, education); print/save-to-PDF ready, `noindex`
-- **SEO** — `<title>`, meta description, Open Graph (with `og:image:alt` + per-scheme `theme-color`), JSON-LD `Person` schema (with `worksFor`, `alumniOf`, `image`), canonical URL, `sitemap.xml`
+- **Insights** — Markdown articles and visibly labelled outlines at `/insights/`; drafts generate no route or navigation entry; RSS deferred until completed articles exist
+- **SEO** — `<title>`, meta description, Open Graph (with `og:image:alt` + per-scheme `theme-color`), JSON-LD `Person` schema (with `worksFor`, `alumniOf`, `image`), route-specific canonical/OG URLs, Article metadata for Insights, `sitemap-index.xml` (resume excluded)
 - **Performance** — self-hosted variable fonts, ~0KB JS framework overhead, immutable cache headers on `/_astro/*`
 - **Accessibility** — semantic landmarks, skip-to-content link (WCAG AA contrast), focus-visible rings, aria labels, `prefers-reduced-motion` guard
 
@@ -129,3 +132,12 @@ The `v1-hugo` git tag preserves the original Hugo/R site if you ever need to ref
 - **Fonts:** `@fontsource-variable/geist` and `@fontsource-variable/geist-mono` replace Inter and JetBrains Mono. The Latin subset is copied to `public/fonts/geist-latin-wght-normal.woff2` (stable URL, preloaded in `BaseLayout.astro`, also used by `/resume`).
 - **Skills:** `skills.yaml` items are ordered by depth of expertise. The first `core` items per tier (default 3, optional `core:` field) render prominently; the rest as supporting tools.
 - **Motion:** CSS only. Hero `.rise` load animation, `data-reveal` scroll reveal (staggered via `--i`), nav scroll-spy. All disabled under `prefers-reduced-motion`.
+
+
+## Evidence and editorial workflow
+
+See [audit and verified evidence](docs/portfolio/audit-and-evidence.md) and [LinkedIn recommendations](docs/portfolio/linkedin-recommendations.md). Keep unverifiable numbers and private projects out of public content. Existing historical project links are not a guarantee that the original apps still run or use current data.
+
+Create an Insight as `status: draft` first. Use `outline` only when intentionally publishing a labelled writing plan. Change to `published` after checking sources, examples and claims. An external `canonicalUrl` is for deliberate republication; it controls the canonical link, Open Graph URL and Article identity together.
+
+`npm test` builds to a temporary output directory and briefly creates draft/canonical fixtures under the Insights collection. Fixtures are removed afterwards. Run tests without a concurrent dev watcher, then `npm run build` for clean production output. No new production dependencies are required.

@@ -6,10 +6,10 @@ startDate: 2019-01-01
 endDate: 2021-01-01
 tags: ["Microsimulation", "Policy", "R Shiny", "Government"]
 highlights:
-  - "**Policy Impact Modelling**: Built and maintained microsimulation models to analyse tax and welfare policy impacts, directly informing Budget decisions and Ministerial recommendations."
-  - "**Data Integration & Engineering**: Integrated complex survey and administrative datasets (IDI, HES) to create robust analytical foundations for policy evaluation."
-  - "**Product Development**: Created interactive R Shiny dashboards and internal R packages that streamlined policy analysis workflows and improved accessibility of insights for policy analysts."
-  - "**Stakeholder Collaboration**: Worked closely with policy teams, Statistics NZ, and other government agencies to ensure analytical outputs aligned with strategic policy objectives."
+  - "Built and maintained microsimulation models to analyse tax and welfare policy scenarios."
+  - "Combined survey and administrative data for policy analysis."
+  - "Developed R Shiny dashboards and R packages to make analytical outputs accessible to policy teams."
+  - "Worked with policy colleagues and government agencies to clarify analytical questions and communicate findings."
 ---
 
-Developed sophisticated analytical tools supporting government policy development and fiscal planning.
+Developed statistical models and tools for analysing the distributional effects of policy.

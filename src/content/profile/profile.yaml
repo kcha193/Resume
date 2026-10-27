@@ -1,9 +1,9 @@
 name: "Kevin Chang"
 tagline: "Senior Data Scientist | Banking Pricing, AI & Customer Intelligence"
-seoDescription: "Senior Data Scientist in New Zealand specialising in banking pricing, AI, machine learning and customer intelligence, with 12+ years delivering business-ready analytics."
+seoDescription: "Senior Data Scientist in Auckland specialising in banking pricing, AI and customer intelligence, with a background in model assurance and statistical research."
 location: "Auckland, New Zealand"
 email: "kevin.ct.chang@gmail.com"
-summary: "**Data science leader delivering measurable business impact**: 12+ years driving revenue growth, customer value, and strategic decision-making through advanced analytics, machine learning, and data products. Currently at ASB Bank optimising pricing strategy and driving customer intelligence initiatives. Rare combination of commercial expertise, technical depth, and policy modelling knowledge—proven ability to translate complex models into clear, actionable insights for C-suite stakeholders. Specialist in customer lifetime value systems, predictive analytics, generative AI applications, and large-scale microsimulation. Recognised mentor building high-performing analytics teams. Experience spans financial services, government policy, and consulting."
+summary: "**Statistical depth. Commercial context. Clear decisions.** Senior Data Scientist at ASB Bank specialising in banking pricing and customer intelligence. My background spans model assurance, government policy microsimulation and statistical consulting. I connect analytical methods with the decision at hand: the commercial trade-offs, customer outcomes, assumptions and risks. Public research and open-source software show how I make statistical work usable and reproducible."
 social:
   - platform: "linkedin"
     url: "https://linkedin.com/in/kevin-ct-chang"
@@ -22,13 +22,13 @@ interests:
   - "Travelling"
 hero:
   eyebrow: "Senior Data Scientist · Banking Pricing · AI"
-  heading: "Turning pricing, AI, and customer intelligence into business decisions."
-  subheading: "Kevin Chang helps financial services leaders connect advanced modelling with revenue, customer outcomes, conduct risk, and clear executive action."
+  heading: "Banking pricing and AI, grounded in statistical judgement."
+  subheading: "Senior Data Scientist at ASB Bank. I bring pricing, customer intelligence and model assurance together to support commercial decisions, with a background in policy microsimulation and statistical research."
   stats:
     - "12+ yrs analytics"
     - "Pricing + P&L"
-    - "1,200+ citations"
-    - "60+ institutions"
+    - "Model assurance"
+    - "Published research"
   badges:
     - "Data Science"
     - "Retail Banking"
@@ -43,4 +43,4 @@ hero:
       label: "Retail banking pricing, customer intelligence, and model assurance"
     - value: "Ph.D."
       label: "Statistics depth with public-policy and commercial delivery"
-  positioning: "Business-facing data scientist: pricing strategy, customer lifetime value, predictive analytics, model assurance, GenAI, and stakeholder-ready decision support."
+  positioning: "Banking pricing, customer intelligence, statistical modelling and responsible applied AI."

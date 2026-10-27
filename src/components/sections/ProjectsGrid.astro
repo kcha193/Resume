@@ -20,7 +20,7 @@ const [lead, ...cases] = featured;
     <div class="flex flex-wrap items-end justify-between gap-x-10 gap-y-4 pb-12" data-reveal>
       <h2 id="projects-heading" class="h-section">Selected work</h2>
       <p class="copy max-w-[46ch] text-[0.95rem]">
-        End-to-end delivery: problem framing, modelling, and a usable tool at the end of it.
+        Public research with source material you can inspect. Employment experience and independent projects are labelled separately.
       </p>
     </div>
 
@@ -33,7 +33,7 @@ const [lead, ...cases] = featured;
 
     {rest.length > 0 && (
       <div class="mt-16 border-t border-line-strong pt-6" style="border-top-color: var(--line-strong)">
-        <h3 class="label" data-reveal>More public work</h3>
+        <h3 class="label" data-reveal>Earlier projects and explorations</h3>
         <ul class="ruled mt-2">
           {rest.map(entry => <ProjectCard entry={entry} variant="row" />)}
         </ul>

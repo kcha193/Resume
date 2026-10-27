@@ -151,6 +151,7 @@ const resumeSignals = [
 
     section { margin-bottom: 20px; }
     .section-title {
+      break-after: avoid;
       font-family: var(--mono);
       font-size: 11px;
       font-weight: 700;
@@ -292,7 +293,8 @@ const resumeSignals = [
               ? <a href={p.data.url} target="_blank" rel="noopener noreferrer">{p.data.title}</a>
               : p.data.title}
           </p>
-          <p class="project-blurb">{p.data.impact ?? p.data.blurb}</p>
+          <p class="project-stack">{p.data.scope}</p>
+          <p class="project-blurb">{p.data.outcome ?? p.data.blurb}</p>
           <p class="project-stack">{p.data.stack.join(' · ')}</p>
         </div>
       ))}
@@ -319,7 +321,7 @@ const resumeSignals = [
         </p>
       ))}
       {allPublications.length > publications.length && (
-        <p class="pub-more">+ {allPublications.length - publications.length} further peer-reviewed publications — full list at kevin-cv.netlify.app/#publications</p>
+        <p class="pub-more">+ {allPublications.length - publications.length} further research records — full list at kevin-cv.netlify.app/#publications</p>
       )}
     </section>
 

@@ -46,10 +46,11 @@ const accent = words.slice(-2).join(' ');
         <p class="lede rise" style="--d:2">{hero.subheading}</p>
 
         <div class="rise mt-9 flex flex-wrap items-center gap-x-6 gap-y-4" style="--d:3">
-          <a href="#experience" class="btn btn-primary">
-            Explore experience
+          <a href="#projects" class="btn btn-primary">
+            Explore public work
             <svg class="arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
           </a>
+          <a href="#experience" class="link-u inline-flex min-h-11 items-center font-semibold">Experience</a>
           <a href="/resume" target="_blank" rel="noopener noreferrer" class="btn">Resume</a>
           {linkedin && (
             <a href={linkedin.url} target="_blank" rel="noopener noreferrer" class="link-u inline-flex min-h-11 items-center text-[0.94rem] font-semibold">

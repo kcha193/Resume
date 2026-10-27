@@ -306,6 +306,35 @@ body::before {
   }
 }
 
+/* Reading pages reuse the site typography with a narrower measure. */
+.reading {
+  max-width: 48rem;
+}
+.prose {
+  color: var(--muted);
+  line-height: 1.8;
+  overflow-wrap: anywhere;
+}
+.prose > * + * {
+  margin-top: 1.25rem;
+}
+.prose h2, .prose h3 {
+  color: var(--ink);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 1.25;
+}
+.prose h2 { font-size: 1.55rem; margin-top: 2.75rem; }
+.prose h3 { font-size: 1.2rem; margin-top: 2rem; }
+.prose a { text-decoration: underline; text-underline-offset: 0.2em; }
+.prose a:hover { color: var(--brand-text); }
+.prose ul, .prose ol { padding-left: 1.5rem; }
+.prose ul { list-style-type: disc; }
+.prose ol { list-style-type: decimal; }
+.prose li + li { margin-top: 0.6rem; }
+.prose blockquote { border-left: 2px solid var(--brand); padding-left: 1.25rem; }
+.prose pre { overflow-x: auto; padding: 1.25rem; background: var(--surface-2); border-radius: var(--radius-sm); }
+
 /* ─── Focus ring ─────────────────────────────────────────────────────────────── */
 :focus-visible {
   outline: 2px solid var(--ink);
