@@ -408,3 +408,134 @@ body::before {
     transform: none;
   }
 }
+
+
+/* UI/UX Pro Max portfolio refresh: editorial story + evidence-led project display.
+   Keep all colors semantic so these layouts work in both themes. */
+.hero-shell {
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+  isolation: isolate;
+}
+.hero-grid {
+  background-image:
+    linear-gradient(to right, var(--line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--line) 1px, transparent 1px);
+  background-size: min(20vw, 16rem) min(20vw, 16rem);
+  opacity: .28;
+  mask-image: linear-gradient(to right, transparent, #000 70%);
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 70%);
+}
+.hero-display {
+  font-size: clamp(3.3rem, 6.25vw, 6.4rem);
+  line-height: .99;
+  letter-spacing: -.065em;
+  text-wrap: balance;
+  overflow-wrap: normal;
+}
+.hero-status {
+  width: .55rem;
+  height: .55rem;
+  border-radius: 50%;
+  background: var(--brand);
+  box-shadow: 0 0 0 4px var(--brand-soft);
+  flex: none;
+}
+.hero-photo-wrap {
+  aspect-ratio: 4/4.5;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+}
+.hero-photo {
+  display: block;
+  aspect-ratio: 4/4.5;
+  object-fit: cover;
+  filter: saturate(.82);
+}
+.hero-photo-frame {
+  border: 1px solid rgba(255,255,255,.55);
+}
+.hero-photo-label {
+  background: var(--brand);
+  color: #141416;
+}
+.hero-caption > div {
+  min-width: 0;
+}
+.proof-band {
+  font-variant-numeric: tabular-nums;
+}
+.capability-card {
+  border: 1px solid var(--line);
+  background: var(--surface);
+  transition: border-color 180ms var(--ease), transform 180ms var(--ease);
+}
+.capability-card:hover {
+  border-color: var(--line-strong);
+  transform: translateY(-2px);
+}
+.feature-panel {
+  background: var(--paper);
+}
+.feature-evidence {
+  background: var(--surface-2);
+}
+.feature-eyebrow {
+  background: var(--brand);
+  color: #141416;
+}
+.evidence-flow {
+  color: var(--muted);
+  font: 500 .75rem/1.4 var(--font-mono);
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+.evidence-flow span {
+  flex: none;
+  max-width: 30%;
+}
+.evidence-flow i {
+  height: 1px;
+  background: var(--brand-text);
+  flex: 1;
+  min-width: .35rem;
+  position: relative;
+}
+.evidence-flow i::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: -2px;
+  height: 5px;
+  width: 5px;
+  border-top: 1px solid var(--brand-text);
+  border-right: 1px solid var(--brand-text);
+  transform: rotate(45deg);
+}
+.work-tile {
+  min-width: 0;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  transition: border-color 200ms var(--ease), transform 200ms var(--ease);
+}
+.work-tile:hover,
+.work-tile:focus-within {
+  border-color: var(--line-strong);
+}
+.work-tile:hover {
+  transform: translateY(-2px);
+}
+.work-tile-arrow {
+  border-color: var(--line-strong);
+  color: var(--brand-text);
+}
+@media (max-width: 640px) {
+  .hero-display { font-size: clamp(2.8rem, 11.5vw, 4rem); }
+  .hero-photo-wrap { aspect-ratio: 4/3.6; }
+  .hero-photo { aspect-ratio: 4/3.6; }
+  .hero-grid { opacity: .17; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .capability-card:hover,
+  .work-tile:hover { transform: none; }
+}

@@ -3,22 +3,18 @@ import type { CollectionEntry } from 'astro:content';
 
 interface Props {
   entry: CollectionEntry<'projects'>;
-  /** lead = headline case study, case = other featured case study, row = additional public work */
-  variant?: 'lead' | 'case' | 'row';
+  variant?: 'lead' | 'case' | 'tile' | 'row';
   index?: number;
 }
-
 const { entry, variant = 'row', index = 0 } = Astro.props;
 const { title, blurb, url, stack, category, year, problem, approach, outcome, scope } = entry.data;
 const caseUrl = `/work/${entry.slug}/`;
 const proofPoint = entry.body?.trim();
-
 const caseStudy = [
   { label: 'Problem', value: problem },
   { label: 'Approach', value: approach },
   { label: 'Outcome', value: outcome },
 ].filter((row): row is { label: string; value: string } => Boolean(row.value));
-
 const categoryLabels: Record<string, string> = {
   agent: 'AI system',
   app: 'Decision app',
@@ -31,75 +27,90 @@ const categoryLabel = categoryLabels[category] ?? category;
 ---
 
 {variant === 'lead' && (
-  <article data-reveal class="grid gap-10 pb-14 lg:grid-cols-12 lg:gap-x-10">
-    <div class="lg:col-span-5">
-      <p class="num select-none text-[clamp(4rem,10vw,7.5rem)] font-semibold leading-[0.85] tracking-[-0.06em] text-transparent [-webkit-text-stroke:1.5px_var(--line-strong)]" aria-hidden="true">{year}</p>
-      <p class="label mt-6">{year} · {categoryLabel}</p>
-      <h3 class="mt-3 text-3xl font-semibold leading-[1.05] tracking-tight sm:text-4xl">
+  <article data-reveal class="feature-panel relative grid overflow-hidden rounded-[var(--radius-md)] border border-line lg:grid-cols-12">
+    <div class="relative z-10 flex flex-col p-7 sm:p-10 lg:col-span-5 lg:p-12">
+      <div class="flex flex-wrap items-center gap-x-3 gap-y-2">
+        <span class="feature-eyebrow rounded-[var(--radius-sm)] px-3 py-1 text-xs font-semibold uppercase tracking-[0.1em]">Featured case study</span>
+        <span class="label">{year} · {categoryLabel}</span>
+      </div>
+      <h3 class="mt-8 max-w-[14ch] text-[clamp(2.1rem,4vw,3.6rem)] font-semibold leading-[1.08] tracking-[-0.055em]">
         <a href={caseUrl} class="link-u">{title}</a>
       </h3>
-      <p class="label mt-4">{scope}</p>
-      <p class="copy mt-4">{blurb}</p>
-      <a href={caseUrl} class="link-u mt-5 inline-block font-semibold">Read case study <span aria-hidden="true">↗</span></a>
-      <p class="label mt-6">{stack.slice(0, 5).join('  ·  ')}</p>
+      <p class="label mt-5 uppercase tracking-[0.06em]">{scope}</p>
+      <p class="copy mt-5 text-[1.02rem]">{blurb}</p>
+      <div class="mt-auto pt-10">
+        <a href={caseUrl} class="btn btn-primary">
+          Explore the full case study
+          <svg class="arrow" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+        <p class="label mt-5">{stack.slice(0, 5).join(' · ')}</p>
+      </div>
     </div>
-
-    <dl class="ruled self-end border-t border-line lg:col-span-7">
-      {caseStudy.map(row => (
-        <div
-          class:list={[
-            'grid gap-2 py-5 sm:grid-cols-[6.5rem_1fr] sm:gap-6',
-            row.label === 'Outcome' && 'border-l-2 !border-t pl-4 sm:pl-5',
-          ]}
-          style={row.label === 'Outcome' ? 'border-left-color: var(--brand)' : ''}
-        >
-          <dt class="label pt-0.5">{row.label}</dt>
-          <dd class:list={['leading-relaxed', row.label === 'Outcome' ? 'text-lg font-semibold tracking-tight' : 'text-muted']}>{row.value}</dd>
-        </div>
-      ))}
-      {caseStudy.length === 0 && proofPoint && <p class="copy py-5">{proofPoint}</p>}
-    </dl>
+    <div class="feature-evidence relative z-10 flex flex-col justify-center border-t border-line p-7 sm:p-10 lg:col-span-7 lg:border-l lg:border-t-0 lg:p-12">
+      <div class="evidence-flow mb-10 flex items-center gap-3" aria-hidden="true">
+        <span>Question</span><i></i><span>Method</span><i></i><span>Evidence</span>
+      </div>
+      <p class="label mb-3 uppercase tracking-[0.12em]">Inside the work</p>
+      <dl class="ruled border-t border-line">
+        {caseStudy.map((row, i) => (
+          <div class="grid gap-3 py-6 sm:grid-cols-[7rem_1fr] sm:gap-6">
+            <dt class="label flex items-start gap-2 font-semibold"><span class="text-brand-text">0{i + 1}</span> {row.label}</dt>
+            <dd class:list={['text-[1rem] leading-relaxed', row.label === 'Outcome' ? 'font-semibold text-ink' : 'text-muted']}>{row.value}</dd>
+          </div>
+        ))}
+        {caseStudy.length === 0 && proofPoint && <p class="copy py-5">{proofPoint}</p>}
+      </dl>
+    </div>
   </article>
 )}
 
 {variant === 'case' && (
-  <article data-reveal style={`--i:${index}`} class="grid gap-6 border-t border-line py-10 lg:grid-cols-12 lg:gap-x-10">
-    <div class="lg:col-span-4">
-      <p class="label">{year} · {categoryLabel}</p>
-      <h3 class="mt-3 text-2xl font-semibold leading-tight tracking-tight">
-        <a href={caseUrl} class="link-u">{title}</a>
-      </h3>
-      <p class="copy mt-3 text-sm">{scope}</p>
-      <a href={caseUrl} class="link-u mt-4 inline-block font-semibold">Read case study</a>
-      <p class="label mt-4">{stack.slice(0, 4).join('  ·  ')}</p>
-    </div>
-
-    <dl class="grid gap-x-8 gap-y-6 lg:col-span-8 md:grid-cols-3">
+  <article data-reveal class="work-tile flex h-full flex-col rounded-[var(--radius-md)] p-7 sm:p-8" style={`--i:${index % 2}`}>
+    <p class="label">{year} · {categoryLabel} · {scope}</p>
+    <h3 class="mt-5 text-2xl font-semibold leading-tight tracking-[-0.035em]">
+      <a href={caseUrl} class="link-u">{title}</a>
+    </h3>
+    <p class="copy mt-4">{blurb}</p>
+    <dl class="mt-7 border-t border-line">
       {caseStudy.map(row => (
-        <div
-          class:list={['border-t pt-3', row.label !== 'Outcome' && 'border-line']}
-          style={row.label === 'Outcome' ? 'border-top-color: var(--brand); border-top-width: 2px' : ''}
-        >
+        <div class="border-b border-line py-4">
           <dt class="label">{row.label}</dt>
-          <dd class:list={['mt-2 text-[0.94rem] leading-relaxed', row.label === 'Outcome' ? 'font-semibold text-ink' : 'text-muted']}>{row.value}</dd>
+          <dd class="mt-2 text-[0.94rem] leading-relaxed">{row.value}</dd>
         </div>
       ))}
-      {caseStudy.length === 0 && <p class="copy md:col-span-3">{proofPoint ?? blurb}</p>}
     </dl>
+    <a href={caseUrl} class="link-u mt-auto inline-flex min-h-11 items-center self-start pt-4 font-semibold">Read case study <span class="ml-2" aria-hidden="true">↗</span></a>
+  </article>
+)}
+
+{variant === 'tile' && (
+  <article data-reveal class="work-tile group flex h-full flex-col rounded-[var(--radius-md)] p-7 sm:p-8" style={`--i:${index % 2}`}>
+    <div class="flex flex-wrap items-center justify-between gap-3">
+      <p class="label">{year} / {categoryLabel}</p>
+      <span class="work-tile-arrow inline-flex h-9 w-9 items-center justify-center rounded-full border border-line" aria-hidden="true">↗</span>
+    </div>
+    <h4 class="mt-8 max-w-[22ch] text-[1.5rem] font-semibold leading-tight tracking-[-0.035em]">
+      {url ? <a class="link-u" href={url} target="_blank" rel="noopener noreferrer">{title}<span class="sr-only"> (opens in new tab)</span></a> : title}
+    </h4>
+    <p class="copy mt-4 text-[0.95rem]">{blurb}</p>
+    <div class="mt-auto border-t border-line pt-6">
+      <p class="label">{scope}</p>
+      <p class="label mt-2">{stack.slice(0, 3).join(' · ')}</p>
+    </div>
   </article>
 )}
 
 {variant === 'row' && (
-  <li data-reveal class="group grid grid-cols-[3.25rem_1fr] gap-x-5 gap-y-1 py-5 sm:grid-cols-[4rem_minmax(0,1fr)_minmax(0,1.6fr)] sm:gap-x-8">
+  <li data-reveal class="grid gap-x-5 gap-y-2 py-5 sm:grid-cols-[4rem_minmax(0,1fr)_minmax(0,1.6fr)] sm:gap-x-8">
     <span class="label num pt-1">{year}</span>
     <div>
-      <h3 class="font-semibold leading-snug tracking-tight">
+      <h4 class="font-semibold leading-snug tracking-tight">
         {url ? (
-          <a href={url} target="_blank" rel="noopener noreferrer" class="link-u" aria-label={`${title} (opens in new tab)`}>{title}</a>
+          <a href={url} target="_blank" rel="noopener noreferrer" class="link-u">{title}<span class="sr-only"> (opens in new tab)</span></a>
         ) : title}
-      </h3>
+      </h4>
       <p class="label mt-1">{categoryLabel} · {scope}</p>
     </div>
-    <p class="copy col-start-2 text-[0.92rem] leading-relaxed sm:col-start-3">{blurb}</p>
+    <p class="copy text-[0.92rem] leading-relaxed sm:col-start-3">{blurb}</p>
   </li>
 )}
