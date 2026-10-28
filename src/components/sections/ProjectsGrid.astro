@@ -5,37 +5,56 @@ import type { CollectionEntry } from 'astro:content';
 interface Props {
   items: CollectionEntry<'projects'>[];
 }
-
 const { items } = Astro.props;
-const sorted = [...items].sort((a, b) => b.data.year - a.data.year);
-
+const sorted = [...items].sort((a, b) => b.data.year - a.data.year || a.data.title.localeCompare(b.data.title));
 const featured = sorted.filter(p => p.data.featured).slice(0, 4);
 const featuredIds = new Set(featured.map(p => p.id));
 const rest = sorted.filter(p => !featuredIds.has(p.id));
+const showcase = rest.filter(p => Boolean(p.data.url)).slice(0, 4);
+const showcaseIds = new Set(showcase.map(p => p.id));
+const archive = rest.filter(p => !showcaseIds.has(p.id));
 const [lead, ...cases] = featured;
 ---
 
 <section id="projects" class="section section--tint" aria-labelledby="projects-heading">
   <div class="wrap">
-    <div class="flex flex-wrap items-end justify-between gap-x-10 gap-y-4 pb-12" data-reveal>
-      <h2 id="projects-heading" class="h-section">Selected work</h2>
-      <p class="copy max-w-[46ch] text-[0.95rem]">
-        Public research with source material you can inspect. Employment experience and independent projects are labelled separately.
+    <header class="mb-12 grid gap-6 lg:grid-cols-12 lg:items-end" data-reveal>
+      <div class="lg:col-span-7">
+        <p class="label mb-4 uppercase tracking-[0.12em]">02 / Evidence in practice</p>
+        <h2 id="projects-heading" class="h-section">Selected work<span class="text-brand-text">.</span></h2>
+      </div>
+      <p class="copy lg:col-span-5 lg:justify-self-end">
+        Research, analytical tools and independent experiments. Professional work and collaborations are labelled explicitly; public links point to source material where available.
       </p>
-    </div>
+    </header>
 
     {lead && <ProjectCard entry={lead} variant="lead" />}
     {cases.length > 0 && (
-      <div>
+      <div class="mt-4 grid gap-4 md:grid-cols-2">
         {cases.map((entry, i) => <ProjectCard entry={entry} variant="case" index={i} />)}
       </div>
     )}
 
-    {rest.length > 0 && (
-      <div class="mt-16 border-t border-line-strong pt-6" style="border-top-color: var(--line-strong)">
-        <h3 class="label" data-reveal>Earlier projects and explorations</h3>
-        <ul class="ruled mt-2">
-          {rest.map(entry => <ProjectCard entry={entry} variant="row" />)}
+    {showcase.length > 0 && (
+      <div class="mt-14 lg:mt-20">
+        <div class="mb-6 flex flex-wrap items-baseline justify-between gap-3 border-b border-line pb-4">
+          <h3 class="text-xl font-semibold tracking-tight">More work to explore</h3>
+          <span class="label">Public projects / {showcase.length.toString().padStart(2, '0')}</span>
+        </div>
+        <div class="grid gap-4 md:grid-cols-2">
+          {showcase.map((entry, i) => <ProjectCard entry={entry} variant="tile" index={i} />)}
+        </div>
+      </div>
+    )}
+
+    {archive.length > 0 && (
+      <div class="mt-14 border-t border-line-strong pt-6 lg:mt-20">
+        <div class="flex flex-wrap items-baseline justify-between gap-3">
+          <h3 class="text-xl font-semibold tracking-tight">Further explorations</h3>
+          <span class="label">Additional work / {archive.length.toString().padStart(2, '0')}</span>
+        </div>
+        <ul class="ruled mt-5 border-t border-line">
+          {archive.map(entry => <ProjectCard entry={entry} variant="row" />)}
         </ul>
       </div>
     )}
